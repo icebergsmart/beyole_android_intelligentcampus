@@ -33,7 +33,7 @@
                     beyole:titleSize="12sp"
                     beyole:titleText="Iceberg" />
 
-                <TextView
+                <com.beyole.view.MyTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dip"
