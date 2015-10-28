@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="160.0dip"
+        android:layout_marginLeft="4.0dip"
+        android:layout_marginRight="4.0dip"
+        android:layout_marginTop="4.0dip"
+        android:background="@drawable/sporttoday_card_bk" >
+
+        <TextView
+            android:id="@+id/id_sporttoday_description1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="4.0dip"
+            android:layout_marginTop="4.0dip"
+            android:text="步数:108000"
+            android:textSize="10sp"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/id_sporttoday_description2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/id_sporttoday_description1"
+            android:layout_marginLeft="4.0dip"
+            android:text="日平均值:5600"
+            android:textColor="@android:color/white"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/id_sporttoday_description3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="4.0dip"
+            android:layout_marginTop="10.0dip"
+            android:text="今天:12:45"
+            android:textColor="@android:color/white"
+            android:textSize="10sp" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart1"
+            android:layout_width="250.0dip"
+            android:layout_height="100.0dip"
+            android:layout_centerInParent="true"
+            la="" />
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="160.0dip"
+        android:layout_marginLeft="4.0dip"
+        android:layout_marginRight="4.0dip"
+        android:layout_marginTop="4.0dip"
+        android:background="@drawable/sporttoday_card_bk" >
+
+        <TextView
+            android:id="@+id/id_sporttoday_description1_floor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="4.0dip"
+            android:layout_marginTop="4.0dip"
+            android:text="已爬楼层:30楼"
+            android:textSize="10sp"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/id_sporttoday_description2_floor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/id_sporttoday_description1_floor"
+            android:layout_marginLeft="4.0dip"
+            android:text="日平均值:15楼"
+            android:textColor="@android:color/white"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/id_sporttoday_description3_floor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="4.0dip"
+            android:layout_marginTop="10.0dip"
+            android:text="今天:12:45"
+            android:textColor="@android:color/white"
+            android:textSize="10sp" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart2"
+            android:layout_width="250.0dip"
+            android:layout_height="100.0dip"
+            android:layout_centerInParent="true"
+            la="" />
+    </RelativeLayout>
+    
+
+</LinearLayout>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:beyole="http://schemas.android.com/apk/res/com.beyole.intelligentcampus"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:fadingEdge="none" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="180dip"
+            android:background="@drawable/function_top_bg" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <com.beyole.view.ImageDetailsView
+                    android:id="@+id/id_imageDetailsView"
+                    android:layout_width="60dp"
+                    android:layout_height="70dp"
+                    android:padding="2dp"
+                    beyole:titleColor="#ffffff"
+                    beyole:titleImage="@drawable/user_information_img"
+                    beyole:titleImageScope="fillXY"
+                    beyole:titleSize="12sp"
+                    beyole:titleText="Iceberg" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dip"
+                    android:layout_marginTop="6dip"
+                    android:ellipsize="end"
+                    android:text="盐城  东风4级 最高气温:8度  气压：适宜"
+                    android:textColor="#ffffff"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/id_tab_weixin"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab2_top_bar_selector"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/id_tab_weixin_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:clickable="false"
+                        android:src="@drawable/function_top_bar1_30px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="message"
+                        android:textColor="#ffffff"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/id_tab_frd"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab2_top_bar_selector"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/id_tab_frd_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:clickable="false"
+                        android:src="@drawable/function_top_bar2_30px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="favorite"
+                        android:textColor="#ffffff"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/id_tab_address"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab2_top_bar_selector"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/id_tab_address_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:clickable="false"
+                        android:src="@drawable/function_top_bar3_30px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="feedback"
+                        android:textColor="#ffffff"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/id_tab_settings"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/tab2_top_bar_selector"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/id_tab_settings_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:clickable="false"
+                        android:src="@drawable/function_top_bar4_30px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="set"
+                        android:textColor="#ffffff"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:fadingEdge="none" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="离线功能"
+                    android:textColor="#88000000"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:orientation="horizontal" >
+
+                    <com.beyole.view.LineGridview
+                        android:id="@+id/gridviews2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:numColumns="4" >
+                    </com.beyole.view.LineGridview>
+                </LinearLayout>
+                
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="在线功能"
+                    android:textColor="#88000000"
+                    android:textSize="13sp" />
+
+                 <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:orientation="horizontal" >
+
+                    <com.beyole.view.LineGridview
+                        android:id="@+id/gridviews1"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:numColumns="4" >
+                    </com.beyole.view.LineGridview>
+                </LinearLayout>
+                
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="其他功能"
+                    android:textColor="#88000000"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:orientation="horizontal" >
+
+                    <com.beyole.view.LineGridview
+                        android:id="@+id/gridviews"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:numColumns="4" >
+                    </com.beyole.view.LineGridview>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</ScrollView>

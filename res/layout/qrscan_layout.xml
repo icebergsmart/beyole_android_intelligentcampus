@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <include layout="@layout/top" />
+
+    <ImageView
+        android:id="@+id/id_qrimageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_launcher"
+        android:visibility="visible" />
+
+    <ProgressBar
+        android:id="@+id/id_qrprogressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+      <TextView
+            android:id="@+id/id_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:text="123"
+            android:visibility="gone" />
+       <TextView
+            android:id="@+id/id_bottominformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#66000000"
+            android:textSize="12sp"
+            android:text="123"
+            android:visibility="gone" />
+      
+
+</RelativeLayout>
