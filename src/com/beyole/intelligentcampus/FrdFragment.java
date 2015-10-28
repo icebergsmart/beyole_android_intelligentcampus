@@ -50,15 +50,12 @@ public class FrdFragment extends Fragment {
 		int lines = titles.length % 2 == 0 ? titles.length / lineNumber : titles.length / lineNumber + 1;
 		mHeight = Math.round((width / lineNumber) * 1.2f);
 		ItemAdapter itemAdapter = new ItemAdapter(titles, img, getActivity(), mHeight * titles.length);
-		Log.i("test", "gridviews2的lines为:" + lines);
 		int lines1 = titles1.length % 2 == 0 ? titles1.length / lineNumber : titles1.length / lineNumber + 1;
 		mHeight1 = Math.round((width / lineNumber) * 1.2f);
 		ItemAdapter itemAdapter1 = new ItemAdapter(titles1, img1, getActivity(), mHeight1 * titles1.length);
-		Log.i("test", "gridviews1的lines1为:" + lines1);
 		int lines2 = titles2.length % 2 == 0 ? titles2.length / lineNumber : titles2.length / lineNumber + 1;
 		mHeight2 = Math.round((width / lineNumber) * 1.2f);
 		ItemAdapter itemAdapter2 = new ItemAdapter(titles2, img2, getActivity(), mHeight2 * titles2.length);
-		Log.i("test", "gridviews2的lines2为:" + lines2);
 		// 设置gridview的单元格宽度
 		gridviews.setColumnWidth(width / lineNumber - 10);
 		gridviews.setSelector(R.drawable.hidden_yellow);
@@ -90,7 +87,6 @@ public class FrdFragment extends Fragment {
 		gridviews1.setAdapter(itemAdapter1);
 		LayoutParams lp1 = gridviews1.getLayoutParams();
 		lp1.height = mHeight1 * lines1;
-		Log.i("test", "gridviews1的高度为:" + lp1.height);
 		return view;
 	}
 

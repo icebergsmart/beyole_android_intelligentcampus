@@ -1,11 +1,15 @@
 package com.beyole.intelligentcampus;
 
+import com.beyole.adapter.ItemAdapter;
+import com.beyole.view.LineGridview;
+
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.ViewGroup.LayoutParams;
 
 /**
  * 我 fragment
@@ -15,8 +19,33 @@ import android.view.ViewGroup;
  */
 public class MeFragment extends Fragment {
 
+	private LineGridview id_me_gridviews;
+	private static final int lineNumber = 4;
+	private int mHeight;
+	private View view;
+	private String[] titles = new String[] { "活动", "动态", "通知", "个推", "探索", "脑点子", "Find Me", "智慧树" };
+	private int[] img = new int[] { R.drawable.more1, R.drawable.more2, R.drawable.more3, R.drawable.more4, R.drawable.more5, R.drawable.more6, R.drawable.more7, R.drawable.more7 };
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.tab03, container, false);
+		view = inflater.inflate(R.layout.tab03, container, false);
+		// 获取屏幕宽度和高度
+		WindowManager wm = getActivity().getWindowManager();
+		int width = wm.getDefaultDisplay().getWidth();
+		initViews();
+		int lines = titles.length % 2 == 0 ? titles.length / lineNumber : titles.length / lineNumber + 1;
+		mHeight = Math.round((width / lineNumber) * 1.2f);
+		ItemAdapter itemAdapter = new ItemAdapter(titles, img, getActivity(), mHeight * titles.length);
+		// 设置gridview的单元格宽度
+		id_me_gridviews.setColumnWidth(width / lineNumber - 10);
+		id_me_gridviews.setSelector(R.drawable.hidden_yellow);
+		id_me_gridviews.setAdapter(itemAdapter);
+		LayoutParams lp = id_me_gridviews.getLayoutParams();
+		lp.height = mHeight * lines;
+		return view;
+	}
+
+	private void initViews() {
+		id_me_gridviews = (LineGridview) view.findViewById(R.id.id_me_gridviews);
 	}
 }
