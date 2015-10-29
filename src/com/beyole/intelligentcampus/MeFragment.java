@@ -1,15 +1,19 @@
 package com.beyole.intelligentcampus;
 
-import com.beyole.adapter.ItemAdapter;
-import com.beyole.view.LineGridview;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.ViewGroup.LayoutParams;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+
+import com.beyole.adapter.ItemAdapter;
+import com.beyole.intelligentcampus.me.FindMeActivity;
+import com.beyole.view.LineGridview;
 
 /**
  * 我 fragment
@@ -19,6 +23,14 @@ import android.view.ViewGroup.LayoutParams;
  */
 public class MeFragment extends Fragment {
 
+	private static final int TITLE1 = 0;
+	private static final int TITLE2 = 1;
+	private static final int TITLE3 = 2;
+	private static final int TITLE4 = 3;
+	private static final int TITLE5 = 4;
+	private static final int TITLE6 = 5;
+	private static final int TITLE7 = 6;
+	private static final int TITLE8 = 7;
 	private LineGridview id_me_gridviews;
 	private static final int lineNumber = 4;
 	private int mHeight;
@@ -42,6 +54,17 @@ public class MeFragment extends Fragment {
 		id_me_gridviews.setAdapter(itemAdapter);
 		LayoutParams lp = id_me_gridviews.getLayoutParams();
 		lp.height = mHeight * lines;
+		id_me_gridviews.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				switch (position) {
+				case TITLE7:
+					Intent intent = new Intent(getActivity(), FindMeActivity.class);
+					startActivity(intent);
+					break;
+				}
+			}
+		});
 		return view;
 	}
 
