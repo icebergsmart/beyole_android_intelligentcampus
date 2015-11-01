@@ -16,6 +16,8 @@ import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -59,6 +61,22 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 	// 存储新闻列表
 	private ListView mListView;
 
+	// 判断viewpager有没有触碰事件
+	private boolean isTouching = false;
+	private int viewPagerSelected = 1;
+	private static final int MYVIEWPAGERTIME = 0x11122;
+
+	Handler myViewPagerHandler = new Handler() {
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case MYVIEWPAGERTIME:
+				if (!isTouching)
+					changeViewpagerItem(viewPagerSelected);
+				break;
+			}
+		};
+	};
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// android4.0之后请求http都会抛异常，这里是防止http请求被中断
@@ -70,6 +88,12 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 		initDots();
 		new NewsAsyncTask().execute(Constant.HOMEURL);
 		return mView;
+	}
+
+	public void changeViewpagerItem(int viewPagerSelected2) {
+		vp.setCurrentItem(viewPagerSelected2);
+		viewPagerSelected = (viewPagerSelected + 1) % 4;
+		myViewPagerHandler.sendEmptyMessageDelayed(MYVIEWPAGERTIME, 6000);
 	}
 
 	private void initViews() {
@@ -93,6 +117,9 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 		// 设置引导页滑动监听事件
 		vp.setOnPageChangeListener(this);
 		// 获取启动按钮
+		if (!isTouching) {
+			myViewPagerHandler.sendEmptyMessageDelayed(MYVIEWPAGERTIME, 3000);
+		}
 	}
 
 	// 初始化小白点方法
@@ -125,6 +152,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 				dots[i].setImageResource(R.drawable.login_point);
 			}
 		}
+		viewPagerSelected=arg0;
 	}
 
 	// 实现网络的异步访问
