@@ -61,6 +61,11 @@
             android:label="CaptureActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.settings.AboutUsActivity"
+            android:label="AboutUsActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

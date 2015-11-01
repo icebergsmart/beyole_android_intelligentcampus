@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TableRow;
 import android.widget.Toast;
 
+import com.beyole.intelligentcampus.settings.AboutUsActivity;
 import com.beyole.intelligentcampus.settings.QRActivity;
 import com.beyole.notifydialog.widget.effectdialog.Effectstype;
 import com.beyole.notifydialog.widget.effectdialog.NiftyDialogBuilder;
@@ -27,16 +28,40 @@ public class SettingFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.tab04, container, false);
+		MyRowOnclickListener listener = new MyRowOnclickListener();
 		TableRow row = (TableRow) view.findViewById(R.id.more_page_row0);
-		row.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// dialogShow();
-				Intent intent = new Intent(getActivity(), QRActivity.class);
-				startActivity(intent);
-			}
-		});
+		TableRow row8 = (TableRow) view.findViewById(R.id.more_page_row8);
+		row.setOnClickListener(listener);
+		row8.setOnClickListener(listener);
 		return view;
+	}
+
+	class MyRowOnclickListener implements OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			Intent intent = null;
+			switch (v.getId()) {
+			case R.id.more_page_row0:
+				intent = new Intent(getActivity(), QRActivity.class);
+				startActivity(intent);
+				activitySwitchAnimation();
+				break;
+			case R.id.more_page_row8:
+				intent = new Intent(getActivity(), AboutUsActivity.class);
+				startActivity(intent);
+				activitySwitchAnimation();
+				break;
+			}
+		}
+
+		/**
+		 * activity切换动画
+		 */
+		private void activitySwitchAnimation() {
+			getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+		}
+
 	}
 
 	public void dialogShow() {

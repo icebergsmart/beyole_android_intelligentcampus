@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:beyole="http://schemas.android.com/apk/res/com.beyole.intelligentcampus"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <include
+        android:id="@+id/id_settings_abouts_top"
+        layout="@layout/top" />
+
+    <com.beyole.view.ImageDetailsView
+        android:id="@+id/id_imageDetailsView"
+        android:layout_width="160dp"
+        android:layout_height="70dp"
+        android:layout_centerInParent="true"
+        android:padding="2dp"
+        beyole:titleColor="#000000"
+        beyole:titleImage="@drawable/ic_launcher"
+        beyole:titleImageScope="center"
+        beyole:titleSize="12sp"
+        beyole:titleText="智能校园APP团队开发" />
+
+    <!--
+         <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/id_settings_abouts_top"
+        android:layout_gravity="center"
+        android:drawableTop="@drawable/ic_launcher"
+        android:gravity="center"
+        android:text=""
+        android:textSize="14sp" />
+    -->
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="版权所有归Iceberg所有  ◎2015-2016"
+        android:textSize="10sp" />
+
+</RelativeLayout>
