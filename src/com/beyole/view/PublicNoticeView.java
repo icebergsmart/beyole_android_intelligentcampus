@@ -26,22 +26,6 @@ public class PublicNoticeView extends LinearLayout {
 	private Context mContext;
 	private ViewFlipper mViewFlipper;
 	private View mScrollTitleView;
-	private Intent intent;
-
-	Handler mHandler = new Handler() {
-		@Override
-		public void handleMessage(android.os.Message msg) {
-			switch (msg.what) {
-			case 1:
-				// bindNotices();
-				break;
-
-			case -1:
-				bindNotices();
-				break;
-			}
-		};
-	};
 
 	public PublicNoticeView(Context context) {
 		super(context);
@@ -57,9 +41,7 @@ public class PublicNoticeView extends LinearLayout {
 
 	private void init() {
 		bindLinearLayout();
-		Message message = new Message();
-		message.what = -1;
-		mHandler.sendMessageDelayed(message, 1500);
+		bindNotices();
 	}
 
 	/**
@@ -73,7 +55,6 @@ public class PublicNoticeView extends LinearLayout {
 		mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(mContext, R.anim.slide_in_bottom));
 		mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(mContext, R.anim.slide_out_top));
 		mViewFlipper.startFlipping();
-		View v = mViewFlipper.getCurrentView();
 	}
 
 	/**
