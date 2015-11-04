@@ -1,9 +1,6 @@
 package com.beyole.view;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;

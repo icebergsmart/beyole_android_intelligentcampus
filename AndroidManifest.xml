@@ -66,6 +66,16 @@
             android:label="AboutUsActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.LoginActivity"
+            android:label="LoginActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.RegisterActivity"
+            android:label="RegisterActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

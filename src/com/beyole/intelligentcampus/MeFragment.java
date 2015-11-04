@@ -62,6 +62,10 @@ public class MeFragment extends Fragment {
 					Intent intent = new Intent(getActivity(), FindMeActivity.class);
 					startActivity(intent);
 					break;
+				case TITLE8:
+					Intent intent1 = new Intent(getActivity(), LoginActivity.class);
+					startActivity(intent1);
+					break;
 				}
 			}
 		});

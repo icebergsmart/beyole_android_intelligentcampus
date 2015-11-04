@@ -1,0 +1,135 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#52a0b6" >
+
+    <RelativeLayout
+        android:id="@+id/id_activity_login_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60.0dip" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/logo" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/id_activity_login_top_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_activity_login_top"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15.0dip"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/id_activity_login_my_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="从不浪费时间的人，没有工夫抱怨时间不够。"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/id_activity_login_username_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/edittext_round" >
+
+        <com.beyole.view.EditTextWithRightButton
+            android:id="@+id/id_activity_login_et_myusername"
+            android:layout_width="270.0dip"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/username"
+            android:drawablePadding="6.0dip"
+            android:drawableRight="@drawable/edit_clear"
+            android:paddingLeft="5.0dip"
+            android:paddingRight="5.0dip"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textCursorDrawable="@null" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/id_activity_login_password_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_activity_login_username_layout"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5.0dip"
+        android:background="@drawable/edittext_round" >
+
+        <com.beyole.view.EditTextWithRightButton
+            android:id="@+id/id_activity_login_et_mypassword"
+            android:layout_width="270.0dip"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/password"
+            android:drawablePadding="6.0dip"
+            android:drawableRight="@drawable/edit_clear"
+            android:paddingLeft="5.0dip"
+            android:paddingRight="5.0dip"
+            android:password="true"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textCursorDrawable="@null" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/id_activity_login_loginbutton_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_activity_login_password_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15.0dip"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/id_activity_login_btn_login"
+            android:layout_width="270.0dip"
+            android:layout_height="40.0dip"
+            android:background="@drawable/login_button_selector"
+            android:text="登录"
+            android:textColor="#ffffff" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/other_layout"
+        android:layout_width="270.0dip"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_activity_login_loginbutton_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5.0dip" >
+
+        <TextView
+            android:id="@+id/id_activity_login__tv_login_registernow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="8.0dip"
+            android:text="立即注册"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/id_activity_login_tv_forget_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8.0dip"
+            android:text="忘记密码?"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

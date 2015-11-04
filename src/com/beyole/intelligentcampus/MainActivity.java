@@ -1,11 +1,7 @@
 package com.beyole.intelligentcampus;
 
-import com.beyole.notifydialog.widget.effectdialog.Effectstype;
-import com.beyole.notifydialog.widget.effectdialog.NiftyDialogBuilder;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -16,7 +12,9 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.beyole.notifydialog.widget.effectdialog.Effectstype;
+import com.beyole.notifydialog.widget.effectdialog.NiftyDialogBuilder;
 
 /**
  * 程序入口Activity

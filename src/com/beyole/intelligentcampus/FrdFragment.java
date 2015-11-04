@@ -13,7 +13,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.beyole.adapter.ItemAdapter;
-import com.beyole.intelligentcampus.functions.CubicLineChartActivity;
 import com.beyole.intelligentcampus.functions.SportSwitchActivity;
 import com.beyole.view.LineGridview;
 

@@ -1,0 +1,135 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#52a0b6" >
+
+    <RelativeLayout
+        android:id="@+id/id_activity_register_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60.0dip" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/logo" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/id_activity_register_top_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_activity_register_top"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15.0dip"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/id_activity_register_my_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="没有人不爱惜他的生命，但很少人珍视他的时间。"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/id_activity_register_username_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/edittext_round" >
+
+        <com.beyole.view.EditTextWithRightButton
+            android:id="@+id/id_activity_register_et_myusername"
+            android:layout_width="270.0dip"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/username"
+            android:drawablePadding="6.0dip"
+            android:drawableRight="@drawable/edit_clear"
+            android:hint="用户名"
+            android:paddingLeft="5.0dip"
+            android:paddingRight="5.0dip"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textColorHint="#55ffffff"
+            android:textCursorDrawable="@null" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/id_activity_register_password_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_activity_register_username_layout"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5.0dip"
+        android:background="@drawable/edittext_round" >
+
+        <com.beyole.view.EditTextWithRightButton
+            android:id="@+id/id_activity_register_et_mypassword"
+            android:layout_width="270.0dip"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/password"
+            android:drawablePadding="6.0dip"
+            android:drawableRight="@drawable/edit_clear"
+            android:hint="密码"
+            android:paddingLeft="5.0dip"
+            android:paddingRight="5.0dip"
+            android:password="true"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textColorHint="#55ffffff"
+            android:textCursorDrawable="@null" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/id_activity_register_confirmpassword_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_activity_register_password_layout"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5.0dip"
+        android:background="@drawable/edittext_round" >
+
+        <com.beyole.view.EditTextWithRightButton
+            android:id="@+id/id_activity_register_et_myconfirmpassword"
+            android:layout_width="270.0dip"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/password"
+            android:drawablePadding="6.0dip"
+            android:drawableRight="@drawable/edit_clear"
+            android:hint="确认密码"
+            android:paddingLeft="5.0dip"
+            android:paddingRight="5.0dip"
+            android:password="true"
+            android:singleLine="true"
+            android:textColor="@android:color/white"
+            android:textColorHint="#55ffffff"
+            android:textCursorDrawable="@null" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/id_activity_register_registerbutton_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_activity_register_confirmpassword_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15.0dip"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/id_activity_register_btn_registerbutton"
+            android:layout_width="270.0dip"
+            android:layout_height="40.0dip"
+            android:background="@drawable/login_button_selector"
+            android:text="立即注册"
+            android:textColor="#ffffff" />
+    </RelativeLayout>
+
+</RelativeLayout>
