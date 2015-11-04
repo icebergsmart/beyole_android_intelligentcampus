@@ -3,6 +3,15 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-     <dimen name="dialog_padding">25dp</dimen>
+    <dimen name="dialog_padding">25dp</dimen>
+    <dimen name="cornerRadius_size">3dip</dimen>
+    <dimen name="dip10">10dip</dimen>
+    <dimen name="dip12">12dip</dimen>
+    <dimen name="dip14">14dip</dimen>
+    <dimen name="dip16">16dip</dimen>
+    <dimen name="dip18">18dip</dimen>
+    <dimen name="dip20">20dip</dimen>
+    <dimen name="dip8">8dp</dimen>
+    <dimen name="sp16">16sp</dimen>
 
 </resources>
