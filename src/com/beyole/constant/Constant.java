@@ -16,6 +16,9 @@ public class Constant {
 
 	// 远程服务器端口
 	public static final String REMOTESERVERPORT = "8080";
-	
-	public static final String REMOTESERVERPROJECTNAME="IntelligentCampus";
+
+	// 远程项目名称
+	public static final String REMOTESERVERPROJECTNAME = "IntelligentCampus";
+
+	public static final String REMOTE_UPDATE_APK_URL = REMOTESERVER + ":" + REMOTESERVERPORT + "/" + REMOTESERVERPROJECTNAME + "/update/version.xml";
 }
