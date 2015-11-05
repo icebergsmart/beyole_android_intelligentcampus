@@ -1,19 +1,30 @@
 package com.beyole.intelligentcampus;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.beyole.bean.User;
+import com.beyole.constant.APIConstant;
+import com.beyole.constant.LoginConstant;
 import com.beyole.notifydialog.widget.effectdialog.Effectstype;
 import com.beyole.notifydialog.widget.effectdialog.NiftyDialogBuilder;
+import com.beyole.util.JsonUtils;
+import com.beyole.util.SyncHttp;
 import com.beyole.view.EditTextWithRightButton;
 import com.beyole.view.EditTextWithRightButton.DrawableRightOnClickListener;
 import com.beyole.view.commondialog.CommonDialog;
@@ -36,6 +47,10 @@ public class LoginActivity extends Activity {
 	private TextView mForgetPassword;
 
 	private LoginCommonDialog dialog;
+
+	private String userNameString;
+	private String passwordString;
+	private String params1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -114,27 +129,64 @@ public class LoginActivity extends Activity {
 		dialog.initDialog("正在登录中...", "退出", "再看看", LoginActivity.this).show();
 	}
 
-	class MyAsyncTask extends AsyncTask<Void, Void, Void> {
+	class MyAsyncTask extends AsyncTask<Void, Void, Map<String, Object>> {
 
 		@Override
 		protected void onPreExecute() {
 			showLoginDialog();
+			userNameString = mUsername.getText().toString().trim().replace(" ", "");
+			passwordString = mPassword.getText().toString().trim().replace(" ", "");
+			params1 = "userName=" + userNameString + "&password=" + passwordString;
 		}
 
 		@Override
-		protected Void doInBackground(Void... params) {
+		protected Map<String, Object> doInBackground(Void... params) {
+			SyncHttp http = new SyncHttp();
+			Map<String, Object> map = new HashMap<String, Object>();
+			// 以Get方式请求，并获得返回结果
 			try {
-				Thread.sleep(3000);
+				String retStr = http.httpGet(APIConstant.LOGININTERFACE, params1);
+				map = JsonUtils.readJsonToMap(retStr);
+				Log.i("text", map + "");
+			} catch (Exception e) {
+				e.printStackTrace();
+				map = null;
+			}
+			return map;
+		}
+
+		@Override
+		protected void onPostExecute(Map<String, Object> result) {
+			dialog.dismissLoginDialog();
+			//为了减轻服务器压力，以及短时间的重复登录，在此线程休眠2秒
+			try {
+				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			return null;
-		}
-
-		@Override
-		protected void onPostExecute(Void result) {
-			dialog.dismissLoginDialog();
-			Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
+			if (result != null) {
+				int resultCode = Integer.valueOf(result.get("requestCode").toString().trim().replace(" ", ""));
+				User user = JsonUtils.readJsonToObject(User.class, result.get("userinfo") + "");
+				switch (resultCode) {
+				case LoginConstant.LOGIN_SUCCESS_WITH_THIS_USER:
+					Toast.makeText(LoginActivity.this, "登录成功！" + resultCode, Toast.LENGTH_SHORT).show();
+					break;
+				case LoginConstant.LOGIN_ERROR_WITH_WRONGPASSWORD_OR_USERNAME:
+					Toast.makeText(LoginActivity.this, "错误的用户名或密码" + resultCode, Toast.LENGTH_SHORT).show();
+					break;
+				case LoginConstant.LOGIN_SUCCESS:
+					Toast.makeText(LoginActivity.this, "登录成功" + resultCode, Toast.LENGTH_SHORT).show();
+					break;
+				case LoginConstant.LOGIN_ERROR_WITH_NETWORK_EXCEPTION:
+					Toast.makeText(LoginActivity.this, "网络异常" + resultCode, Toast.LENGTH_SHORT).show();
+					break;
+				case LoginConstant.LOGIN_ERROR_WITH_NO_SUCH_USER:
+					Toast.makeText(LoginActivity.this, "不存在此用户" + resultCode, Toast.LENGTH_SHORT).show();
+					break;
+				}
+			} else {
+				Toast.makeText(LoginActivity.this, "网络异常", Toast.LENGTH_SHORT).show();
+			}
 		}
 	}
 
