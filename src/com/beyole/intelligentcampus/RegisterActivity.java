@@ -1,16 +1,30 @@
 package com.beyole.intelligentcampus;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.app.Activity;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.beyole.bean.User;
+import com.beyole.constant.APIConstant;
+import com.beyole.constant.LoginConstant;
+import com.beyole.constant.RegisterConstant;
+import com.beyole.intelligentcampus.LoginActivity.MyAsyncTask;
+import com.beyole.util.JsonUtils;
+import com.beyole.util.SyncHttp;
 import com.beyole.view.EditTextWithRightButton;
 import com.beyole.view.EditTextWithRightButton.DrawableRightOnClickListener;
+import com.beyole.view.commondialog.LoginCommonDialog;
 
 public class RegisterActivity extends Activity {
 
@@ -24,6 +38,12 @@ public class RegisterActivity extends Activity {
 	private TextView mRegisterDescription;
 
 	private Button mRegisterButton;
+
+	private LoginCommonDialog dialog;
+
+	private String userNameString;
+	private String passwordString;
+	private String params1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +70,8 @@ public class RegisterActivity extends Activity {
 		public void onClick(View v) {
 			switch (v.getId()) {
 			case R.id.id_activity_register_btn_registerbutton:
-
+				MyAsyncTask asyncTask = new MyAsyncTask();
+				asyncTask.execute();
 				break;
 			}
 		}
@@ -82,5 +103,72 @@ public class RegisterActivity extends Activity {
 		AssetManager assets = getAssets();
 		Typeface tf = Typeface.createFromAsset(assets, "fonts/default.otf");
 		mRegisterDescription.setTypeface(tf);
+	}
+
+	private void showRegisterDialog() {
+		dialog = new LoginCommonDialog(RegisterActivity.this);
+		dialog.initDialog("正在注册中，请稍后...", "退出", "再看看", RegisterActivity.this).show();
+	}
+
+	class MyAsyncTask extends AsyncTask<Void, Void, Map<String, Object>> {
+
+		@Override
+		protected void onPreExecute() {
+			showRegisterDialog();
+			userNameString = mUsername.getText().toString().trim().replace(" ", "");
+			passwordString = mPassword.getText().toString().trim().replace(" ", "");
+			params1 = "userName=" + userNameString + "&password=" + passwordString;
+		}
+
+		@Override
+		protected Map<String, Object> doInBackground(Void... params) {
+			SyncHttp http = new SyncHttp();
+			Map<String, Object> map = new HashMap<String, Object>();
+			// 以Get方式请求，并获得返回结果
+			try {
+				String retStr = http.httpGet(APIConstant.REGISTERINTERFACE, params1);
+				map = JsonUtils.readJsonToMap(retStr);
+			} catch (Exception e) {
+				e.printStackTrace();
+				map = null;
+			}
+			return map;
+		}
+
+		@Override
+		protected void onPostExecute(Map<String, Object> result) {
+			dialog.dismissLoginDialog();
+			// 为了减轻服务器压力，以及短时间的重复登录，在此线程休眠2秒
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			if (result != null) {
+				int resultCode = Integer.valueOf(result.get("requestCode").toString().trim().replace(" ", ""));
+				switch (resultCode) {
+				case RegisterConstant.REGISTER_SUCCESS_WITH_THIS_USER:
+					Toast.makeText(RegisterActivity.this, "注册成功！" + resultCode, Toast.LENGTH_SHORT).show();
+					break;
+				case RegisterConstant.REGISTER_ERROR_WITH_EXIST_USERNAME:
+					Toast.makeText(RegisterActivity.this, "此用户名被占用！" + resultCode, Toast.LENGTH_SHORT).show();
+					break;
+				case RegisterConstant.REGISTER_ERROR_WITH_ILLEGAL_USERNAME:
+					Toast.makeText(RegisterActivity.this, "用户名含有非法字符！" + resultCode, Toast.LENGTH_SHORT).show();
+					break;
+				case RegisterConstant.REGISTER_ERROR_WITH_ILLEGAL_PASSWORD:
+					Toast.makeText(RegisterActivity.this, "密码含有非法字符！" + resultCode, Toast.LENGTH_SHORT).show();
+					break;
+				case RegisterConstant.REGISTER_ERROR_WITH_OTHER_EXCEPTION:
+					Toast.makeText(RegisterActivity.this, "服务器异常！" + resultCode, Toast.LENGTH_SHORT).show();
+					break;
+				case RegisterConstant.REGISTER_ERROR_WITH_NETWORK_EXCEPTION:
+					Toast.makeText(RegisterActivity.this, "网络异常！" + resultCode, Toast.LENGTH_SHORT).show();
+					break;
+				}
+			} else {
+				Toast.makeText(RegisterActivity.this, "网络异常", Toast.LENGTH_SHORT).show();
+			}
+		}
 	}
 }

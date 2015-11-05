@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
-import com.beyole.intelligentcampus.LoginActivity;
 import com.beyole.intelligentcampus.R;
 
 /**

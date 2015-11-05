@@ -3,8 +3,6 @@ package com.beyole.intelligentcampus;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
@@ -21,16 +19,11 @@ import android.widget.Toast;
 import com.beyole.bean.User;
 import com.beyole.constant.APIConstant;
 import com.beyole.constant.LoginConstant;
-import com.beyole.notifydialog.widget.effectdialog.Effectstype;
-import com.beyole.notifydialog.widget.effectdialog.NiftyDialogBuilder;
 import com.beyole.util.JsonUtils;
 import com.beyole.util.SyncHttp;
 import com.beyole.view.EditTextWithRightButton;
 import com.beyole.view.EditTextWithRightButton.DrawableRightOnClickListener;
-import com.beyole.view.commondialog.CommonDialog;
 import com.beyole.view.commondialog.LoginCommonDialog;
-import com.beyole.view.commondialog.CommonDialog.DialogNegativeListener;
-import com.beyole.view.commondialog.CommonDialog.DialogPositiveListener;
 
 public class LoginActivity extends Activity {
 	// 登录描述名言
