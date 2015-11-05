@@ -14,6 +14,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.ComponentName;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,11 +25,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.beyole.adapter.NewsAdapter;
 import com.beyole.adapter.ViewpaperAdapter;
@@ -60,6 +65,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 	// 存储新闻列表
 	private ListView mListView;
 
+	private TextView mRefreshNewsBtn;
 	// 判断viewpager有没有触碰事件
 	private boolean isTouching = false;
 	private int viewPagerSelected = 1;
@@ -100,6 +106,22 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 		mWaittingForListview = (LinearLayout) mView.findViewById(R.id.lv_waitting_for_listview);
 		lv_waitting_annimation = (AVLoadingIndicatorView) mView.findViewById(R.id.lv_waitting_annimation);
 		lv_setting_network = (Button) mView.findViewById(R.id.lv_setting_network);
+		mRefreshNewsBtn=(TextView) mView.findViewById(R.id.home_activity_refresh_ib_news);
+		lv_setting_network.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// 启动设置网络页面
+				setNetWorkMethod();
+			}
+		});
+		mRefreshNewsBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				new NewsAsyncTask().execute(Constant.HOMEURL);
+			}
+		});
 		// 初始化view列表对象
 		views = new ArrayList<View>();
 		// 获取三个引导页面的view
@@ -119,6 +141,21 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 		if (!isTouching) {
 			myViewPagerHandler.sendEmptyMessageDelayed(MYVIEWPAGERTIME, 3000);
 		}
+	}
+
+	protected void setNetWorkMethod() {
+		Intent intent = null;
+		// 判断手机系统的版本 即API大于10 就是3.0或以上版本
+		if (android.os.Build.VERSION.SDK_INT > 10) {
+			intent = new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS);
+		} else {
+			intent = new Intent();
+			ComponentName component = new ComponentName("com.android.settings", "com.android.settings.WirelessSettings");
+			intent.setComponent(component);
+			intent.setAction("android.intent.action.VIEW");
+		}
+		startActivity(intent);
+
 	}
 
 	// 初始化小白点方法
@@ -151,7 +188,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 				dots[i].setImageResource(R.drawable.login_point);
 			}
 		}
-		viewPagerSelected=arg0;
+		viewPagerSelected = arg0;
 	}
 
 	// 实现网络的异步访问

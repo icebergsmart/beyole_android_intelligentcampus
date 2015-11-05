@@ -53,12 +53,34 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <TextView
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="5dip"
-        android:text="校内新闻"
-        android:textSize="14sp" />
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:padding="5dip"
+            android:text="校内新闻"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/home_activity_refresh_ib_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15.0dip"
+            android:text="刷新"
+            android:textColor="#656060"
+            android:gravity="center"
+            android:textSize="10sp"
+            android:drawablePadding="3.0dip"
+            android:drawableLeft="@drawable/refresh_selector"
+          />
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/lv_main"
@@ -87,9 +109,9 @@
             android:id="@+id/lv_setting_network"
             android:layout_width="100.0dip"
             android:layout_height="35.0dip"
-            android:textColor="#106184"
             android:background="@drawable/lv_setting_network_selector"
             android:text="设置网络"
+            android:textColor="#106184"
             android:visibility="gone" />
     </LinearLayout>
 
