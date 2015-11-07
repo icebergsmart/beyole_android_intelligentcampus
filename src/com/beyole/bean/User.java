@@ -10,6 +10,23 @@ public class User {
 	private String otherInfo;
 	private String userStatus;
 	private String createDate;
+	private String userType;
+
+	public User() {
+
+	}
+
+	public User(int userId, String userName, String password, String userImagePhoto, String userDescription, String otherInfo, String userStatus, String createDate, String userType) {
+		this.userId = userId;
+		this.userName = userName;
+		this.password = password;
+		this.userImagePhoto = userImagePhoto;
+		this.userDescription = userDescription;
+		this.otherInfo = otherInfo;
+		this.userStatus = userStatus;
+		this.createDate = createDate;
+		this.userType = userType;
+	}
 
 	public int getUserId() {
 		return userId;
@@ -75,19 +92,12 @@ public class User {
 		this.createDate = createDate;
 	}
 
-	public User() {
-
+	public String getUserType() {
+		return userType;
 	}
 
-	public User(int userId, String userName, String password, String userImagePhoto, String userDescription, String otherInfo, String userStatus, String createDate) {
-		this.userId = userId;
-		this.userName = userName;
-		this.password = password;
-		this.userImagePhoto = userImagePhoto;
-		this.userDescription = userDescription;
-		this.otherInfo = otherInfo;
-		this.userStatus = userStatus;
-		this.createDate = createDate;
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 
 }

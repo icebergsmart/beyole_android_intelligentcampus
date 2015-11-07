@@ -12,7 +12,7 @@ public class Constant {
 	public static final String HOMEURL = "http://www.imooc.com/api/teacher?type=4&num=30";
 
 	// 远程服务器地址
-	public static final String REMOTESERVER = "http://10.255.24.138";
+	public static final String REMOTESERVER = "http://192.168.1.107";
 
 	// 远程服务器端口
 	public static final String REMOTESERVERPORT = "8080";
