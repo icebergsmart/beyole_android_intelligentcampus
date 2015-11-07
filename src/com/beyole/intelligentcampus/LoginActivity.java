@@ -46,10 +46,13 @@ public class LoginActivity extends Activity {
 	private String passwordString;
 	private String params1;
 
+	private User currentUser;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		currentUser = (User) getApplication();
 		initViews();
 		initEvents();
 	}
@@ -176,6 +179,7 @@ public class LoginActivity extends Activity {
 			if (result != null) {
 				int resultCode = Integer.valueOf(result.get("requestCode").toString().trim().replace(" ", ""));
 				User user = JsonUtils.readJsonToObject(User.class, result.get("userinfo") + "");
+				currentUser = user;
 				switch (resultCode) {
 				case LoginConstant.LOGIN_SUCCESS_WITH_THIS_USER:
 					Toast.makeText(LoginActivity.this, "登录成功！" + resultCode, Toast.LENGTH_SHORT).show();

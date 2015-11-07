@@ -1,6 +1,8 @@
 package com.beyole.bean;
 
-public class User {
+import android.app.Application;
+
+public class User extends Application {
 
 	private int userId;
 	private String userName;
@@ -150,4 +152,15 @@ public class User {
 		this.userCity = userCity;
 	}
 
+	@Override
+	public void onCreate() {
+		super.onCreate();
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", userImagePhoto=" + userImagePhoto + ", userDescription=" + userDescription + ", otherInfo=" + otherInfo + ", userStatus=" + userStatus + ", createDate=" + createDate + ", userType=" + userType
+				+ ", userPhoneNumber=" + userPhoneNumber + ", userQqNumber=" + userQqNumber + ", userSex=" + userSex + ", userAge=" + userAge + ", userCity=" + userCity + "]";
+	}
+	
 }

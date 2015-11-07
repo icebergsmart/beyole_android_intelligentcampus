@@ -3,6 +3,7 @@ package com.beyole.intelligentcampus;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.beyole.adapter.ItemAdapter;
+import com.beyole.bean.User;
 import com.beyole.intelligentcampus.me.FindMeActivity;
 import com.beyole.view.LineGridview;
 
@@ -37,7 +39,7 @@ public class MeFragment extends Fragment {
 	private View view;
 	private String[] titles = new String[] { "活动", "动态", "通知", "个推", "探索", "脑点子", "Find Me", "智慧树" };
 	private int[] img = new int[] { R.drawable.more1, R.drawable.more2, R.drawable.more3, R.drawable.more4, R.drawable.more5, R.drawable.more6, R.drawable.more7, R.drawable.more7 };
-
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.tab03, container, false);
