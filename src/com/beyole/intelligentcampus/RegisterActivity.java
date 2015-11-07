@@ -21,10 +21,12 @@ import com.beyole.constant.LoginConstant;
 import com.beyole.constant.RegisterConstant;
 import com.beyole.intelligentcampus.LoginActivity.MyAsyncTask;
 import com.beyole.util.JsonUtils;
+import com.beyole.util.StringUtil;
 import com.beyole.util.SyncHttp;
 import com.beyole.view.EditTextWithRightButton;
 import com.beyole.view.EditTextWithRightButton.DrawableRightOnClickListener;
 import com.beyole.view.commondialog.LoginCommonDialog;
+import com.google.zxing.common.StringUtils;
 
 public class RegisterActivity extends Activity {
 
@@ -70,8 +72,16 @@ public class RegisterActivity extends Activity {
 		public void onClick(View v) {
 			switch (v.getId()) {
 			case R.id.id_activity_register_btn_registerbutton:
-				MyAsyncTask asyncTask = new MyAsyncTask();
-				asyncTask.execute();
+				if (checkUserRegister()) {
+					if (checkUserRegisterName()) {
+						MyAsyncTask asyncTask = new MyAsyncTask();
+						asyncTask.execute();
+					} else {
+						Toast.makeText(RegisterActivity.this, "用户名不能为空！", Toast.LENGTH_SHORT).show();
+					}
+				} else {
+					Toast.makeText(RegisterActivity.this, "两次输入密码不一致！", Toast.LENGTH_SHORT).show();
+				}
 				break;
 			}
 		}
@@ -103,6 +113,25 @@ public class RegisterActivity extends Activity {
 		AssetManager assets = getAssets();
 		Typeface tf = Typeface.createFromAsset(assets, "fonts/default.otf");
 		mRegisterDescription.setTypeface(tf);
+	}
+
+	public boolean checkUserRegisterName() {
+		String checkUsername = mUsername.getText().toString().trim().replace(" ", "");
+		if (StringUtil.isEmpty(checkUsername)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean checkUserRegister() {
+		String passwordCheck = mPassword.getText().toString();
+		String confirmPasswordCheck = mConfirmPassword.getText().toString();
+		if (passwordCheck.equals(confirmPasswordCheck)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	private void showRegisterDialog() {
@@ -164,6 +193,9 @@ public class RegisterActivity extends Activity {
 					break;
 				case RegisterConstant.REGISTER_ERROR_WITH_NETWORK_EXCEPTION:
 					Toast.makeText(RegisterActivity.this, "网络异常！" + resultCode, Toast.LENGTH_SHORT).show();
+					break;
+				case RegisterConstant.REGISTER_ERROR_WITH_EMPTY_USERNAME_OR_PASSWORD:
+					Toast.makeText(RegisterActivity.this, "用户名或密码不能为空！" + resultCode, Toast.LENGTH_SHORT).show();
 					break;
 				}
 			} else {

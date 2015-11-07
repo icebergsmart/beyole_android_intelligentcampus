@@ -14,5 +14,7 @@ public class RegisterConstant {
 	public static final int REGISTER_ERROR_WITH_ILLEGAL_PASSWORD = 3005;
 	// 注册失败|其他系统异常
 	public static final int REGISTER_ERROR_WITH_OTHER_EXCEPTION = 3006;
+	// 注册失败|用户名或密码不能为空
+	public static final int REGISTER_ERROR_WITH_EMPTY_USERNAME_OR_PASSWORD = 3007;
 
 }

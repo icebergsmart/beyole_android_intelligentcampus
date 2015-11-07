@@ -20,6 +20,7 @@ import com.beyole.bean.User;
 import com.beyole.constant.APIConstant;
 import com.beyole.constant.LoginConstant;
 import com.beyole.util.JsonUtils;
+import com.beyole.util.StringUtil;
 import com.beyole.util.SyncHttp;
 import com.beyole.view.EditTextWithRightButton;
 import com.beyole.view.EditTextWithRightButton.DrawableRightOnClickListener;
@@ -74,8 +75,12 @@ public class LoginActivity extends Activity {
 			case R.id.id_activity_login_btn_login:
 				// 显示进度条
 				// showLoginDialog();
-				MyAsyncTask asyncTask = new MyAsyncTask();
-				asyncTask.execute();
+				if (checkLoginUsernameOrPassword()) {
+					MyAsyncTask asyncTask = new MyAsyncTask();
+					asyncTask.execute();
+				} else {
+					Toast.makeText(LoginActivity.this, "用户名或密码不能为空", Toast.LENGTH_SHORT).show();
+				}
 				break;
 			case R.id.id_activity_login__tv_login_registernow:
 				Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
@@ -100,6 +105,17 @@ public class LoginActivity extends Activity {
 		mLoginButton.setOnClickListener(onClickListener);
 		mRegisterNow.setOnClickListener(onClickListener);
 		mForgetPassword.setOnClickListener(onClickListener);
+	}
+
+	public boolean checkLoginUsernameOrPassword() {
+		String loginUsernameCheck = mUsername.getText().toString().trim().replace(" ", "");
+		String loginUserPasswordCheck = mPassword.getText().toString().trim().replace(" ", "");
+		if (StringUtil.isEmpty(loginUsernameCheck) || StringUtil.isEmpty(loginUserPasswordCheck)) {
+			return false;
+		} else {
+			return true;
+		}
+
 	}
 
 	/**
@@ -151,7 +167,7 @@ public class LoginActivity extends Activity {
 		@Override
 		protected void onPostExecute(Map<String, Object> result) {
 			dialog.dismissLoginDialog();
-			//为了减轻服务器压力，以及短时间的重复登录，在此线程休眠2秒
+			// 为了减轻服务器压力，以及短时间的重复登录，在此线程休眠2秒
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
@@ -175,6 +191,9 @@ public class LoginActivity extends Activity {
 					break;
 				case LoginConstant.LOGIN_ERROR_WITH_NO_SUCH_USER:
 					Toast.makeText(LoginActivity.this, "不存在此用户" + resultCode, Toast.LENGTH_SHORT).show();
+					break;
+				case LoginConstant.LOGIN_ERROR_WITH_EMPTY_USERNAME_OR_PASSWORD:
+					Toast.makeText(LoginActivity.this, "用户名或密码不能为空" + resultCode, Toast.LENGTH_SHORT).show();
 					break;
 				}
 			} else {

@@ -11,12 +11,17 @@ public class User {
 	private String userStatus;
 	private String createDate;
 	private String userType;
+	private String userPhoneNumber;
+	private String userQqNumber;
+	private int userSex;
+	private int userAge;
+	private String userCity;
 
 	public User() {
 
 	}
 
-	public User(int userId, String userName, String password, String userImagePhoto, String userDescription, String otherInfo, String userStatus, String createDate, String userType) {
+	public User(int userId, String userName, String password, String userImagePhoto, String userDescription, String otherInfo, String userStatus, String createDate, String userType, String userPhoneNumber, String userQqNumber, int userSex, int userAge, String userCity) {
 		this.userId = userId;
 		this.userName = userName;
 		this.password = password;
@@ -26,6 +31,11 @@ public class User {
 		this.userStatus = userStatus;
 		this.createDate = createDate;
 		this.userType = userType;
+		this.userPhoneNumber = userPhoneNumber;
+		this.userQqNumber = userQqNumber;
+		this.userSex = userSex;
+		this.userAge = userAge;
+		this.userCity = userCity;
 	}
 
 	public int getUserId() {
@@ -98,6 +108,46 @@ public class User {
 
 	public void setUserType(String userType) {
 		this.userType = userType;
+	}
+
+	public String getUserPhoneNumber() {
+		return userPhoneNumber;
+	}
+
+	public void setUserPhoneNumber(String userPhoneNumber) {
+		this.userPhoneNumber = userPhoneNumber;
+	}
+
+	public String getUserQqNumber() {
+		return userQqNumber;
+	}
+
+	public void setUserQqNumber(String userQqNumber) {
+		this.userQqNumber = userQqNumber;
+	}
+
+	public int getUserSex() {
+		return userSex;
+	}
+
+	public void setUserSex(int userSex) {
+		this.userSex = userSex;
+	}
+
+	public int getUserAge() {
+		return userAge;
+	}
+
+	public void setUserAge(int userAge) {
+		this.userAge = userAge;
+	}
+
+	public String getUserCity() {
+		return userCity;
+	}
+
+	public void setUserCity(String userCity) {
+		this.userCity = userCity;
 	}
 
 }

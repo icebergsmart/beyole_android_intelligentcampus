@@ -12,4 +12,6 @@ public class LoginConstant {
 	public static final int LOGIN_ERROR_WITH_NO_SUCH_USER = 1004;
 	// 登录成功|存在此用户
 	public static final int LOGIN_SUCCESS_WITH_THIS_USER = 1005;
+	// 登录失败|用户名或密码不能为空
+	public static final int LOGIN_ERROR_WITH_EMPTY_USERNAME_OR_PASSWORD = 1006;
 }
