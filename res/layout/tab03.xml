@@ -131,12 +131,15 @@
         </RelativeLayout>
 
         <com.beyole.view.PublicNoticeView
+            android:id="@+id/id_me_publicnotice"
             android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="2.0dip"
-            android:layout_height="wrap_content" >
+            android:visibility="visible" >
         </com.beyole.view.PublicNoticeView>
 
         <ScrollView
+            android:id="@+id/id_me_gridview_scrollview"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:fadingEdge="none" >
@@ -156,11 +159,55 @@
                         android:id="@+id/id_me_gridviews"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:numColumns="4" >
+                        android:numColumns="4"
+                        android:visibility="visible" >
                     </com.beyole.view.LineGridview>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
+
+        <RelativeLayout
+            android:id="@+id/id_me_hidden_loginform"
+            android:layout_width="fill_parent"
+            android:layout_height="150.0dip"
+            android:visibility="gone" >
+
+            
+
+            <LinearLayout
+                android:id="@+id/id_me_login_form_other_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/id_me_login_register_form_btn_register"
+                    android:layout_width="80.0dip"
+                    android:layout_height="30.0dip"
+                    android:background="@drawable/me_login_registe_button_selector"
+                    android:text="注册"
+                    android:textColor="#106184" />
+
+                <Button
+                    android:id="@+id/id_me_login_register_form_btn_login"
+                    android:layout_width="80.0dip"
+                    android:layout_height="30.0dip"
+                    android:layout_marginLeft="5.0dip"
+                    android:background="@drawable/me_login_registe_button_selector"
+                    android:text="登录"
+                    android:textColor="#7a7676" />
+            </LinearLayout>
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8.0dip"
+                android:layout_above="@id/id_me_login_form_other_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="#7a7676"
+                android:text="登录后，特定功能列表将会在这里显示" />
+        </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>

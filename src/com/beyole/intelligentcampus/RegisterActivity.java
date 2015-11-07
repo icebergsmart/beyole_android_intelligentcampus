@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -46,6 +47,7 @@ public class RegisterActivity extends Activity {
 	private String userNameString;
 	private String passwordString;
 	private String params1;
+	private User currentUser;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +115,7 @@ public class RegisterActivity extends Activity {
 		AssetManager assets = getAssets();
 		Typeface tf = Typeface.createFromAsset(assets, "fonts/default.otf");
 		mRegisterDescription.setTypeface(tf);
+		currentUser = (User) getApplication();
 	}
 
 	public boolean checkUserRegisterName() {
@@ -178,6 +181,10 @@ public class RegisterActivity extends Activity {
 				switch (resultCode) {
 				case RegisterConstant.REGISTER_SUCCESS_WITH_THIS_USER:
 					Toast.makeText(RegisterActivity.this, "注册成功！" + resultCode, Toast.LENGTH_SHORT).show();
+					findUserByUserName(userNameString);
+					Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+					startActivity(intent);
+					finish();
 					break;
 				case RegisterConstant.REGISTER_ERROR_WITH_EXIST_USERNAME:
 					Toast.makeText(RegisterActivity.this, "此用户名被占用！" + resultCode, Toast.LENGTH_SHORT).show();
@@ -202,5 +209,10 @@ public class RegisterActivity extends Activity {
 				Toast.makeText(RegisterActivity.this, "网络异常", Toast.LENGTH_SHORT).show();
 			}
 		}
+	}
+
+	private User findUserByUserName(String userName) {
+		User user = null;
+		return currentUser;
 	}
 }
