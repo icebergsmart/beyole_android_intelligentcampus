@@ -10,6 +10,7 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -208,4 +209,15 @@ public class RegisterActivity extends Activity {
 		}
 	}
 
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			Intent intent=new Intent(RegisterActivity.this,MainActivity.class);
+			startActivity(intent);
+			finish();
+			return false;// 不向下分发事件
+		} else {
+			return super.onKeyDown(keyCode, event);
+		}
+	}
 }

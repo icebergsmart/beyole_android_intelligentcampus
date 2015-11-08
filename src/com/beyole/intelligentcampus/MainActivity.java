@@ -186,6 +186,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 						Intent intent = new Intent(Intent.ACTION_MAIN);
 						intent.addCategory(Intent.CATEGORY_HOME);
 						startActivity(intent);
+						finish();
 						System.exit(0);
 					}
 				}).setButton2Click(new View.OnClickListener() {

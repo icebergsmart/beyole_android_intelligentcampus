@@ -10,6 +10,7 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -181,7 +182,7 @@ public class LoginActivity extends Activity {
 				int resultCode = Integer.valueOf(result.get("requestCode").toString().trim().replace(" ", ""));
 				switch (resultCode) {
 				case LoginConstant.LOGIN_SUCCESS_WITH_THIS_USER:
-				
+
 					Toast.makeText(LoginActivity.this, "登录成功！" + resultCode, Toast.LENGTH_SHORT).show();
 					break;
 				case LoginConstant.LOGIN_ERROR_WITH_WRONGPASSWORD_OR_USERNAME:
@@ -190,9 +191,9 @@ public class LoginActivity extends Activity {
 				case LoginConstant.LOGIN_SUCCESS:
 					User user = JsonUtils.readJsonToObject(User.class, result.get("userinfo") + "");
 					application.setUser(user);
-					Log.e("test","application:"+application.getUser().toString());
+					Log.e("test", "application:" + application.getUser().toString());
 					Toast.makeText(LoginActivity.this, "登录成功" + resultCode, Toast.LENGTH_SHORT).show();
-					Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+					Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 					startActivity(intent);
 					finish();
 					break;
@@ -212,4 +213,15 @@ public class LoginActivity extends Activity {
 		}
 	}
 
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+			startActivity(intent);
+			finish();
+			return false;// 不向下分发事件
+		} else {
+			return super.onKeyDown(keyCode, event);
+		}
+	}
 }
