@@ -179,6 +179,9 @@ public class RegisterActivity extends Activity {
 				switch (resultCode) {
 				case RegisterConstant.REGISTER_SUCCESS_WITH_THIS_USER:
 					Toast.makeText(RegisterActivity.this, "注册成功！" + resultCode, Toast.LENGTH_SHORT).show();
+					Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
+					startActivity(intent);
+					finish();
 					break;
 				case RegisterConstant.REGISTER_ERROR_WITH_EXIST_USERNAME:
 					Toast.makeText(RegisterActivity.this, "此用户名被占用！" + resultCode, Toast.LENGTH_SHORT).show();
