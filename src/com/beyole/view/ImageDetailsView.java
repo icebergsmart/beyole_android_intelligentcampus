@@ -26,7 +26,7 @@ import com.beyole.intelligentcampus.R;
  * 
  */
 public class ImageDetailsView extends View implements OnClickListener {
-	private String mTitleText;
+	private String mTitleText="";
 	private int mTitleSize;
 	private int mTitleColor;
 	private Bitmap mImage;
@@ -65,7 +65,9 @@ public class ImageDetailsView extends View implements OnClickListener {
 			Log.i("test", "自定义的属性为：" + attr);
 			switch (attr) {
 			case R.styleable.ImageDetailsView_titleText:
+				if(mTitleText.length()<=0){
 				mTitleText = a.getString(attr);
+				}
 				Log.i("test", "自定义属性text为:" + a.getString(attr));
 				break;
 			case R.styleable.ImageDetailsView_titleSize:
@@ -191,5 +193,9 @@ public class ImageDetailsView extends View implements OnClickListener {
 			};
 		}
 		mListener.onclick();
+	}
+	
+	public void setTitleText(String text){
+		mTitleText=text;
 	}
 }

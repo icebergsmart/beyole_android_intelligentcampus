@@ -3,6 +3,7 @@ package com.beyole.intelligentcampus;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,13 +13,15 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.beyole.adapter.ItemAdapter;
+import com.beyole.bean.GlobalParameterApplication;
 import com.beyole.bean.User;
 import com.beyole.intelligentcampus.me.FindMeActivity;
+import com.beyole.view.ImageDetailsView;
 import com.beyole.view.LineGridview;
 import com.beyole.view.PublicNoticeView;
 
@@ -43,21 +46,29 @@ public class MeFragment extends Fragment {
 	private PublicNoticeView id_me_publicnotice;
 	private ScrollView id_me_gridview_scrollview;
 	private static final int lineNumber = 4;
+	private ImageDetailsView userImageDetailsView;
+	private TextView mUserDesc;
 	private int mHeight;
 	private View view;
-	private User currentUser;
 	private String[] titles = new String[] { "活动", "动态", "通知", "个推", "探索", "脑点子", "Find Me", "智慧树" };
 	private int[] img = new int[] { R.drawable.more1, R.drawable.more2, R.drawable.more3, R.drawable.more4, R.drawable.more5, R.drawable.more6, R.drawable.more7, R.drawable.more7 };
 
 	private Button mRegisterBtn;
 	private Button mLoginBtn;
 
+	private GlobalParameterApplication application;
+	private User currentUser;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.tab03, container, false);
-		currentUser = (User) getActivity().getApplication();
 		initViews();
-		if (currentUser.getUserId() > 0) {
+		application = (GlobalParameterApplication) getActivity().getApplicationContext();
+		currentUser = application.getUser();
+		if (currentUser!=null&&currentUser.getUserId() > 0) {
+			userImageDetailsView.setTitleText(currentUser.getUserName());
+			mUserDesc.setText(currentUser.getUserDescription());
+			Log.i("test","用户描述:"+currentUser.getUserDescription());
 			// 获取屏幕宽度和高度
 			WindowManager wm = getActivity().getWindowManager();
 			int width = wm.getDefaultDisplay().getWidth();
@@ -101,6 +112,8 @@ public class MeFragment extends Fragment {
 		id_me_publicnotice = (PublicNoticeView) view.findViewById(R.id.id_me_publicnotice);
 		id_me_gridview_scrollview = (ScrollView) view.findViewById(R.id.id_me_gridview_scrollview);
 		mRegisterBtn = (Button) view.findViewById(R.id.id_me_login_register_form_btn_register);
+		userImageDetailsView=(ImageDetailsView) view.findViewById(R.id.id_imageDetailsView);
+		mUserDesc=(TextView) view.findViewById(R.id.id_me_user_desc);
 		mLoginBtn = (Button) view.findViewById(R.id.id_me_login_register_form_btn_login);
 		MyOnClickListener listener = new MyOnClickListener();
 		mRegisterBtn.setOnClickListener(listener);
@@ -119,6 +132,7 @@ public class MeFragment extends Fragment {
 			case R.id.id_me_login_register_form_btn_login:
 				Intent intent1 = new Intent(getActivity(), LoginActivity.class);
 				startActivity(intent1);
+				getActivity().finish();
 				break;
 			}
 		}

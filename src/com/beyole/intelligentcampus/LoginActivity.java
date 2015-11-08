@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.beyole.bean.GlobalParameterApplication;
 import com.beyole.bean.User;
 import com.beyole.constant.APIConstant;
 import com.beyole.constant.LoginConstant;
@@ -46,13 +47,13 @@ public class LoginActivity extends Activity {
 	private String passwordString;
 	private String params1;
 
-	private User currentUser;
+	private GlobalParameterApplication application;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		currentUser = (User) getApplication();
+		application = (GlobalParameterApplication) getApplicationContext();
 		initViews();
 		initEvents();
 	}
@@ -178,17 +179,22 @@ public class LoginActivity extends Activity {
 			}
 			if (result != null) {
 				int resultCode = Integer.valueOf(result.get("requestCode").toString().trim().replace(" ", ""));
-				User user = JsonUtils.readJsonToObject(User.class, result.get("userinfo") + "");
-				currentUser = user;
 				switch (resultCode) {
 				case LoginConstant.LOGIN_SUCCESS_WITH_THIS_USER:
+				
 					Toast.makeText(LoginActivity.this, "登录成功！" + resultCode, Toast.LENGTH_SHORT).show();
 					break;
 				case LoginConstant.LOGIN_ERROR_WITH_WRONGPASSWORD_OR_USERNAME:
 					Toast.makeText(LoginActivity.this, "错误的用户名或密码" + resultCode, Toast.LENGTH_SHORT).show();
 					break;
 				case LoginConstant.LOGIN_SUCCESS:
+					User user = JsonUtils.readJsonToObject(User.class, result.get("userinfo") + "");
+					application.setUser(user);
+					Log.e("test","application:"+application.getUser().toString());
 					Toast.makeText(LoginActivity.this, "登录成功" + resultCode, Toast.LENGTH_SHORT).show();
+					Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+					startActivity(intent);
+					finish();
 					break;
 				case LoginConstant.LOGIN_ERROR_WITH_NETWORK_EXCEPTION:
 					Toast.makeText(LoginActivity.this, "网络异常" + resultCode, Toast.LENGTH_SHORT).show();

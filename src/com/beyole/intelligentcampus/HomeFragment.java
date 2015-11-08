@@ -23,12 +23,12 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -106,7 +106,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 		mWaittingForListview = (LinearLayout) mView.findViewById(R.id.lv_waitting_for_listview);
 		lv_waitting_annimation = (AVLoadingIndicatorView) mView.findViewById(R.id.lv_waitting_annimation);
 		lv_setting_network = (Button) mView.findViewById(R.id.lv_setting_network);
-		mRefreshNewsBtn=(TextView) mView.findViewById(R.id.home_activity_refresh_ib_news);
+		mRefreshNewsBtn = (TextView) mView.findViewById(R.id.home_activity_refresh_ib_news);
 		lv_setting_network.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -116,7 +116,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 			}
 		});
 		mRefreshNewsBtn.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				new NewsAsyncTask().execute(Constant.HOMEURL);

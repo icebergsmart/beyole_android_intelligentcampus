@@ -1,8 +1,7 @@
 package com.beyole.bean;
 
-import android.app.Application;
 
-public class User extends Application {
+public class User {
 
 	private int userId;
 	private String userName;
@@ -150,11 +149,6 @@ public class User extends Application {
 
 	public void setUserCity(String userCity) {
 		this.userCity = userCity;
-	}
-
-	@Override
-	public void onCreate() {
-		super.onCreate();
 	}
 
 	@Override

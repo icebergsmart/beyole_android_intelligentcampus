@@ -14,7 +14,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.beyole.bean.User;
 import com.beyole.notifydialog.widget.effectdialog.Effectstype;
 import com.beyole.notifydialog.widget.effectdialog.NiftyDialogBuilder;
 
@@ -45,7 +44,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 	private Effectstype effect;
 	private NiftyDialogBuilder dialogBuilder = null;
-	private User currentUser;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -72,8 +70,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mMeImg = (ImageButton) findViewById(R.id.id_tab_address_img);
 		mSettingsImg = (ImageButton) findViewById(R.id.id_tab_settings_img);
 		mTextview = (TextView) findViewById(R.id.id_top_banner_title);
-		currentUser=(User) getApplication();
-		Log.i("test",currentUser.toString());
 	}
 
 	private void setSelected(int i) {
@@ -200,5 +196,4 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				}).show();
 
 	}
-
 }
