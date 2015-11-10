@@ -8,4 +8,7 @@ public class APIConstant {
 
 	// 注册访问接口
 	public static final String REGISTERINTERFACE = COMMONURL + "/user/register.action";
+	
+	//首页新闻接口
+	public static final String HOMEARTICLEINTERFACE=COMMONURL +"/article/findapparticles.action";
 }

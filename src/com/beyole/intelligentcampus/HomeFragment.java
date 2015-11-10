@@ -23,7 +23,6 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,6 +36,7 @@ import android.widget.TextView;
 import com.beyole.adapter.NewsAdapter;
 import com.beyole.adapter.ViewpaperAdapter;
 import com.beyole.bean.NewsBean;
+import com.beyole.constant.APIConstant;
 import com.beyole.constant.Constant;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -91,7 +91,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 		initViews();
 		// 初始化小白点组件
 		initDots();
-		new NewsAsyncTask().execute(Constant.HOMEURL);
+		new NewsAsyncTask().execute(APIConstant.HOMEARTICLEINTERFACE);
 		return mView;
 	}
 
@@ -119,7 +119,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 
 			@Override
 			public void onClick(View v) {
-				new NewsAsyncTask().execute(Constant.HOMEURL);
+				new NewsAsyncTask().execute(APIConstant.HOMEARTICLEINTERFACE);
 			}
 		});
 		// 初始化view列表对象
@@ -243,9 +243,9 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 				for (int i = 0; i < jsonArray.length(); i++) {
 					jsonObject = jsonArray.getJSONObject(i);
 					newsBean = new NewsBean();
-					newsBean.newsIconUrl = jsonObject.getString("picSmall");
-					newsBean.newsTitle = jsonObject.getString("name");
-					newsBean.newsContent = jsonObject.getString("description");
+					newsBean.newsIconUrl = Constant.REMOTE_SMALL_IMAGE_URL + jsonObject.getString("articlePicSmall");
+					newsBean.newsTitle = jsonObject.getString("articleName");
+					newsBean.newsContent = jsonObject.getString("articleDescription");
 					newsBeans.add(newsBean);
 				}
 			} catch (JSONException e) {

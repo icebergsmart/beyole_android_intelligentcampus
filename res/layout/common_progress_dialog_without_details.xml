@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:beyole="http://schemas.android.com/apk/res/com.beyole.intelligentcampus"
+    android:layout_width="220.0dip"
+    android:layout_height="100.0dip"
+    android:background="@drawable/common_progress_dialog_without_details_shape"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/id_common_progress_dialog_message"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="8.0dip"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#000000"
+        android:textSize="15sp" />
+
+    <com.beyole.view.commondialog.HorizontalProgressbarWithNumbers
+        android:id="@+id/id_common_progress_dialog_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        beyole:process_reached_color="#65B1EE"
+        beyole:process_text_color="#65B1EE"
+        android:layout_marginTop="14.0dip"
+        android:padding="5dp" >
+    </com.beyole.view.commondialog.HorizontalProgressbarWithNumbers>
+
+</LinearLayout>

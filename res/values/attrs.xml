@@ -17,5 +17,21 @@
         <attr name="titleImage" />
         <attr name="titleImageScope" />
     </declare-styleable>
+    <declare-styleable name="HorizontalProgressbarWithNumbers">
+        <attr name="process_unreached_color" format="color" />
+        <attr name="process_reached_color" format="color" />
+        <attr name="process_unreached_bar_height" format="dimension" />
+        <attr name="process_reached_bar_height" format="dimension" />
+        <attr name="process_text_size" format="dimension" />
+        <attr name="process_text_color" format="color" />
+        <attr name="process_text_offset" format="dimension" />
+        <attr name="process_text_visibility" format="enum">
+            <enum name="visible" value="0" />
+            <enum name="invisiable" value="1" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="RoundProgressbarWithNumbers">
+        <attr name="radius" format="dimension" />
+    </declare-styleable>
 
 </resources>

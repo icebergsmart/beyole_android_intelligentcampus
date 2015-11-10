@@ -8,11 +8,8 @@ package com.beyole.constant;
  */
 public class Constant {
 
-	// 主页新闻访问网址常量
-	public static final String HOMEURL = "http://www.imooc.com/api/teacher?type=4&num=30";
-
 	// 远程服务器地址
-	public static final String REMOTESERVER = "http://192.168.1.105";
+	public static final String REMOTESERVER = "http://10.255.24.138";
 
 	// 远程服务器端口
 	public static final String REMOTESERVERPORT = "8080";
@@ -21,4 +18,6 @@ public class Constant {
 	public static final String REMOTESERVERPROJECTNAME = "IntelligentCampus";
 
 	public static final String REMOTE_UPDATE_APK_URL = REMOTESERVER + ":" + REMOTESERVERPORT + "/" + REMOTESERVERPROJECTNAME + "/update/version.xml";
+	//图片存放地址
+	public static final String REMOTE_SMALL_IMAGE_URL=REMOTESERVER + ":" + REMOTESERVERPORT + "/" + REMOTESERVERPROJECTNAME+"/images/";
 }

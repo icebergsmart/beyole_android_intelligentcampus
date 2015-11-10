@@ -34,6 +34,7 @@ import com.beyole.notifydialog.widget.effectdialog.Effectstype;
 import com.beyole.notifydialog.widget.effectdialog.NiftyDialogBuilder;
 import com.beyole.view.commondialog.CommonDialog;
 import com.beyole.view.commondialog.CommonDialog.DialogPositiveListener;
+import com.beyole.view.commondialog.CommonProgressDialogWithoutDetails;
 
 /**
  * 设置 fragment
@@ -210,9 +211,8 @@ public class SettingFragment extends Fragment {
 
 	private void downloadAPK() {
 		// 进度条对话框
-		final ProgressDialog pd;
-		pd = new ProgressDialog(getActivity());
-		pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		final CommonProgressDialogWithoutDetails pd;
+		pd = new CommonProgressDialogWithoutDetails(getActivity());
 		pd.setMessage("正在下载更新");
 		pd.show();
 		new Thread() {
