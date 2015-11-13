@@ -44,6 +44,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 	private Effectstype effect;
 	private NiftyDialogBuilder dialogBuilder = null;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -196,5 +197,19 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 					}
 				}).show();
 
+	}
+
+	// 解决fragment重叠问题
+	@Override
+	public void onAttachFragment(Fragment fragment) {
+		if (mTab01 == null && fragment instanceof HomeFragment) {
+			mTab01 = (HomeFragment) fragment;
+		} else if (mTab02 == null && fragment instanceof FrdFragment) {
+			mTab02 = (FrdFragment) fragment;
+		} else if (mTab03 == null && fragment instanceof MeFragment) {
+			mTab03 = (MeFragment) fragment;
+		} else if (mTab04 == null && fragment instanceof SettingFragment) {
+			mTab04 = (SettingFragment) fragment;
+		}
 	}
 }
