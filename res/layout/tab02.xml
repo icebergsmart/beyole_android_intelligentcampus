@@ -34,12 +34,13 @@
                     beyole:titleText="Iceberg" />
 
                 <com.beyole.view.MyTextView
+                    android:id="@+id/id_function_weather_information"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dip"
                     android:layout_marginTop="6dip"
                     android:ellipsize="end"
-                    android:text="盐城  东风4级 最高气温:8度  气压：适宜"
+                    android:text="还未获取您的定位数据，请稍后..."
                     android:textColor="#ffffff"
                     android:textSize="10sp" />
             </LinearLayout>
