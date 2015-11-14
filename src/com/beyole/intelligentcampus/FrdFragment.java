@@ -43,13 +43,13 @@ public class FrdFragment extends Fragment {
 	private int mHeight2;
 	private View view;
 	private static final int lineNumber = 4;
-	private String[] titles = new String[] { "校内导航", "聊天", "云备份", "听音乐", "闹钟", "脑点子", "正在开发", "正在开发" };
-	private int[] img = new int[] { R.drawable.more1, R.drawable.more2, R.drawable.more3, R.drawable.more4, R.drawable.more5, R.drawable.more6, R.drawable.more7, R.drawable.more7 };
+	private String[] titles = new String[] { "新鲜事", "周边", "活动", "Find Me" };
+	private int[] img = new int[] { R.drawable.more1, R.drawable.more2, R.drawable.more3, R.drawable.more4 };
 
-	private String[] titles1 = new String[] { "校内导航", "聊天", "云备份", "听音乐" };
+	private String[] titles1 = new String[] { "快递联盟", "兼职招聘", "失物招领", "二手市场" };
 	private int[] img1 = new int[] { R.drawable.more1, R.drawable.more2, R.drawable.more3, R.drawable.more4 };
 
-	private String[] titles2 = new String[] { "运动", "聊天", "云备份", "听音乐", "闹钟" };
+	private String[] titles2 = new String[] { "计步器", "日记本", "公开课", "导航", "闹钟" };
 	private int[] img2 = new int[] { R.drawable.more1, R.drawable.more2, R.drawable.more3, R.drawable.more4, R.drawable.more5 };
 
 	public LocationClient mLocationClient = null;
