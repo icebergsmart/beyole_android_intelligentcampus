@@ -1,7 +1,12 @@
 package com.beyole.intelligentcampus;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -24,6 +29,7 @@ import android.widget.TextView;
 
 import com.beyole.adapter.ItemAdapter;
 import com.beyole.bean.GlobalParameterApplication;
+import com.beyole.bean.Notification;
 import com.beyole.bean.User;
 import com.beyole.constant.APIConstant;
 import com.beyole.intelligentcampus.me.FindMeActivity;
@@ -118,6 +124,7 @@ public class MeFragment extends Fragment {
 				}
 			});
 			new MyAsyncTask().execute();
+			new MyAsyncNotificationTask().execute();
 		} else {
 			id_me_hidden_loginform.setVisibility(View.VISIBLE);
 			id_me_gridviews.setVisibility(View.GONE);
@@ -192,6 +199,33 @@ public class MeFragment extends Fragment {
 			mFansNumberTv.setText(fans);
 			mFocusNumberTv.setText(focus);
 
+		}
+	}
+
+	class MyAsyncNotificationTask extends AsyncTask<Void, Void, List<String>> {
+
+		@Override
+		protected List<String> doInBackground(Void... params) {
+			SyncHttp http = new SyncHttp();
+			List<String> list = new ArrayList<String>();
+			try {
+				String restr = http.httpGet(APIConstant.GETNOTIFICATIONNOTICE, null);
+				JSONObject jsonObject = new JSONObject(restr);
+				JSONArray array = jsonObject.getJSONArray("notificationList");
+				for (int i = 0; i < array.length(); i++) {
+					JSONObject object = array.getJSONObject(i);
+					String content = object.getString("notificationContent");
+					list.add(content);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return list;
+		}
+
+		@Override
+		protected void onPostExecute(List<String> result) {
+			id_me_publicnotice.bindNotices(result);
 		}
 
 	}
