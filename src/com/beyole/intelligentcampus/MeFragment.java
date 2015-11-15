@@ -1,6 +1,10 @@
 package com.beyole.intelligentcampus;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -13,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -20,7 +25,10 @@ import android.widget.TextView;
 import com.beyole.adapter.ItemAdapter;
 import com.beyole.bean.GlobalParameterApplication;
 import com.beyole.bean.User;
+import com.beyole.constant.APIConstant;
 import com.beyole.intelligentcampus.me.FindMeActivity;
+import com.beyole.util.JsonUtils;
+import com.beyole.util.SyncHttp;
 import com.beyole.view.ImageDetailsView;
 import com.beyole.view.LineGridview;
 import com.beyole.view.PublicNoticeView;
@@ -59,16 +67,29 @@ public class MeFragment extends Fragment {
 	private GlobalParameterApplication application;
 	private User currentUser;
 
+	private TextView mFansNumberTv;
+	private TextView mActivityNumberTv;
+	private TextView mFocusNumberTv;
+	private ImageButton mFansNumberIb;
+	private ImageButton mActivityNumberIb;
+	private ImageButton mFocusNumberIb;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.tab03, container, false);
 		initViews();
 		application = (GlobalParameterApplication) getActivity().getApplicationContext();
 		currentUser = application.getUser();
-		if (currentUser!=null&&currentUser.getUserId() > 0) {
+		if (currentUser != null && currentUser.getUserId() > 0) {
+			mFansNumberTv.setVisibility(View.VISIBLE);
+			mActivityNumberTv.setVisibility(View.VISIBLE);
+			mFocusNumberTv.setVisibility(View.VISIBLE);
+			mFansNumberIb.setVisibility(View.GONE);
+			mActivityNumberIb.setVisibility(View.GONE);
+			mFocusNumberIb.setVisibility(View.GONE);
 			userImageDetailsView.setTitleText(currentUser.getUserName());
 			mUserDesc.setText(currentUser.getUserDescription());
-			Log.i("test","用户描述:"+currentUser.getUserDescription());
+			Log.i("test", "用户描述:" + currentUser.getUserDescription());
 			// 获取屏幕宽度和高度
 			WindowManager wm = getActivity().getWindowManager();
 			int width = wm.getDefaultDisplay().getWidth();
@@ -96,6 +117,7 @@ public class MeFragment extends Fragment {
 					}
 				}
 			});
+			new MyAsyncTask().execute();
 		} else {
 			id_me_hidden_loginform.setVisibility(View.VISIBLE);
 			id_me_gridviews.setVisibility(View.GONE);
@@ -107,13 +129,19 @@ public class MeFragment extends Fragment {
 	}
 
 	private void initViews() {
+		mFansNumberTv = (TextView) view.findViewById(R.id.id_me_fans_number);
+		mActivityNumberTv = (TextView) view.findViewById(R.id.id_me_activity_number);
+		mFocusNumberTv = (TextView) view.findViewById(R.id.id_me_focus_number);
+		mFansNumberIb = (ImageButton) view.findViewById(R.id.id_me_fans_img);
+		mActivityNumberIb = (ImageButton) view.findViewById(R.id.id_me_activity_img);
+		mFocusNumberIb = (ImageButton) view.findViewById(R.id.id_me_focus_img);
 		id_me_gridviews = (LineGridview) view.findViewById(R.id.id_me_gridviews);
 		id_me_hidden_loginform = (RelativeLayout) view.findViewById(R.id.id_me_hidden_loginform);
 		id_me_publicnotice = (PublicNoticeView) view.findViewById(R.id.id_me_publicnotice);
 		id_me_gridview_scrollview = (ScrollView) view.findViewById(R.id.id_me_gridview_scrollview);
 		mRegisterBtn = (Button) view.findViewById(R.id.id_me_login_register_form_btn_register);
-		userImageDetailsView=(ImageDetailsView) view.findViewById(R.id.id_imageDetailsView);
-		mUserDesc=(TextView) view.findViewById(R.id.id_me_user_desc);
+		userImageDetailsView = (ImageDetailsView) view.findViewById(R.id.id_imageDetailsView);
+		mUserDesc = (TextView) view.findViewById(R.id.id_me_user_desc);
 		mLoginBtn = (Button) view.findViewById(R.id.id_me_login_register_form_btn_login);
 		MyOnClickListener listener = new MyOnClickListener();
 		mRegisterBtn.setOnClickListener(listener);
@@ -135,6 +163,35 @@ public class MeFragment extends Fragment {
 				getActivity().finish();
 				break;
 			}
+		}
+
+	}
+
+	class MyAsyncTask extends AsyncTask<Void, Void, Map<String, String>> {
+
+		@Override
+		protected Map<String, String> doInBackground(Void... params) {
+			SyncHttp http = new SyncHttp();
+			Map<String, String> map = new HashMap<String, String>();
+			String params1 = "userId=" + currentUser.getUserId();
+			try {
+				String restr = http.httpGet(APIConstant.FINDUSERSFANSANDFOCUSNUMBER, params1);
+				map = JsonUtils.readJsonToMap(restr);
+				Log.i("fans", "获取网络参数:" + map.toString());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return map;
+		}
+
+		@Override
+		protected void onPostExecute(Map<String, String> result) {
+			String fans = result.get("fans");
+			String focus = result.get("focus");
+			Log.i("fans", "获取网络参数:" + "fans:" + fans + " focus:" + focus);
+			mFansNumberTv.setText(fans);
+			mFocusNumberTv.setText(focus);
+
 		}
 
 	}

@@ -1,7 +1,11 @@
 package com.beyole.view;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -9,7 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.beyole.constant.APIConstant;
 import com.beyole.intelligentcampus.R;
+import com.beyole.util.SyncHttp;
 
 /**
  * 滚动公告栏
@@ -59,15 +65,31 @@ public class PublicNoticeView extends LinearLayout {
 	 */
 	protected void bindNotices() {
 		mViewFlipper.removeAllViews();
-		int i = 0;
-		while (i < 5) {
-			String text = "公告:恭喜您中了500W,赶紧去领取吧!";
-			TextView textView = new TextView(mContext);
-			textView.setText(text);
-			LayoutParams layoutParams = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
-			mViewFlipper.addView(textView, layoutParams);
-			i++;
-		}
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				SyncHttp http=new SyncHttp();
+				try{
+					String restr=http.httpGet(APIConstant.GETNOTIFICATIONNOTICE, null);
+					Log.i("notice","返回值为："+restr);
+					JSONObject object=new JSONObject(restr);
+					JSONArray array=object.getJSONArray("notificationList");
+					for (int j = 0; j < array.length(); j++) {
+						JSONObject jsonObject=array.getJSONObject(j);
+						String text = jsonObject.getString("notificationContent");
+						TextView textView = new TextView(mContext);
+						textView.setText(text);
+						LayoutParams layoutParams = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
+						mViewFlipper.addView(textView, layoutParams);
+					}
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		}).start();
+		
 	}
+	
 
 }

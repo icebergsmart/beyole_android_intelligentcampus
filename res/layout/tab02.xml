@@ -31,7 +31,7 @@
                     beyole:titleImage="@drawable/user_information_img"
                     beyole:titleImageScope="fillXY"
                     beyole:titleSize="12sp"
-                    beyole:titleText="Iceberg" />
+                    beyole:titleText="未登录" />
 
                 <com.beyole.view.MyTextView
                     android:id="@+id/id_function_weather_information"
@@ -42,7 +42,7 @@
                     android:ellipsize="end"
                     android:text="还未获取您的定位数据，请稍后..."
                     android:textColor="#ffffff"
-                    android:textSize="10sp" />
+                    android:textSize="13sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -74,7 +74,7 @@
                         android:layout_height="wrap_content"
                         android:text="云管理"
                         android:textColor="#ffffff"
-                        android:textSize="10sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -100,7 +100,7 @@
                         android:layout_height="wrap_content"
                         android:text="日程表"
                         android:textColor="#ffffff"
-                        android:textSize="10sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -126,7 +126,7 @@
                         android:layout_height="wrap_content"
                         android:text="收藏"
                         android:textColor="#ffffff"
-                        android:textSize="10sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -152,7 +152,7 @@
                         android:layout_height="wrap_content"
                         android:text="私信"
                         android:textColor="#ffffff"
-                        android:textSize="10sp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
