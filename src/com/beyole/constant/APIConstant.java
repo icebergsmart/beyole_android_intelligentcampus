@@ -20,4 +20,7 @@ public class APIConstant {
 
 	// 获取用户参加活动数
 	public static final String GETUSERACTIVITYCOUNT = COMMONURL + "/activity/user/findactivityusersbyuserid.action";
+
+	// 意见反馈接口
+	public static final String DEVICEFEEDBACKINTERFACE = COMMONURL + "/feedback/device/adddevicefeedback.action";
 }

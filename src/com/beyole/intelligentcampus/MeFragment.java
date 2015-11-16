@@ -33,6 +33,7 @@ import com.beyole.bean.Notification;
 import com.beyole.bean.User;
 import com.beyole.constant.APIConstant;
 import com.beyole.intelligentcampus.me.FindMeActivity;
+import com.beyole.intelligentcampus.settings.QRActivity;
 import com.beyole.util.JsonUtils;
 import com.beyole.util.SyncHttp;
 import com.beyole.view.ImageDetailsView;
@@ -112,13 +113,13 @@ public class MeFragment extends Fragment {
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 					switch (position) {
+					case TITLE2:
+						Intent intent1 = new Intent(getActivity(), QRActivity.class);
+						startActivity(intent1);
+						break;
 					case TITLE7:
 						Intent intent = new Intent(getActivity(), FindMeActivity.class);
 						startActivity(intent);
-						break;
-					case TITLE8:
-						Intent intent1 = new Intent(getActivity(), LoginActivity.class);
-						startActivity(intent1);
 						break;
 					}
 				}

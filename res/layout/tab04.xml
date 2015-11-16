@@ -20,51 +20,7 @@
             android:paddingRight="10.0dip"
             android:paddingTop="10.0dip" >
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <TableLayout
-                    android:id="@+id/MorePageTableLayout_Favorite"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:shrinkColumns="0"
-                    android:stretchColumns="0" >
-
-                    <!-- //.9.png图片圆角的实现。 -->
-
-                    <TableRow
-                        android:id="@+id/more_page_row0"
-                        android:layout_width="fill_parent"
-                        android:layout_marginLeft="2.0dip"
-                        android:layout_marginRight="2.0dip"
-                        android:background="@drawable/list_item_top_selector"
-                        android:clickable="true"
-                        android:paddingBottom="8.0dip"
-                        android:paddingTop="8.0dip" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
-                            android:drawableLeft="@drawable/settings_icon"
-                            android:drawablePadding="10.0dip"
-                            android:gravity="center_vertical"
-                            android:includeFontPadding="false"
-                            android:paddingLeft="17.0dip"
-                            android:text="我的二维码"
-                            android:textColor="#ff333333"
-                            android:textSize="16.0sp" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
-                            android:layout_gravity="right"
-                            android:gravity="center_vertical"
-                            android:paddingRight="20.0dip"
-                            android:src="@drawable/icn_settings_arrow" />
-                    </TableRow>
-                </TableLayout>
-            </LinearLayout>
+           
 
             <TextView
                 android:layout_width="fill_parent"

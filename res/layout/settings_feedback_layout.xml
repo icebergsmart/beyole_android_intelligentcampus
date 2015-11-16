@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/settings_feedback_top"
+        layout="@layout/top" />
+
+    <EditText
+        android:id="@+id/settings_feedback_content"
+        android:layout_width="fill_parent"
+        android:layout_height="300.0dip"
+        android:text="请写下您对本软件的意见^_^" />
+
+    <EditText
+        android:id="@+id/settings_feedback_contact"
+        android:layout_width="fill_parent"
+        android:layout_height="40.0dip"
+        android:text="输入你的qq号或者手机号" />
+
+    <Button
+        android:id="@+id/settings_feedback_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="反馈" />
+
+</LinearLayout>

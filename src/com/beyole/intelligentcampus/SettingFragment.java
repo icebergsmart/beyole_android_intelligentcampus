@@ -26,6 +26,9 @@ import android.widget.Toast;
 import com.beyole.constant.Constant;
 import com.beyole.constant.UpdateConstant;
 import com.beyole.intelligentcampus.settings.AboutUsActivity;
+import com.beyole.intelligentcampus.settings.FeedBackActivity;
+import com.beyole.intelligentcampus.settings.FunctionIntroduceActivity;
+import com.beyole.intelligentcampus.settings.HelpActivity;
 import com.beyole.intelligentcampus.settings.QRActivity;
 import com.beyole.intelligentcampus.settings.update.DownloadManager;
 import com.beyole.intelligentcampus.settings.update.UpdateInfo;
@@ -52,12 +55,16 @@ public class SettingFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.tab04, container, false);
 		MyRowOnclickListener listener = new MyRowOnclickListener();
-		TableRow row = (TableRow) view.findViewById(R.id.more_page_row0);
 		TableRow row8 = (TableRow) view.findViewById(R.id.more_page_row8);
 		TableRow row7 = (TableRow) view.findViewById(R.id.more_page_row7);
-		row.setOnClickListener(listener);
+		TableRow row6 = (TableRow) view.findViewById(R.id.more_page_row6);
+		TableRow row5 = (TableRow) view.findViewById(R.id.more_page_row5);
+		TableRow row4 = (TableRow) view.findViewById(R.id.more_page_row4);
 		row8.setOnClickListener(listener);
 		row7.setOnClickListener(listener);
+		row6.setOnClickListener(listener);
+		row5.setOnClickListener(listener);
+		row4.setOnClickListener(listener);
 		return view;
 	}
 
@@ -67,11 +74,6 @@ public class SettingFragment extends Fragment {
 		public void onClick(View v) {
 			Intent intent = null;
 			switch (v.getId()) {
-			case R.id.more_page_row0:
-				intent = new Intent(getActivity(), QRActivity.class);
-				startActivity(intent);
-				activitySwitchAnimation();
-				break;
 			case R.id.more_page_row8:
 				intent = new Intent(getActivity(), AboutUsActivity.class);
 				startActivity(intent);
@@ -79,6 +81,21 @@ public class SettingFragment extends Fragment {
 				break;
 			case R.id.more_page_row7:
 				checkUpdateVersion();
+				break;
+			case R.id.more_page_row6:
+				intent = new Intent(getActivity(), FunctionIntroduceActivity.class);
+				startActivity(intent);
+				activitySwitchAnimation();
+				break;
+			case R.id.more_page_row5:
+				intent = new Intent(getActivity(), FeedBackActivity.class);
+				startActivity(intent);
+				activitySwitchAnimation();
+				break;
+			case R.id.more_page_row4:
+				intent = new Intent(getActivity(), HelpActivity.class);
+				startActivity(intent);
+				activitySwitchAnimation();
 				break;
 			}
 		}

@@ -91,17 +91,31 @@
             android:label="RegisterActivity"
             android:screenOrientation="portrait" >
         </activity>
-
+        <activity
+            android:name="com.beyole.intelligentcampus.settings.FeedBackActivity"
+            android:label="FeedBackActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.settings.FunctionIntroduceActivity"
+            android:label="FunctionIntroduceActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.settings.HelpActivity"
+            android:label="HelpActivity"
+            android:screenOrientation="portrait" >
+        </activity>
         <!-- 百度定位service申明 -->
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" >
         </service>
-        
-          <meta-data
+
+        <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="4bW3GNTvqLLkcwL8qcBSmKck" />   
+            android:value="4bW3GNTvqLLkcwL8qcBSmKck" />
     </application>
 
 </manifest>
