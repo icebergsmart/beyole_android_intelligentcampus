@@ -64,7 +64,7 @@ public class MeFragment extends Fragment {
 	private TextView mUserDesc;
 	private int mHeight;
 	private View view;
-	private String[] titles = new String[] { "活动", "动态", "通知", "个推", "探索", "脑点子", "Find Me", "智慧树" };
+	private String[] titles = new String[] { "我的资料", "我的名片", "通知", "数据中心", "勋章墙", "发布活动", "发起投票", "积分商城" };
 	private int[] img = new int[] { R.drawable.more1, R.drawable.more2, R.drawable.more3, R.drawable.more4, R.drawable.more5, R.drawable.more6, R.drawable.more7, R.drawable.more7 };
 
 	private Button mRegisterBtn;
@@ -125,6 +125,7 @@ public class MeFragment extends Fragment {
 			});
 			new MyAsyncTask().execute();
 			new MyAsyncNotificationTask().execute();
+			new MyActivityUserAsyncTask().execute();
 		} else {
 			id_me_hidden_loginform.setVisibility(View.VISIBLE);
 			id_me_gridviews.setVisibility(View.GONE);
@@ -228,5 +229,29 @@ public class MeFragment extends Fragment {
 			id_me_publicnotice.bindNotices(result);
 		}
 
+	}
+
+	class MyActivityUserAsyncTask extends AsyncTask<Void, Void, Map<String, String>> {
+
+		@Override
+		protected Map<String, String> doInBackground(Void... params) {
+			SyncHttp http = new SyncHttp();
+			Map<String, String> map = new HashMap<String, String>();
+			String params1 = "userId=" + currentUser.getUserId();
+			try {
+				String restr = http.httpGet(APIConstant.GETUSERACTIVITYCOUNT, params1);
+				map = JsonUtils.readJsonToMap(restr);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return map;
+		}
+
+		@Override
+		protected void onPostExecute(Map<String, String> result) {
+			String activityUserCount = result.get("activityUserCount");
+			mActivityNumberTv.setText(activityUserCount);
+
+		}
 	}
 }

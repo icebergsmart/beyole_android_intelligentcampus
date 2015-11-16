@@ -17,4 +17,7 @@ public class APIConstant {
 
 	// 获取公告信息
 	public static final String GETNOTIFICATIONNOTICE = COMMONURL + "/notification/findallcommonusernotifications.action";
+
+	// 获取用户参加活动数
+	public static final String GETUSERACTIVITYCOUNT = COMMONURL + "/activity/user/findactivityusersbyuserid.action";
 }
