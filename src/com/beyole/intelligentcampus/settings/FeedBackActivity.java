@@ -54,7 +54,12 @@ public class FeedBackActivity extends Activity {
 		public void onClick(View v) {
 			switch (v.getId()) {
 			case R.id.settings_feedback_btn:
-				addFeedback();
+				if (!mFeedbackContent.getText().toString().trim().replace(" ", "").equals("")) {
+					addFeedback();
+					finish();
+				}else{
+					Toast.makeText(FeedBackActivity.this, "意见内容不能为空！", Toast.LENGTH_LONG).show();
+				}
 				break;
 			}
 		}

@@ -23,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -32,7 +33,10 @@ import com.beyole.bean.GlobalParameterApplication;
 import com.beyole.bean.Notification;
 import com.beyole.bean.User;
 import com.beyole.constant.APIConstant;
+import com.beyole.intelligentcampus.me.ExerciseActivity;
+import com.beyole.intelligentcampus.me.FansActivity;
 import com.beyole.intelligentcampus.me.FindMeActivity;
+import com.beyole.intelligentcampus.me.FocusActivity;
 import com.beyole.intelligentcampus.settings.QRActivity;
 import com.beyole.util.JsonUtils;
 import com.beyole.util.SyncHttp;
@@ -80,6 +84,9 @@ public class MeFragment extends Fragment {
 	private ImageButton mFansNumberIb;
 	private ImageButton mActivityNumberIb;
 	private ImageButton mFocusNumberIb;
+	private LinearLayout mTabFansLbtn;
+	private LinearLayout mTabFocusLbtn;
+	private LinearLayout mTabExerciseBtn;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -152,9 +159,15 @@ public class MeFragment extends Fragment {
 		userImageDetailsView = (ImageDetailsView) view.findViewById(R.id.id_imageDetailsView);
 		mUserDesc = (TextView) view.findViewById(R.id.id_me_user_desc);
 		mLoginBtn = (Button) view.findViewById(R.id.id_me_login_register_form_btn_login);
+		mTabFansLbtn = (LinearLayout) view.findViewById(R.id.id_me_tab_fans);
+		mTabFocusLbtn = (LinearLayout) view.findViewById(R.id.id_me_tab_focus);
+		mTabExerciseBtn = (LinearLayout) view.findViewById(R.id.id_me_tab_exercise);
 		MyOnClickListener listener = new MyOnClickListener();
 		mRegisterBtn.setOnClickListener(listener);
 		mLoginBtn.setOnClickListener(listener);
+		mTabFansLbtn.setOnClickListener(listener);
+		mTabFocusLbtn.setOnClickListener(listener);
+		mTabExerciseBtn.setOnClickListener(listener);
 	}
 
 	class MyOnClickListener implements OnClickListener {
@@ -170,6 +183,33 @@ public class MeFragment extends Fragment {
 				Intent intent1 = new Intent(getActivity(), LoginActivity.class);
 				startActivity(intent1);
 				getActivity().finish();
+				break;
+			case R.id.id_me_tab_fans:
+				Intent intent2 = null;
+				if (currentUser != null && currentUser.getUserId() > 0) {
+					intent2 = new Intent(getActivity(), FansActivity.class);
+				} else {
+					intent2 = new Intent(getActivity(), LoginActivity.class);
+				}
+				startActivity(intent2);
+				break;
+			case R.id.id_me_tab_focus:
+				Intent intent3 = null;
+				if (currentUser != null && currentUser.getUserId() > 0) {
+					intent3 = new Intent(getActivity(), FocusActivity.class);
+				} else {
+					intent3 = new Intent(getActivity(), LoginActivity.class);
+				}
+				startActivity(intent3);
+				break;
+			case R.id.id_me_tab_exercise:
+				Intent intent4 = null;
+				if (currentUser != null && currentUser.getUserId() > 0) {
+					intent4 = new Intent(getActivity(), ExerciseActivity.class);
+				} else {
+					intent4 = new Intent(getActivity(), LoginActivity.class);
+				}
+				startActivity(intent4);
 				break;
 			}
 		}

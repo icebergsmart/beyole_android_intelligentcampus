@@ -106,6 +106,21 @@
             android:label="HelpActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.me.FansActivity"
+            android:label="FansActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.me.FocusActivity"
+            android:label="FocusActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.me.ExerciseActivity"
+            android:label="ExerciseActivity"
+            android:screenOrientation="portrait" >
+        </activity>
         <!-- 百度定位service申明 -->
         <service
             android:name="com.baidu.location.f"

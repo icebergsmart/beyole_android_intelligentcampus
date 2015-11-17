@@ -52,7 +52,7 @@
                 android:orientation="horizontal" >
 
                 <LinearLayout
-                    android:id="@+id/id_tab_weixin"
+                    android:id="@+id/id_me_tab_fans"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
@@ -84,12 +84,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="粉丝"
+                         android:clickable="false"
                         android:textColor="#ffffff"
                         android:textSize="15sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/id_tab_frd"
+                    android:id="@+id/id_me_tab_exercise"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
@@ -126,7 +127,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/id_tab_address"
+                    android:id="@+id/id_me_tab_focus"
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
@@ -158,6 +159,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="关注"
+                        android:clickable="false"
                         android:textColor="#ffffff"
                         android:textSize="15sp" />
                 </LinearLayout>
