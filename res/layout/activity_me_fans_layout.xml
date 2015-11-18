@@ -8,4 +8,10 @@
         android:id="@+id/activity_fans_top"
         layout="@layout/fans_top" />
 
+    <ListView
+        android:id="@+id/activity_fans_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         />
+
 </LinearLayout>
