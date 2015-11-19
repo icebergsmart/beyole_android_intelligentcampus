@@ -23,4 +23,7 @@ public class APIConstant {
 
 	// 意见反馈接口
 	public static final String DEVICEFEEDBACKINTERFACE = COMMONURL + "/feedback/device/adddevicefeedback.action";
+
+	// 获取粉丝列表
+	public static final String FINDFANSLISTINTERFACE = COMMONURL + "/user/fans/finduserfansbyuserid.action";
 }

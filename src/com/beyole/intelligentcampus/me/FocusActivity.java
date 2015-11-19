@@ -3,11 +3,6 @@ package com.beyole.intelligentcampus.me;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.beyole.adapter.FansAdapter;
-import com.beyole.adapter.FocusAdapter;
-import com.beyole.bean.UserFans;
-import com.beyole.intelligentcampus.R;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,12 +11,17 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.beyole.adapter.FocusAdapter;
+import com.beyole.bean.UserFans;
+import com.beyole.intelligentcampus.R;
+
 public class FocusActivity extends Activity {
 
 	private LinearLayout mTabBackLinearLayout;
 	private ListView mFocusListView;
 	private FocusAdapter mFocusAdapter;
 	private List<UserFans> mUserFocusList = new ArrayList<UserFans>();
+	private int currentUserId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,5 +55,7 @@ public class FocusActivity extends Activity {
 		mTabBackLinearLayout = (LinearLayout) findViewById(R.id.activity_focus_top).findViewById(R.id.id_me_fans_back_me_layout);
 		mFocusListView = (ListView) findViewById(R.id.activity_focus_listview);
 		mFocusAdapter = new FocusAdapter(this, mUserFocusList, mFocusListView);
+		Bundle bundle = getIntent().getExtras();
+		currentUserId=bundle.getInt("userId");
 	}
 }

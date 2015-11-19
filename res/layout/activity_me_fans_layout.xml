@@ -12,6 +12,26 @@
         android:id="@+id/activity_fans_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-         />
+        android:visibility="visible" />
+<RelativeLayout 
+    android:id="@+id/activity_fans_no_fans"
+    android:layout_width="fill_parent"
+    android:layout_height="0dp"
+    android:gravity="center"
+    android:visibility="gone"
+    android:layout_weight="1"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="没有粉丝哦~"
+        android:textColor="#b8b8b8"
+        android:drawableTop="@drawable/no_fans"
+        android:drawablePadding="6.0dip"
+         android:layout_centerInParent="true"
+        android:textSize="18sp" />
+</RelativeLayout>
+   
+    
 
 </LinearLayout>

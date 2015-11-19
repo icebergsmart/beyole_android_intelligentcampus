@@ -188,6 +188,7 @@ public class MeFragment extends Fragment {
 				Intent intent2 = null;
 				if (currentUser != null && currentUser.getUserId() > 0) {
 					intent2 = new Intent(getActivity(), FansActivity.class);
+					intent2.putExtra("userId", currentUser.getUserId());
 				} else {
 					intent2 = new Intent(getActivity(), LoginActivity.class);
 				}
@@ -197,6 +198,7 @@ public class MeFragment extends Fragment {
 				Intent intent3 = null;
 				if (currentUser != null && currentUser.getUserId() > 0) {
 					intent3 = new Intent(getActivity(), FocusActivity.class);
+					intent3.putExtra("userId", currentUser.getUserId());
 				} else {
 					intent3 = new Intent(getActivity(), LoginActivity.class);
 				}

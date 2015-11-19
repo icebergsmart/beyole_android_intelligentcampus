@@ -72,7 +72,7 @@ public class FansAdapter extends BaseAdapter {
 		viewHolder.ivIcon.setTag(url);
 		viewHolder.tvTitle.setText(userFans.get(position).getFansUserName());
 		viewHolder.tvContent.setText(userFans.get(position).getFansDescription());
-		viewHolder.ibRelation.setImageResource(userFans.get(position).getUserFansRelationship() == 0 ? R.drawable.card_icon_addattention : R.drawable.card_icon_arrow);
+		viewHolder.ibRelation.setImageResource(userFans.get(position).getUserFansRelationship() == 1 ? R.drawable.card_icon_addattention : R.drawable.card_icon_arrow);
 		viewHolder.ibRelation.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
