@@ -1,89 +1,72 @@
 package com.beyole.bean;
 
+/**
+ * 用户参加的活动实体类
+ * 
+ * @author Iceberg
+ * 
+ */
 public class UserExercise {
-
-	// 编号
-	private int id;
 	// 活动编号
-	private int exerciseId;
-	// 活动名称
-	private String exerciseName;
-	// 活动描述
-	private String exerciseDescription;
-	// 活动状态 0：正在进行 1.已过期 2.已取消 3.审核不通过
-	private int enabled;
+	private int activityId;
 	// 活动类型
-	private int exerciseType;
-	// 状态 0:参加 1.未参加
-	private int status;
+	private int activityType;
+	// 活动名称
+	private String activityName;
+	// 活动描述
+	private String activityDescription;
+	// 当前活动状态|活动是不是已经过期 0:表示正在进行中 1:已经过期 2.未通过审核
+	private int activityStatus;
 
 	public UserExercise() {
 	}
 
-	public UserExercise(int id, int exerciseId, String exerciseName, String exerciseDescription, int enabled, int exerciseType, int status) {
-		this.id = id;
-		this.exerciseId = exerciseId;
-		this.exerciseName = exerciseName;
-		this.exerciseDescription = exerciseDescription;
-		this.enabled = enabled;
-		this.exerciseType = exerciseType;
-		this.status = status;
+	public UserExercise(int activityId, int activityType, String activityName, String activityDescription, int activityStatus) {
+		this.activityId = activityId;
+		this.activityType = activityType;
+		this.activityName = activityName;
+		this.activityDescription = activityDescription;
+		this.activityStatus = activityStatus;
 	}
 
-	public int getId() {
-		return id;
+	public int getActivityId() {
+		return activityId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setActivityId(int activityId) {
+		this.activityId = activityId;
 	}
 
-	public String getExerciseName() {
-		return exerciseName;
+	public int getActivityType() {
+		return activityType;
 	}
 
-	public void setExerciseName(String exerciseName) {
-		this.exerciseName = exerciseName;
+	public void setActivityType(int activityType) {
+		this.activityType = activityType;
 	}
 
-	public String getExerciseDescription() {
-		return exerciseDescription;
+	public String getActivityName() {
+		return activityName;
 	}
 
-	public void setExerciseDescription(String exerciseDescription) {
-		this.exerciseDescription = exerciseDescription;
+	public void setActivityName(String activityName) {
+		this.activityName = activityName;
 	}
 
-	public int getEnabled() {
-		return enabled;
+	public String getActivityDescription() {
+		return activityDescription;
 	}
 
-	public void setEnabled(int enabled) {
-		this.enabled = enabled;
+	public void setActivityDescription(String activityDescription) {
+		this.activityDescription = activityDescription;
 	}
 
-	public int getExerciseType() {
-		return exerciseType;
+	public int getActivityStatus() {
+		return activityStatus;
 	}
 
-	public void setExerciseType(int exerciseType) {
-		this.exerciseType = exerciseType;
-	}
-
-	public int getExerciseId() {
-		return exerciseId;
-	}
-
-	public void setExerciseId(int exerciseId) {
-		this.exerciseId = exerciseId;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
+	public void setActivityStatus(int activityStatus) {
+		this.activityStatus = activityStatus;
 	}
 
 }

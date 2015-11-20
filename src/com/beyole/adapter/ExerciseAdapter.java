@@ -65,11 +65,11 @@ public class ExerciseAdapter extends BaseAdapter {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		viewHolder.ivIcon.setImageResource(R.drawable.ic_launcher);
-		final String type = userExercises.get(position).getExerciseType() + "";
-		final String exerciseId = userExercises.get(position).getExerciseId() + "";
-		final String status = userExercises.get(position).getStatus() + "";
-		viewHolder.tvTitle.setText(userExercises.get(position).getExerciseName());
-		viewHolder.tvContent.setText(userExercises.get(position).getExerciseDescription());
+		final String type = userExercises.get(position).getActivityType() + "";
+		final String exerciseId = userExercises.get(position).getActivityId() + "";
+		final String status = userExercises.get(position).getActivityStatus() + "";
+		viewHolder.tvTitle.setText(userExercises.get(position).getActivityName());
+		viewHolder.tvContent.setText(userExercises.get(position).getActivityDescription());
 		viewHolder.ibRelation.setImageResource(R.drawable.exercise_exit);
 		viewHolder.ibRelation.setOnClickListener(new OnClickListener() {
 			@Override

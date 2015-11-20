@@ -32,4 +32,7 @@ public class APIConstant {
 
 	//用户取消关注粉丝
 	public static final String USERCANCLEFOCUSFANSINTERFACE =COMMONURL+"/user/fans/removerelationaboutuserfocusfans.action";
+
+	//用户查询参加活动列表接口
+	public static final String USERPARTICIPATEDEXERCISEINTERFACE =COMMONURL+"/activity/user/findallparticipatedexercisesbyuserid.action";
 }

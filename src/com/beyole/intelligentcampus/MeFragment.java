@@ -208,6 +208,7 @@ public class MeFragment extends Fragment {
 				Intent intent4 = null;
 				if (currentUser != null && currentUser.getUserId() > 0) {
 					intent4 = new Intent(getActivity(), ExerciseActivity.class);
+					intent4.putExtra("userId", currentUser.getUserId());
 				} else {
 					intent4 = new Intent(getActivity(), LoginActivity.class);
 				}
