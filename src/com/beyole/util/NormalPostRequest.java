@@ -21,7 +21,6 @@ public class NormalPostRequest extends Request<JSONObject> {
 
 	public NormalPostRequest(String url, Listener<JSONObject> listener, ErrorListener errorListener, Map<String, String> map) {
 		super(Request.Method.POST, url, errorListener);
-
 		mListener = listener;
 		mMap = map;
 	}
@@ -37,7 +36,6 @@ public class NormalPostRequest extends Request<JSONObject> {
 	protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
 		try {
 			String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-
 			return Response.success(new JSONObject(jsonString), HttpHeaderParser.parseCacheHeaders(response));
 		} catch (UnsupportedEncodingException e) {
 			return Response.error(new ParseError(e));
@@ -50,5 +48,4 @@ public class NormalPostRequest extends Request<JSONObject> {
 	protected void deliverResponse(JSONObject response) {
 		mListener.onResponse(response);
 	}
-
 }

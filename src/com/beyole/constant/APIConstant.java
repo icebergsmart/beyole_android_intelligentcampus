@@ -26,4 +26,10 @@ public class APIConstant {
 
 	// 获取粉丝列表
 	public static final String FINDFANSLISTINTERFACE = COMMONURL + "/user/fans/finduserfansbyuserid.action";
+
+	// 用户关注粉丝
+	public static final String USERFOCUSFANSINTERFACE = COMMONURL + "/user/fans/addrelationaboutuserfocusfans.action";
+
+	//用户取消关注粉丝
+	public static final String USERCANCLEFOCUSFANSINTERFACE =COMMONURL+"/user/fans/removerelationaboutuserfocusfans.action";
 }
