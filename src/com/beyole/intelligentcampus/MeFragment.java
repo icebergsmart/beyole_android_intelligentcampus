@@ -30,7 +30,6 @@ import android.widget.TextView;
 
 import com.beyole.adapter.ItemAdapter;
 import com.beyole.bean.GlobalParameterApplication;
-import com.beyole.bean.Notification;
 import com.beyole.bean.User;
 import com.beyole.constant.APIConstant;
 import com.beyole.intelligentcampus.me.ExerciseActivity;

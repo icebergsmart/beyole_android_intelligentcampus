@@ -93,7 +93,7 @@ public class ExerciseActivity extends Activity {
 							exercisesList.add(exercise);
 						}
 						mUserExercises = exercisesList;
-						mExerciseAdapter = new ExerciseAdapter(ExerciseActivity.this, mUserExercises, mExerciseListView);
+						mExerciseAdapter = new ExerciseAdapter(ExerciseActivity.this, mUserExercises, mExerciseListView, currentUserId);
 						mExerciseListView.setAdapter(mExerciseAdapter);
 					} else {
 						mExerciseListView.setVisibility(View.GONE);

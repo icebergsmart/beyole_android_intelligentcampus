@@ -11,6 +11,26 @@
     <ListView
         android:id="@+id/activity_focus_listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:id="@+id/activity_focus_no_focus"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="6.0dip"
+            android:drawableTop="@drawable/no_fans"
+            android:text="没有关注的人哦~"
+            android:textColor="#b8b8b8"
+            android:textSize="18sp" />
+    </RelativeLayout>
 
 </LinearLayout>

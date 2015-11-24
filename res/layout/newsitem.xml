@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:text="title"
-            android:textSize="15sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_content"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:maxLines="3"
             android:text="content"
-            android:textSize="10sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
 </LinearLayout>

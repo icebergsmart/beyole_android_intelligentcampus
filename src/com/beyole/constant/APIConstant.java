@@ -30,9 +30,15 @@ public class APIConstant {
 	// 用户关注粉丝
 	public static final String USERFOCUSFANSINTERFACE = COMMONURL + "/user/fans/addrelationaboutuserfocusfans.action";
 
-	//用户取消关注粉丝
-	public static final String USERCANCLEFOCUSFANSINTERFACE =COMMONURL+"/user/fans/removerelationaboutuserfocusfans.action";
+	// 用户取消关注粉丝
+	public static final String USERCANCLEFOCUSFANSINTERFACE = COMMONURL + "/user/fans/removerelationaboutuserfocusfans.action";
 
-	//用户查询参加活动列表接口
-	public static final String USERPARTICIPATEDEXERCISEINTERFACE =COMMONURL+"/activity/user/findallparticipatedexercisesbyuserid.action";
+	// 用户查询参加活动列表接口
+	public static final String USERPARTICIPATEDEXERCISEINTERFACE = COMMONURL + "/activity/user/findallparticipatedexercisesbyuserid.action";
+
+	// 用户删除参与活动接口
+	public static final String DELETEUSERPARTICIPATEDEXERCISE = COMMONURL + "/activity/user/deleteparticipatedexercisesbyid.action";
+
+	// 获取关注的人列表
+	public static final String FINDFOCUSLISTINTERFACE = COMMONURL + "/user/fans/finduserfocusbyuserid.action";
 }

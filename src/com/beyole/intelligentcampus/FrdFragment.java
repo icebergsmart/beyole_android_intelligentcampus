@@ -42,13 +42,13 @@ public class FrdFragment extends Fragment {
 	private View view;
 	private static final int lineNumber = 4;
 	private String[] titles = new String[] { "新鲜事", "周边", "活动", "Find Me" };
-	private int[] img = new int[] { R.drawable.more1, R.drawable.more2, R.drawable.more3, R.drawable.more4 };
+	private int[] img = new int[] { R.drawable.function_main01, R.drawable.function_main02, R.drawable.function_main03, R.drawable.function_main04 };
 
 	private String[] titles1 = new String[] { "快递联盟", "兼职招聘", "失物招领", "二手市场" };
-	private int[] img1 = new int[] { R.drawable.more1, R.drawable.more2, R.drawable.more3, R.drawable.more4 };
+	private int[] img1 = new int[] { R.drawable.function_main05, R.drawable.function_main06, R.drawable.function_main07, R.drawable.function_main08 };
 
-	private String[] titles2 = new String[] { "计步器", "日记本", "公开课", "导航", "闹钟" };
-	private int[] img2 = new int[] { R.drawable.more1, R.drawable.more2, R.drawable.more3, R.drawable.more4, R.drawable.more5 };
+	private String[] titles2 = new String[] { "计步器", "日记本", "公开课", "闹钟","运动" };
+	private int[] img2 = new int[] { R.drawable.function_main09, R.drawable.function_main010, R.drawable.function_main011, R.drawable.function_main012, R.drawable.function_main013 };
 
 	public LocationClient mLocationClient = null;
 	public BDLocationListener myListener = new MyLocationListener();
