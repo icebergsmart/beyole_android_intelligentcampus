@@ -36,6 +36,7 @@ import com.beyole.intelligentcampus.me.ExerciseActivity;
 import com.beyole.intelligentcampus.me.FansActivity;
 import com.beyole.intelligentcampus.me.FindMeActivity;
 import com.beyole.intelligentcampus.me.FocusActivity;
+import com.beyole.intelligentcampus.me.PersonZoneActivity;
 import com.beyole.intelligentcampus.settings.QRActivity;
 import com.beyole.util.JsonUtils;
 import com.beyole.util.SyncHttp;
@@ -69,7 +70,7 @@ public class MeFragment extends Fragment {
 	private int mHeight;
 	private View view;
 	private String[] titles = new String[] { "我的资料", "我的名片", "通知", "数据中心", "勋章墙", "发布活动", "发起投票", "积分商城" };
-	private int[] img = new int[] { R.drawable.more1, R.drawable.more2, R.drawable.more3, R.drawable.more4, R.drawable.more5, R.drawable.more6, R.drawable.more7, R.drawable.more7 };
+	private int[] img = new int[] { R.drawable.me_main01, R.drawable.me_main02, R.drawable.me_main03, R.drawable.me_main04, R.drawable.me_main05, R.drawable.me_main06, R.drawable.me_main07, R.drawable.me_main08 };
 
 	private Button mRegisterBtn;
 	private Button mLoginBtn;
@@ -167,6 +168,7 @@ public class MeFragment extends Fragment {
 		mTabFansLbtn.setOnClickListener(listener);
 		mTabFocusLbtn.setOnClickListener(listener);
 		mTabExerciseBtn.setOnClickListener(listener);
+		userImageDetailsView.setOnClickListener(listener);
 	}
 
 	class MyOnClickListener implements OnClickListener {
@@ -212,6 +214,15 @@ public class MeFragment extends Fragment {
 					intent4 = new Intent(getActivity(), LoginActivity.class);
 				}
 				startActivity(intent4);
+				break;
+			case R.id.id_imageDetailsView:
+				Intent intent5=null;
+				if (currentUser != null && currentUser.getUserId() > 0) {
+					intent5 = new Intent(getActivity(), PersonZoneActivity.class);
+				} else {
+					intent5 = new Intent(getActivity(), LoginActivity.class);
+				}
+				startActivity(intent5);
 				break;
 			}
 		}

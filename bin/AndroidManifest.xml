@@ -121,6 +121,11 @@
             android:label="ExerciseActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.me.PersonZoneActivity"
+            android:label="PersonZoneActivity"
+            android:screenOrientation="portrait" >
+        </activity>
         <!-- 百度定位service申明 -->
         <service
             android:name="com.baidu.location.f"

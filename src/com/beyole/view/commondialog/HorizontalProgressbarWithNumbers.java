@@ -135,6 +135,7 @@ public class HorizontalProgressbarWithNumbers extends ProgressBar {
 		// 绘制文本
 		if (mIfDrawtext) {
 			mPaint.setColor(mTextColor);
+			mPaint.setAntiAlias(true);
 			canvas.drawText(text, processPosX, -textHeight, mPaint);
 		}
 		// 绘制未到达的进度

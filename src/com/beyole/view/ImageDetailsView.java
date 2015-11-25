@@ -91,6 +91,7 @@ public class ImageDetailsView extends View implements OnClickListener {
 		mTextBound = new Rect();
 		// 绘制字体需要的范围
 		mPaint.setTextSize(mTitleSize);
+		mPaint.setAntiAlias(true);
 		Log.i("test", "文字是:" + mTitleText);
 		mPaint.getTextBounds(mTitleText, 0, mTitleText.length(), mTextBound);
 	}
@@ -139,6 +140,7 @@ public class ImageDetailsView extends View implements OnClickListener {
 		mPaint.setStyle(Paint.Style.STROKE);
 		// 设置画笔颜色
 		mPaint.setColor(BORDER_COLOR);
+		mPaint.setAntiAlias(true);
 		canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), mPaint);
 
 		// 绘制文字

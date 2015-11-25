@@ -12,7 +12,7 @@
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="180dip"
+            android:layout_height="190dip"
             android:background="@drawable/function_top_bg" >
 
             <LinearLayout
@@ -24,13 +24,13 @@
 
                 <com.beyole.view.ImageDetailsView
                     android:id="@+id/id_imageDetailsView"
-                    android:layout_width="60dp"
-                    android:layout_height="70dp"
+                    android:layout_width="70dp"
+                    android:layout_height="85dp"
                     android:padding="2dp"
                     beyole:titleColor="#ffffff"
                     beyole:titleImage="@drawable/user_information_img"
                     beyole:titleImageScope="fillXY"
-                    beyole:titleSize="12sp"
+                    beyole:titleSize="16sp"
                     beyole:titleText="未登录" />
 
                 <com.beyole.view.MyTextView
@@ -42,7 +42,7 @@
                     android:ellipsize="end"
                     android:text="还未获取您的定位数据，请稍后..."
                     android:textColor="#ffffff"
-                    android:textSize="13sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
