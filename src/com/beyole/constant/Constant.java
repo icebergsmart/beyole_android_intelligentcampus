@@ -9,7 +9,7 @@ package com.beyole.constant;
 public class Constant {
 
 	// 远程服务器地址
-	public static final String REMOTESERVER = "http://192.168.1.100";
+	public static final String REMOTESERVER = "http://10.255.24.138";
 
 	// 远程服务器端口
 	public static final String REMOTESERVERPORT = "8080";

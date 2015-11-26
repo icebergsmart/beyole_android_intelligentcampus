@@ -126,6 +126,81 @@
             android:label="PersonZoneActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.person.FreshTalk"
+            android:label="FreshTalk"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.person.NearByActivity"
+            android:label="NearByActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.person.ExerciseActivity"
+            android:label="ExerciseActivity1"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.person.FindMeActivity"
+            android:label="FindMeActivity1"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.convenient.ExpressActivity"
+            android:label="ExpressActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.convenient.RecruitActivity"
+            android:label="RecruitActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.convenient.LossActivity"
+            android:label="LossActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.convenient.SecondHandActivity"
+            android:label="SecondHandActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.life.DiaryActivity"
+            android:label="DiaryActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.life.WeatherActivity"
+            android:label="WeatherActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.life.CourseActivity"
+            android:label="CourseActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.me.items.InformationActivity"
+            android:label="InformationActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.me.items.NoticeActivity"
+            android:label="NoticeActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.me.items.DeliveryExerciseActivity"
+            android:label="DeliveryExerciseActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.me.items.DeliveryVoteActivity"
+            android:label="DeliveryVoteActivity"
+            android:screenOrientation="portrait" >
+        </activity>
         <!-- 百度定位service申明 -->
         <service
             android:name="com.baidu.location.f"

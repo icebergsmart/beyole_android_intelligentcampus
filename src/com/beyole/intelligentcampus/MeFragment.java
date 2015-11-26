@@ -37,6 +37,10 @@ import com.beyole.intelligentcampus.me.FansActivity;
 import com.beyole.intelligentcampus.me.FindMeActivity;
 import com.beyole.intelligentcampus.me.FocusActivity;
 import com.beyole.intelligentcampus.me.PersonZoneActivity;
+import com.beyole.intelligentcampus.me.items.DeliveryExerciseActivity;
+import com.beyole.intelligentcampus.me.items.DeliveryVoteActivity;
+import com.beyole.intelligentcampus.me.items.InformationActivity;
+import com.beyole.intelligentcampus.me.items.NoticeActivity;
 import com.beyole.intelligentcampus.settings.QRActivity;
 import com.beyole.util.JsonUtils;
 import com.beyole.util.SyncHttp;
@@ -69,8 +73,10 @@ public class MeFragment extends Fragment {
 	private TextView mUserDesc;
 	private int mHeight;
 	private View view;
-	private String[] titles = new String[] { "我的资料", "我的名片", "通知", "数据中心", "勋章墙", "发布活动", "发起投票", "积分商城" };
-	private int[] img = new int[] { R.drawable.me_main01, R.drawable.me_main02, R.drawable.me_main03, R.drawable.me_main04, R.drawable.me_main05, R.drawable.me_main06, R.drawable.me_main07, R.drawable.me_main08 };
+	// , "数据中心", "勋章墙", "积分商城"
+	// , R.drawable.me_main06, R.drawable.me_main07, R.drawable.me_main08
+	private String[] titles = new String[] { "我的资料", "我的名片", "通知", "发布活动", "发起投票" };
+	private int[] img = new int[] { R.drawable.me_main01, R.drawable.me_main02, R.drawable.me_main03, R.drawable.me_main04, R.drawable.me_main05 };
 
 	private Button mRegisterBtn;
 	private Button mLoginBtn;
@@ -120,13 +126,26 @@ public class MeFragment extends Fragment {
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 					switch (position) {
+					case TITLE1:
+						Intent intent0 = new Intent(getActivity(), InformationActivity.class);
+						startActivity(intent0);
+						break;
 					case TITLE2:
 						Intent intent1 = new Intent(getActivity(), QRActivity.class);
 						startActivity(intent1);
 						break;
-					case TITLE7:
-						Intent intent = new Intent(getActivity(), FindMeActivity.class);
-						startActivity(intent);
+					case TITLE3:
+						Intent intent2=new Intent(getActivity(),NoticeActivity.class);
+						startActivity(intent2);
+						break;
+					case TITLE4:
+						Intent intent3=new Intent(getActivity(),DeliveryExerciseActivity.class);
+						startActivity(intent3);
+						break;
+					case TITLE5:
+						Intent intent4=new Intent(getActivity(),DeliveryVoteActivity.class);
+						//Intent intent = new Intent(getActivity(), FindMeActivity.class);
+						startActivity(intent4);
 						break;
 					}
 				}
@@ -216,7 +235,7 @@ public class MeFragment extends Fragment {
 				startActivity(intent4);
 				break;
 			case R.id.id_imageDetailsView:
-				Intent intent5=null;
+				Intent intent5 = null;
 				if (currentUser != null && currentUser.getUserId() > 0) {
 					intent5 = new Intent(getActivity(), PersonZoneActivity.class);
 				} else {

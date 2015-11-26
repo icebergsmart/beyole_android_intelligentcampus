@@ -23,6 +23,17 @@ import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
 import com.beyole.adapter.ItemAdapter;
 import com.beyole.intelligentcampus.functions.SportSwitchActivity;
+import com.beyole.intelligentcampus.functions.convenient.ExpressActivity;
+import com.beyole.intelligentcampus.functions.convenient.LossActivity;
+import com.beyole.intelligentcampus.functions.convenient.RecruitActivity;
+import com.beyole.intelligentcampus.functions.convenient.SecondHandActivity;
+import com.beyole.intelligentcampus.functions.life.CourseActivity;
+import com.beyole.intelligentcampus.functions.life.DiaryActivity;
+import com.beyole.intelligentcampus.functions.life.WeatherActivity;
+import com.beyole.intelligentcampus.functions.person.ExerciseActivity;
+import com.beyole.intelligentcampus.functions.person.FindMeActivity;
+import com.beyole.intelligentcampus.functions.person.FreshTalk;
+import com.beyole.intelligentcampus.functions.person.NearByActivity;
 import com.beyole.util.SyncHttp;
 import com.beyole.view.LineGridview;
 import com.beyole.view.MyTextView;
@@ -47,8 +58,8 @@ public class FrdFragment extends Fragment {
 	private String[] titles1 = new String[] { "快递联盟", "兼职招聘", "失物招领", "二手市场" };
 	private int[] img1 = new int[] { R.drawable.function_main05, R.drawable.function_main06, R.drawable.function_main07, R.drawable.function_main08 };
 
-	private String[] titles2 = new String[] { "计步器", "日记本", "公开课", "闹钟","运动" };
-	private int[] img2 = new int[] { R.drawable.function_main09, R.drawable.function_main010, R.drawable.function_main011, R.drawable.function_main012, R.drawable.function_main013 };
+	private String[] titles2 = new String[] { "运动", "日记本", "公开课", "天气" };
+	private int[] img2 = new int[] { R.drawable.function_main09, R.drawable.function_main010, R.drawable.function_main011, R.drawable.function_main013 };
 
 	public LocationClient mLocationClient = null;
 	public BDLocationListener myListener = new MyLocationListener();
@@ -78,6 +89,30 @@ public class FrdFragment extends Fragment {
 		gridviews.setColumnWidth(width / lineNumber - 10);
 		gridviews.setSelector(R.drawable.hidden_yellow);
 		gridviews.setAdapter(itemAdapter);
+		gridviews.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				switch (position) {
+				case 0:
+					Intent intent = new Intent(getActivity(), FreshTalk.class);
+					startActivity(intent);
+					break;
+				case 1:
+					Intent intent1 = new Intent(getActivity(), NearByActivity.class);
+					startActivity(intent1);
+					break;
+				case 2:
+					Intent intent2 = new Intent(getActivity(), ExerciseActivity.class);
+					startActivity(intent2);
+					break;
+				case 3:
+					Intent intent3 = new Intent(getActivity(), FindMeActivity.class);
+					startActivity(intent3);
+					break;
+				}
+			}
+		});
 		LayoutParams lp = gridviews.getLayoutParams();
 		lp.height = mHeight * lines;
 		Log.i("test", "gridviews的高度为:" + lp.height);
@@ -93,6 +128,18 @@ public class FrdFragment extends Fragment {
 					Intent intent = new Intent(getActivity(), SportSwitchActivity.class);
 					startActivity(intent);
 					break;
+				case 1:
+					Intent intent1 = new Intent(getActivity(), DiaryActivity.class);
+					startActivity(intent1);
+					break;
+				case 2:
+					Intent intent2 = new Intent(getActivity(), CourseActivity.class);
+					startActivity(intent2);
+					break;
+				case 3:
+					Intent intent3 = new Intent(getActivity(), WeatherActivity.class);
+					startActivity(intent3);
+					break;
 				}
 			}
 		});
@@ -103,6 +150,30 @@ public class FrdFragment extends Fragment {
 		gridviews1.setColumnWidth(width / lineNumber - 10);
 		gridviews1.setSelector(R.drawable.hidden_yellow);
 		gridviews1.setAdapter(itemAdapter1);
+		gridviews1.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				switch (position) {
+				case 0:
+					Intent intent = new Intent(getActivity(), ExpressActivity.class);
+					startActivity(intent);
+					break;
+				case 1:
+					Intent intent1 = new Intent(getActivity(), RecruitActivity.class);
+					startActivity(intent1);
+					break;
+				case 2:
+					Intent intent2 = new Intent(getActivity(), LossActivity.class);
+					startActivity(intent2);
+					break;
+				case 3:
+					Intent intent3 = new Intent(getActivity(), SecondHandActivity.class);
+					startActivity(intent3);
+					break;
+				}
+			}
+		});
 		LayoutParams lp1 = gridviews1.getLayoutParams();
 		lp1.height = mHeight1 * lines1;
 		getLocationInformation();
@@ -198,7 +269,7 @@ public class FrdFragment extends Fragment {
 				String weather = weatherObj.getString("weather");
 				String wind = weatherObj.getString("wind");
 				String temperature = weatherObj.getString("temperature");
-				resultSet =city + " " + weather + " " + wind + " " + temperature;
+				resultSet = city + " " + weather + " " + wind + " " + temperature;
 			} else {
 				resultSet = "天气获取失败";
 				Log.i("weather", "天气信息获取失败,code=" + code);
