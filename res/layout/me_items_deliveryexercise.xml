@@ -2,10 +2,42 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     android:orientation="vertical" >
 
     <include
         android:id="@+id/id_me_items_deliveryexercise_top"
         layout="@layout/top" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3.0dip"
+        android:orientation="vertical" >
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="请填写活动名称"
+            android:minLines="1" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:hint="请填写活动内容"
+            android:minLines="10" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:layout_height="40.0dip"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/me_deliveryexercise_submit_btn_selector"
+            android:text="发布活动"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+    </LinearLayout>
 
 </LinearLayout>

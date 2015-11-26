@@ -8,4 +8,406 @@
         android:id="@+id/person_fresh_talk_top"
         layout="@layout/top" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5.0dip"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/person_details_avator"
+                    android:layout_width="50.0dip"
+                    android:layout_height="50.0dip"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_marginTop="5.0dip"
+                    android:background="#00000000"
+                    android:src="@drawable/ic_launcher" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_toRightOf="@id/person_details_avator"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/id_person_details_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Iceberg"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/id_person_details_deliverydate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11-25 12:43"
+                        android:textColor="#A1A1A1"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/person_details_deleteBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30.0dip"
+                    android:padding="3.0dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15.0dip"
+                    android:background="@drawable/fans_focus_im_selector"
+                    android:gravity="center"
+                    android:text="阅读:123"
+                    android:textColor="@color/color_blue_normal"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/id_person_details_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="8.0dip"
+            android:text="你要做一个不动声色的大人了。不准情绪化，不准偷偷想念，不准回头看，去过自己另外的生活。"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:layout_marginTop="5.0dip"
+             android:background="@drawable/function_fresh_button_bottom_divider"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/id_person_details_postdeliveryBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@drawable/person_details_btn_selector"
+                android:gravity="center"
+                android:text="转发123"
+                android:textColor="#A1A1A1"
+                android:textSize="16sp"
+                android:width="0dp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="18.0dip"
+                android:layout_gravity="center_vertical"
+                android:background="#10535353" />
+
+            <Button
+                android:id="@+id/id_person_details_commontBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@drawable/person_details_btn_selector"
+                android:gravity="center"
+                android:text="评论45"
+                android:textColor="#A1A1A1"
+                android:textSize="16sp"
+                android:width="0dp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="18.0dip"
+                android:layout_gravity="center_vertical"
+                android:background="#10535353" />
+
+            <Button
+                android:id="@+id/id_person_details_prasiseBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@drawable/person_details_btn_selector"
+                android:gravity="center"
+                android:text="赞1236"
+                android:textColor="#A1A1A1"
+                android:textSize="16sp"
+                android:width="0dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5.0dip"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/person_details_avator1"
+                    android:layout_width="50.0dip"
+                    android:layout_height="50.0dip"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_marginTop="5.0dip"
+                    android:background="#00000000"
+                    android:src="@drawable/ic_launcher" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_toRightOf="@id/person_details_avator1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/id_person_details_username1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Iceberg"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/id_person_details_deliverydate1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11-25 12:43"
+                        android:textColor="#A1A1A1"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/person_details_deleteBtn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30.0dip"
+                    android:padding="3.0dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15.0dip"
+                    android:background="@drawable/fans_focus_im_selector"
+                    android:gravity="center"
+                    android:text="阅读:12"
+                    android:textColor="@color/color_blue_normal"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/id_person_details_content1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="8.0dip"
+            android:text="你要做一个不动声色的大人了。不准情绪化，不准偷偷想念，不准回头看，去过自己另外的生活。"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+             android:background="@drawable/function_fresh_button_bottom_divider"
+            android:layout_marginTop="5.0dip"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/id_person_details_postdeliveryBtn2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@drawable/person_details_btn_selector"
+                android:gravity="center"
+                android:text="转发123"
+                android:textColor="#A1A1A1"
+                android:textSize="16sp"
+                android:width="0dp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="18.0dip"
+                android:layout_gravity="center_vertical"
+                android:background="#10535353" />
+
+            <Button
+                android:id="@+id/id_person_details_commontBtn2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@drawable/person_details_btn_selector"
+                android:gravity="center"
+                android:text="评论45"
+                android:textColor="#A1A1A1"
+                android:textSize="16sp"
+                android:width="0dp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="18.0dip"
+                android:layout_gravity="center_vertical"
+                android:background="#10535353" />
+
+            <Button
+                android:id="@+id/id_person_details_prasiseBtn2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@drawable/person_details_btn_selector"
+                android:gravity="center"
+                android:text="赞1236"
+                android:textColor="#A1A1A1"
+                android:textSize="16sp"
+                android:width="0dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5.0dip"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/person_details_avator3"
+                    android:layout_width="50.0dip"
+                    android:layout_height="50.0dip"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_marginTop="5.0dip"
+                    android:background="#00000000"
+                    android:src="@drawable/ic_launcher" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_toRightOf="@id/person_details_avator3"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/id_person_details_username3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Iceberg"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/id_person_details_deliverydate3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11-25 12:43"
+                        android:textColor="#A1A1A1"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/person_details_deleteBtn3"
+                    android:layout_width="wrap_content"
+                    android:padding="3.0dip"
+                    android:layout_height="30.0dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15.0dip"
+                    android:background="@drawable/fans_focus_im_selector"
+                    android:gravity="center"
+                    android:text="阅读:1000"
+                    android:textColor="@color/color_blue_normal"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/id_person_details_content3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+             android:padding="8.0dip"
+            android:text="你要做一个不动声色的大人了。不准情绪化，不准偷偷想念，不准回头看，去过自己另外的生活。"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:layout_marginTop="5.0dip"
+            android:background="@drawable/function_fresh_button_bottom_divider"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/id_person_details_postdeliveryBtn3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@drawable/person_details_btn_selector"
+                android:gravity="center"
+                android:text="转发123"
+                android:textColor="#A1A1A1"
+                android:textSize="16sp"
+                android:width="0dp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="18.0dip"
+                android:layout_gravity="center_vertical"
+                android:background="#10535353" />
+
+            <Button
+                android:id="@+id/id_person_details_commontBtn3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@drawable/person_details_btn_selector"
+                android:gravity="center"
+                android:text="评论45"
+                android:textColor="#A1A1A1"
+                android:textSize="16sp"
+                android:width="0dp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="18.0dip"
+                android:layout_gravity="center_vertical"
+                android:background="#10535353" />
+
+            <Button
+                android:id="@+id/id_person_details_prasiseBtn3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@drawable/person_details_btn_selector"
+                android:gravity="center"
+                android:text="赞1236"
+                android:textColor="#A1A1A1"
+                android:textSize="16sp"
+                android:width="0dp" />
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

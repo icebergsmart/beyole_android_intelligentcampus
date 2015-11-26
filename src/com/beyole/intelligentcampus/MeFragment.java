@@ -73,10 +73,10 @@ public class MeFragment extends Fragment {
 	private TextView mUserDesc;
 	private int mHeight;
 	private View view;
-	// , "数据中心", "勋章墙", "积分商城"
-	// , R.drawable.me_main06, R.drawable.me_main07, R.drawable.me_main08
-	private String[] titles = new String[] { "我的资料", "我的名片", "通知", "发布活动", "发起投票" };
-	private int[] img = new int[] { R.drawable.me_main01, R.drawable.me_main02, R.drawable.me_main03, R.drawable.me_main04, R.drawable.me_main05 };
+	// , "数据中心", "勋章墙", "积分商城", "发起投票"
+	// , R.drawable.me_main06, R.drawable.me_main07, R.drawable.me_main08, R.drawable.me_main05
+	private String[] titles = new String[] { "我的资料", "我的名片", "通知", "发布活动" };
+	private int[] img = new int[] { R.drawable.me_main01, R.drawable.me_main02, R.drawable.me_main03, R.drawable.me_main04 };
 
 	private Button mRegisterBtn;
 	private Button mLoginBtn;
@@ -142,11 +142,11 @@ public class MeFragment extends Fragment {
 						Intent intent3=new Intent(getActivity(),DeliveryExerciseActivity.class);
 						startActivity(intent3);
 						break;
-					case TITLE5:
+					/*case TITLE5:
 						Intent intent4=new Intent(getActivity(),DeliveryVoteActivity.class);
 						//Intent intent = new Intent(getActivity(), FindMeActivity.class);
 						startActivity(intent4);
-						break;
+						break;*/
 					}
 				}
 			});
