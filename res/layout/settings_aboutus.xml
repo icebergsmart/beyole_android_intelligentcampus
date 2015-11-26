@@ -8,29 +8,52 @@
         android:id="@+id/id_settings_abouts_top"
         layout="@layout/top" />
 
-    <com.beyole.view.ImageDetailsView
-        android:id="@+id/id_imageDetailsView"
-        android:layout_width="160dp"
-        android:layout_height="70dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:padding="2dp"
-        beyole:titleColor="#000000"
-        beyole:titleImage="@drawable/ic_launcher"
-        beyole:titleImageScope="center"
-        beyole:titleSize="12sp"
-        beyole:titleText="智能校园APP团队开发" />
+        android:orientation="vertical" >
 
-    <!--
+        <ImageView
+            android:layout_width="100.0dip"
+            android:layout_height="100.0dip"
+            android:layout_gravity="center_horizontal"
+            android:background="#00000000"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+   			android:id="@+id/id_contact_version"
+            android:layout_marginTop="15.0dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="版本信息:v1.0"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/id_contact_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="开发人员:Iceberg"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/id_contact_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="联系邮箱:xuejiawei123@yeah.net"
+            android:textSize="16sp" />
          <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/id_settings_abouts_top"
-        android:layout_gravity="center"
-        android:drawableTop="@drawable/ic_launcher"
-        android:gravity="center"
-        android:text=""
-        android:textSize="14sp" />
-    -->
+             android:id="@+id/id_app_description"
+            android:layout_width="250.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.0dip"
+            android:layout_gravity="center_vertical"
+            android:text="智能校园是一款基于校园平台的智能app,方便快捷的发布公告、通知，利用现代化技术，打造智能一体化管理平台"
+            android:textSize="16sp" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="fill_parent"
@@ -39,6 +62,6 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="版权所有归Iceberg所有  ◎2015-2016"
-        android:textSize="10sp" />
+        android:textSize="14sp" />
 
 </RelativeLayout>
