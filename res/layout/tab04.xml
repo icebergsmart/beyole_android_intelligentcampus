@@ -51,13 +51,14 @@
                         android:layout_marginRight="2.0dip"
                         android:background="@drawable/list_item_top_selector"
                         android:clickable="true"
+                        android:minHeight="55.0dip"
                         android:paddingBottom="8.0dip"
                         android:paddingTop="8.0dip" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
-                            android:drawableLeft="@drawable/settings_icon"
+                            android:drawableLeft="@drawable/settings_accont_manage"
                             android:drawablePadding="10.0dip"
                             android:gravity="center_vertical"
                             android:includeFontPadding="false"
@@ -82,13 +83,14 @@
                         android:layout_marginRight="2.0dip"
                         android:background="@drawable/list_item_mid_selector"
                         android:clickable="true"
+                        android:minHeight="55.0dip"
                         android:paddingBottom="8.0dip"
                         android:paddingTop="8.0dip" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
-                            android:drawableLeft="@drawable/settings_icon"
+                            android:drawableLeft="@drawable/settings_locker"
                             android:drawablePadding="10.0dip"
                             android:gravity="center_vertical"
                             android:includeFontPadding="false"
@@ -100,6 +102,7 @@
                         <com.zcw.togglebutton.ToggleButton
                             android:layout_width="54dp"
                             android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
                             android:layout_marginRight="20.0dip" >
                         </com.zcw.togglebutton.ToggleButton>
 
@@ -120,13 +123,14 @@
                         android:layout_marginRight="2.0dip"
                         android:background="@drawable/list_item_mid_selector"
                         android:clickable="true"
+                        android:minHeight="55.0dip"
                         android:paddingBottom="8.0dip"
                         android:paddingTop="8.0dip" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
-                            android:drawableLeft="@drawable/settings_icon"
+                            android:drawableLeft="@drawable/settings_comon"
                             android:drawablePadding="10.0dip"
                             android:gravity="center_vertical"
                             android:includeFontPadding="false"
@@ -151,13 +155,14 @@
                         android:layout_marginRight="2.0dip"
                         android:background="@drawable/list_item_bot_selector"
                         android:clickable="true"
+                        android:minHeight="55.0dip"
                         android:paddingBottom="8.0dip"
                         android:paddingTop="8.0dip" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
-                            android:drawableLeft="@drawable/settings_icon"
+                            android:drawableLeft="@drawable/settings_alert"
                             android:drawablePadding="10.0dip"
                             android:gravity="center_vertical"
                             android:includeFontPadding="false"
@@ -169,6 +174,7 @@
                         <com.zcw.togglebutton.ToggleButton
                             android:layout_width="54dp"
                             android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
                             android:layout_marginRight="20.0dip" >
                         </com.zcw.togglebutton.ToggleButton>
 
@@ -214,13 +220,14 @@
                         android:layout_marginRight="2.0dip"
                         android:background="@drawable/list_item_top_selector"
                         android:clickable="true"
+                        android:minHeight="55.0dip"
                         android:paddingBottom="8.0dip"
                         android:paddingTop="8.0dip" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
-                            android:drawableLeft="@drawable/settings_icon"
+                            android:drawableLeft="@drawable/settings_helppsd"
                             android:drawablePadding="10.0dip"
                             android:gravity="center_vertical"
                             android:includeFontPadding="false"
@@ -245,13 +252,14 @@
                         android:layout_marginRight="2.0dip"
                         android:background="@drawable/list_item_mid_selector"
                         android:clickable="true"
+                        android:minHeight="55.0dip"
                         android:paddingBottom="8.0dip"
                         android:paddingTop="8.0dip" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
-                            android:drawableLeft="@drawable/settings_icon"
+                            android:drawableLeft="@drawable/settings_feedback"
                             android:drawablePadding="10.0dip"
                             android:gravity="center_vertical"
                             android:includeFontPadding="false"
@@ -276,13 +284,14 @@
                         android:layout_marginRight="2.0dip"
                         android:background="@drawable/list_item_mid_selector"
                         android:clickable="true"
+                        android:minHeight="55.0dip"
                         android:paddingBottom="8.0dip"
                         android:paddingTop="8.0dip" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
-                            android:drawableLeft="@drawable/settings_icon"
+                            android:drawableLeft="@drawable/settings_function_introduce"
                             android:drawablePadding="10.0dip"
                             android:gravity="center_vertical"
                             android:includeFontPadding="false"
@@ -307,13 +316,14 @@
                         android:layout_marginRight="2.0dip"
                         android:background="@drawable/list_item_mid_selector"
                         android:clickable="true"
+                        android:minHeight="55.0dip"
                         android:paddingBottom="8.0dip"
                         android:paddingTop="8.0dip" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
-                            android:drawableLeft="@drawable/settings_icon"
+                            android:drawableLeft="@drawable/settings_update"
                             android:drawablePadding="10.0dip"
                             android:gravity="center_vertical"
                             android:includeFontPadding="false"
@@ -338,13 +348,14 @@
                         android:layout_marginRight="2.0dip"
                         android:background="@drawable/list_item_bot_selector"
                         android:clickable="true"
+                        android:minHeight="55.0dip"
                         android:paddingBottom="8.0dip"
                         android:paddingTop="8.0dip" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
-                            android:drawableLeft="@drawable/settings_icon"
+                            android:drawableLeft="@drawable/settings_aboutus"
                             android:drawablePadding="10.0dip"
                             android:gravity="center_vertical"
                             android:includeFontPadding="false"
