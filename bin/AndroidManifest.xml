@@ -201,6 +201,21 @@
             android:label="DeliveryVoteActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.convenient.LossDetailsActivity"
+            android:label="LossDetailsActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.convenient.SecondHandDetailsActivity"
+            android:label="SecondHandDetailsActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.convenient.RecruitDetailsActivity"
+            android:label="RecruitDetailsActivity"
+            android:screenOrientation="portrait" >
+        </activity>
         <!-- 百度定位service申明 -->
         <service
             android:name="com.baidu.location.f"

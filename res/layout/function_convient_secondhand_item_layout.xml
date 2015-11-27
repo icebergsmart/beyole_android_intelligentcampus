@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5.0dip"
+         android:background="@drawable/function_loss_items_selector"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/id_convenient_secondhand_avator"
+                    android:layout_width="50.0dip"
+                    android:layout_height="50.0dip"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_marginTop="5.0dip"
+                    android:background="#00000000"
+                    android:src="@drawable/ic_launcher" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_toRightOf="@id/id_convenient_secondhand_avator"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/id_convenient_secondhand_person_details_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Iceberg"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/id_convenient_secondhand_deliverydate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11-25 12:43"
+                        android:textColor="#A1A1A1"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/id_convenient_secondhand_person_details_ing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30.0dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15.0dip"
+                    android:background="#00000000"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:padding="3.0dip"
+                    android:text="进行中"
+                    android:textColor="@color/color_blue_normal"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/id_convenient_secondhand_person_details_over"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30.0dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15.0dip"
+                    android:background="#00000000"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:padding="3.0dip"
+                    android:text="已结束"
+                    android:textColor="#EA897E"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/id_convenient_secondhand_person_details_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="8.0dip"
+            android:text="你要做一个不动声色的大人了。不准情绪化，不准偷偷想念，不准回头看，去过自己另外的生活。"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>
