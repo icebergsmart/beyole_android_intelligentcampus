@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/person_details_btn_selector"
+    android:gravity="center"
+    android:minHeight="40.0dip"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/id_function_delicate_details_items_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#00000000"
+        android:src="@drawable/default_img_square" />
+
+    <TextView
+        android:id="@+id/id_function_delicate_details_items_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="3.0dip"
+        android:gravity="center"
+        android:padding="2.0dip"
+        android:text="8种风光摄影技巧教学视频"
+        android:textSize="14sp" />
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.beyole.intelligentcampus"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -7,5 +8,42 @@
     <include
         android:id="@+id/id_life_course_top"
         layout="@layout/top" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/activity_life_course_btn_delicate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="精选课程" />
+
+        <RadioButton
+            android:id="@+id/activity_life_course_btn_all"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="全部课程" />
+    </RadioGroup>
+
+    <com.beyole.util.indicator.PageIndicator
+        android:id="@+id/activity_life_course_pager_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        app:fades="false" >
+    </com.beyole.util.indicator.PageIndicator>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/activity_life_course_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

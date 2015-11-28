@@ -56,6 +56,6 @@
     <color name="color_white">#FFFFFF</color>
     <color name="color_border_white">#e5e5e5</color>
     <color name="color_gray">#999999</color>
-    
+    <color name="default_page_indicator_selected_color">#00b285</color>
 
 </resources>

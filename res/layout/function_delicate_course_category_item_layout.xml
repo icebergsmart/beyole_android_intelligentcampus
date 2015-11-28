@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="40.0dip"
+    android:layout_gravity="center"
+    android:background="@drawable/person_details_btn_selector"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="#00000000"
+        android:src="@drawable/green_btn_bg_normal" />
+
+    <TextView
+        android:id="@+id/id_function_delicate_category_items_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3.0dip"
+        android:padding="2.0dip"
+        android:text="编程语言"
+        android:textSize="14sp" />
+
+</LinearLayout>
