@@ -22,7 +22,8 @@
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
-            android:text="精选课程" />
+            android:text="精选课程"
+            android:textColor="#00b285" />
 
         <RadioButton
             android:id="@+id/activity_life_course_btn_all"

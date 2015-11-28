@@ -14,6 +14,7 @@ import com.beyole.intelligentcampus.functions.life.fragment.DelicateCourseFragme
  */
 public class FragmentAdapter extends FragmentPagerAdapter {
 
+
 	public FragmentAdapter(FragmentManager fm) {
 		super(fm);
 	}
@@ -27,7 +28,6 @@ public class FragmentAdapter extends FragmentPagerAdapter {
 			break;
 		case 1:
 			fragment = new AllCourseFragment();
-
 			break;
 		}
 		return fragment;
