@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
+import com.beyole.bean.AllCourseCategory;
 import com.beyole.bean.Course;
 import com.beyole.bean.VideoInfo;
 import com.beyole.intelligentcampus.R;
@@ -32,8 +33,8 @@ public class DelicateCourseFragment extends Fragment {
 	private NoScrollGridView mDetailsGridView;
 	private CourseCategoryGridViewAdapter mAdapter;
 	private CourseDetailsGridViewAdapter mDetailsAdapter;
-	private List<String> data = new ArrayList<String>();
 	private List<Course> courses = new ArrayList<Course>();
+	private List<AllCourseCategory> dataSet = new ArrayList<AllCourseCategory>();
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,9 +47,25 @@ public class DelicateCourseFragment extends Fragment {
 		mGridView = (NoScrollGridView) mView.findViewById(R.id.id_function_delicate_course_gridview);
 		mDetailsGridView = (NoScrollGridView) mView.findViewById(R.id.id_function_delicate_course_details_gridview);
 		initDatas();
-		mAdapter = new CourseCategoryGridViewAdapter(getActivity(), data);
+		mAdapter = new CourseCategoryGridViewAdapter(getActivity(), dataSet);
 		mDetailsAdapter = new CourseDetailsGridViewAdapter(getActivity(), courses);
 		mGridView.setAdapter(mAdapter);
+		mGridView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Intent intent = new Intent(getActivity(), CourseListActivity.class);
+				ArrayList list = new ArrayList();
+				list.add(dataSet);
+				Bundle bundle = new Bundle();
+				bundle.putParcelableArrayList("categoryList", list);
+				bundle.putInt("clickPosition", position);
+				bundle.putString("categoryName", "推荐栏目");
+				bundle.putInt("isRecommend", 1);
+				intent.putExtras(bundle);
+				getActivity().startActivity(intent);
+			}
+		});
 		mDetailsGridView.setAdapter(mDetailsAdapter);
 		mDetailsGridView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -65,14 +82,11 @@ public class DelicateCourseFragment extends Fragment {
 	}
 
 	private void initDatas() {
-		data.add("编程语言");
-		data.add("摄影摄像");
-		data.add("办公技能");
-		data.add("求职应聘");
-		data.add("实用英语");
-		data.add("财税投资");
-		data.add("亲子育儿");
-		data.add("更多...");
+		AllCourseCategory subCategoryInfo = null;
+		for (int i = 0; i < 8; i++) {
+			subCategoryInfo = new AllCourseCategory(i, "推荐栏目" + +i, i);
+			dataSet.add(subCategoryInfo);
+		}
 		Course course = null;
 		for (int i = 0; i < 6; i++) {
 			List<VideoInfo> videoList = new ArrayList<VideoInfo>();

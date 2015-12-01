@@ -86,4 +86,8 @@ public class SubCourseCategoryGridViewAdapter extends BaseAdapter {
 	class ViewHolder {
 		public Button categoryName;
 	}
+
+	public void setClickItem(int clickItem) {
+		this.clickedItem = clickItem;
+	}
 }

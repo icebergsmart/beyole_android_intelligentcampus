@@ -1,7 +1,6 @@
 package com.beyole.intelligentcampus.functions.life.fragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

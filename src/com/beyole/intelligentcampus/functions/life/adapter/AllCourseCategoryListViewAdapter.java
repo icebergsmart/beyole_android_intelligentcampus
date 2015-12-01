@@ -1,17 +1,24 @@
 package com.beyole.intelligentcampus.functions.life.adapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.beyole.bean.AllCourseCategory;
 import com.beyole.bean.CourseCategory;
 import com.beyole.intelligentcampus.R;
+import com.beyole.intelligentcampus.functions.life.fragment.CourseListActivity;
 import com.beyole.intelligentcampus.functions.life.ui.NoScrollGridView;
 
 /**
@@ -59,8 +66,25 @@ public class AllCourseCategoryListViewAdapter extends BaseAdapter {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		viewHolder.categoryName.setText(courseCategories.get(position).getCategoryName());
-		viewHolder.gridView.setAdapter(new AllCourseCategoryGridViewAdapter(mContext, courseCategories.get(position).getSubCategoryInfo()));
+		final String categoryName=courseCategories.get(position).getCategoryName();
+		viewHolder.categoryName.setText(categoryName);
+		final List<AllCourseCategory> categoryInfo = courseCategories.get(position).getSubCategoryInfo();
+		viewHolder.gridView.setAdapter(new AllCourseCategoryGridViewAdapter(mContext, categoryInfo));
+		viewHolder.gridView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Intent intent = new Intent(mContext, CourseListActivity.class);
+				ArrayList list = new ArrayList();
+				list.add(categoryInfo);
+				Bundle bundle = new Bundle();
+				bundle.putParcelableArrayList("categoryList", list);
+				bundle.putInt("clickPosition", position);
+				bundle.putString("categoryName", categoryName);
+				intent.putExtras(bundle);
+				mContext.startActivity(intent);
+			}
+		});
 		return convertView;
 	}
 

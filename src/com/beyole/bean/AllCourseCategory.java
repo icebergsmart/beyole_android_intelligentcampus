@@ -1,6 +1,8 @@
 package com.beyole.bean;
 
-public class AllCourseCategory {
+import java.io.Serializable;
+
+public class AllCourseCategory implements Serializable{
 
 	private int id;
 	private String categoryName;

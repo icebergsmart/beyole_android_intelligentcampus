@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.beyole.bean.Course;
 import com.beyole.bean.CourseCategory;
 import com.beyole.bean.VideoDetails;
 import com.beyole.intelligentcampus.R;
@@ -22,11 +23,11 @@ import com.beyole.intelligentcampus.R;
  */
 public class CourseVideoListViewAdapter extends BaseAdapter {
 
-	private List<VideoDetails> videoDetails;
+	private List<Course> videoDetails;
 	private LayoutInflater inflater;
 	private Context mContext;
 
-	public CourseVideoListViewAdapter(Context context, List<VideoDetails> data) {
+	public CourseVideoListViewAdapter(Context context, List<Course> data) {
 		videoDetails = data;
 		inflater = LayoutInflater.from(context);
 		mContext = context;
@@ -61,7 +62,7 @@ public class CourseVideoListViewAdapter extends BaseAdapter {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		viewHolder.teacherName.setText(videoDetails.get(position).getTeacherName());
-		viewHolder.videoName.setText(videoDetails.get(position).getVideoName());
+		viewHolder.videoName.setText(videoDetails.get(position).getCourseName());
 		return convertView;
 	}
 
