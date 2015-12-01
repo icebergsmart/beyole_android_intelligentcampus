@@ -1,6 +1,10 @@
 package com.beyole.bean;
 
-public class Course {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Course implements Serializable{
 
 	// 编号
 	private int id;
@@ -8,14 +12,16 @@ public class Course {
 	private int courseId;
 	// 课程类别
 	private int categoryId;
-	// 视频名称
+	// 课程名称
 	private String courseName;
-	// 视频描述图片
+	// 课程描述图片
 	private String courseImageUrl;
-	// 视频主讲教师
+	// 课程主讲教师
 	private String teacherName;
 	// 课程描述
 	private String description;
+	// 课程列表
+	private List<VideoInfo> videoList = new ArrayList<VideoInfo>();
 
 	public Course() {
 	}
@@ -28,6 +34,17 @@ public class Course {
 		this.courseImageUrl = courseImageUrl;
 		this.teacherName = teacherName;
 		this.description = description;
+	}
+
+	public Course(int id, int courseId, int categoryId, String courseName, String courseImageUrl, String teacherName, String description, List<VideoInfo> videoList) {
+		this.id = id;
+		this.courseId = courseId;
+		this.categoryId = categoryId;
+		this.courseName = courseName;
+		this.courseImageUrl = courseImageUrl;
+		this.teacherName = teacherName;
+		this.description = description;
+		this.videoList = videoList;
 	}
 
 	public int getId() {
@@ -76,6 +93,14 @@ public class Course {
 
 	public void setTeacherName(String teacherName) {
 		this.teacherName = teacherName;
+	}
+
+	public List<VideoInfo> getVideoList() {
+		return videoList;
+	}
+
+	public void setVideoList(List<VideoInfo> videoList) {
+		this.videoList = videoList;
 	}
 
 	public String getDescription() {

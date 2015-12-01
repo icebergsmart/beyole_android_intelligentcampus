@@ -3,22 +3,26 @@ package com.beyole.intelligentcampus.functions.life.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.beyole.bean.Course;
+import com.beyole.bean.VideoInfo;
 import com.beyole.intelligentcampus.R;
 import com.beyole.intelligentcampus.functions.life.adapter.CourseCategoryGridViewAdapter;
 import com.beyole.intelligentcampus.functions.life.adapter.CourseDetailsGridViewAdapter;
 import com.beyole.intelligentcampus.functions.life.ui.NoScrollGridView;
 
 /**
- * 精选课程
+ * 公开课下精选课程fragment详情页
  * 
+ * @date 2015/12/1
  * @author Iceberg
  * 
  */
@@ -46,6 +50,18 @@ public class DelicateCourseFragment extends Fragment {
 		mDetailsAdapter = new CourseDetailsGridViewAdapter(getActivity(), courses);
 		mGridView.setAdapter(mAdapter);
 		mDetailsGridView.setAdapter(mDetailsAdapter);
+		mDetailsGridView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Intent intent = new Intent(getActivity(), DetailsCourseActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putSerializable("courseInfo", courses.get(position));
+				intent.putExtras(bundle);
+				startActivity(intent);
+			}
+
+		});
 	}
 
 	private void initDatas() {
@@ -59,7 +75,13 @@ public class DelicateCourseFragment extends Fragment {
 		data.add("更多...");
 		Course course = null;
 		for (int i = 0; i < 6; i++) {
-			course = new Course(i, i, i, "如何学好编程技巧" + i, null, null, null);
+			List<VideoInfo> videoList = new ArrayList<VideoInfo>();
+			VideoInfo videoInfo = null;
+			for (int j = 0; j < 9; j++) {
+				videoInfo = new VideoInfo(j + i, j + i, "第" + (j + 1) + "课如何做好" + i + "个程序员" + j, "http://www.baidu.com", j + i);
+				videoList.add(videoInfo);
+			}
+			course = new Course(i, i, i, "程序员的自我修养" + i, null, "薛佳伟" + i, "这是由薛佳伟" + i + "发布的视频，需要一定的android" + i + "的基础哦。", videoList);
 			courses.add(course);
 		}
 	}

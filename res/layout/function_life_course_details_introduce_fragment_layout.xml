@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/id_stickynavlayout_innerscrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5.0dip"
+            android:text="课程介绍:"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/function_life_course_details_introduce_fragment_video_description_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="7.0dip"
+            android:text="该视频由薛佳伟录制，适用群体为有一定编程基础的本科院校学生。还要有相关的android方面的编程经验。总共分为48个课时，每个课时20分钟，总时长为800分钟，欢迎大家爱收看"
+            android:textColor="#A1A1A1"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.0dip"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5.0dip"
+                android:text="主讲老师:"
+                android:textSize="18sp" />
+
+            <TextView
+                 android:id="@+id/function_life_course_details_introduce_fragment_video_teachername_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="5.0dip"
+                android:paddingLeft="7.0dip"
+                android:text="薛佳伟"
+                android:textColor="#A1A1A1"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

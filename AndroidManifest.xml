@@ -216,6 +216,16 @@
             android:label="RecruitDetailsActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.life.fragment.CourseListActivity"
+            android:label="CourseListActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.life.fragment.DetailsCourseActivity"
+            android:label="DetailsCourseActivity"
+            android:screenOrientation="portrait" >
+        </activity>
         <!-- 百度定位service申明 -->
         <service
             android:name="com.baidu.location.f"

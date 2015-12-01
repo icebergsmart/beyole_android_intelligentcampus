@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#106184"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/id_top_banner_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="IT课程"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="vertical" >
+
+            <com.beyole.intelligentcampus.functions.life.ui.NoScrollGridView
+                android:id="@+id/function_life_details_list_gridview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12.0dip"
+                android:layout_marginLeft="8.0dip"
+                android:layout_marginRight="8.0dip"
+                android:layout_marginTop="12.0dip"
+                android:columnWidth="90dp"
+                android:horizontalSpacing="10dp"
+                android:listSelector="#00000000"
+                android:numColumns="auto_fit"
+                android:scrollbars="none"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="5dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="12.0dip"
+                android:layout_marginLeft="3.0dip"
+                android:layout_marginRight="3.0dip"
+                android:background="#55000000" />
+        </LinearLayout>
+
+        <com.beyole.intelligentcampus.functions.life.ui.NoScrollListView
+            android:id="@+id/function_life_details_list_listview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:listSelector="@drawable/function_loss_items_selector" >
+        </com.beyole.intelligentcampus.functions.life.ui.NoScrollListView>
+    </LinearLayout>
+
+</ScrollView>

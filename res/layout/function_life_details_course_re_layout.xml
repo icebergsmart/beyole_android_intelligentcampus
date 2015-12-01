@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.beyole.intelligentcampus.functions.life.ui.StickyNavLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@id/id_stickynavlayout_topview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#4400ff00" >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#00000000"
+            android:scaleType="fitXY"
+            android:src="@drawable/default_course_poster_banner" />
+    </RelativeLayout>
+
+    <com.beyole.intelligentcampus.functions.life.ui.SimpleViewPagerIndicator
+        android:id="@id/id_stickynavlayout_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ffffffff" >
+    </com.beyole.intelligentcampus.functions.life.ui.SimpleViewPagerIndicator>
+
+    <android.support.v4.view.ViewPager
+        android:id="@id/id_stickynavlayout_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff" >
+    </android.support.v4.view.ViewPager>
+
+</com.beyole.intelligentcampus.functions.life.ui.StickyNavLayout>

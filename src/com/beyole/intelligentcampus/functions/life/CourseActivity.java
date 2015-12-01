@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RadioButton;
@@ -79,7 +78,6 @@ public class CourseActivity extends FragmentActivity {
 
 		@Override
 		public void onPageSelected(int pos) {
-			Log.i("course","位置:"+pos);
 			if (pos == 0) {
 				delicateBtn.setTextColor(0XFF00B285);
 				allBtn.setTextColor(0XFF000000);
