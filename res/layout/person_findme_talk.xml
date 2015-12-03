@@ -4,8 +4,170 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <include
-        android:id="@+id/id_person_findme_talk_top"
-        layout="@layout/top" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#106184" >
+
+        <TextView
+            android:id="@+id/id_top_banner_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Find Me"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/findme_tools_popupwindow_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15.0dip"
+            android:background="@drawable/findme_popupwindow_original" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2.0dip"
+        android:layout_marginRight="2.0dip"
+        android:layout_marginTop="2.0dip"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <com.beyole.view.EditTextWithRightButton
+            android:id="@+id/id_activity_findme_et_search_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square_search_bg"
+            android:drawableLeft="@drawable/square_searchrecommend_search_icon"
+            android:drawablePadding="6.0dip"
+            android:hint="请输入要查找的帐号~"
+            android:minHeight="45.0dip"
+            android:paddingLeft="5.0dip"
+            android:paddingRight="5.0dip"
+            android:singleLine="true"
+            android:textCursorDrawable="@null" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/id_person_findme_talk_search_hint_ll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4.0dip"
+        android:background="@drawable/findme_result_layout_bg_selector"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:minHeight="80.0dip"
+        android:orientation="horizontal"
+        android:padding="10.0dip"
+        android:visibility="gone" >
+
+        <ImageView
+            android:layout_width="60.0dip"
+            android:layout_height="60.0dip"
+            android:background="#00000000"
+            android:clickable="false"
+            android:padding="2.0dip"
+            android:src="@drawable/findme_search_username_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:clickable="false"
+            android:text="查找帐号:"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/id_person_findme_talk_search_hint_ll_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:clickable="false"
+            android:text="Iceberg"
+            android:textColor="#106184"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/id_person_findme_talk_hot_search_hint_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6.0dip"
+            android:text="热搜名人"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="5.0dip"
+            android:layout_marginRight="5.0dip"
+            android:layout_marginTop="5.0dip"
+            android:background="#66000000" />
+
+        <com.beyole.intelligentcampus.functions.person.ui.FlowLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                style="@style/text_flag_01"
+                android:background="@drawable/find_me_talk_hot_search_tag_style01_normal"
+                android:gravity="center"
+                android:padding="10.0dip"
+                android:text="Iceberg"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                style="@style/text_flag_01"
+                android:background="@drawable/find_me_talk_hot_search_tag_style02_normal"
+                android:gravity="center"
+                android:padding="10.0dip"
+                android:text="Crystal"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                style="@style/text_flag_01"
+                android:background="@drawable/find_me_talk_hot_search_tag_style03_normal"
+                android:gravity="center"
+                android:padding="10.0dip"
+                android:text="思源驿站"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                style="@style/text_flag_01"
+                android:background="@drawable/find_me_talk_hot_search_tag_style04_normal"
+                android:gravity="center"
+                android:padding="10.0dip"
+                android:text="电视台"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                style="@style/text_flag_01"
+                android:background="@drawable/find_me_talk_hot_search_tag_style05_normal"
+                android:gravity="center"
+                android:padding="10.0dip"
+                android:text="广播台"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+        </com.beyole.intelligentcampus.functions.person.ui.FlowLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/id_findme_search_tools_result_return_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp" />
 
 </LinearLayout>

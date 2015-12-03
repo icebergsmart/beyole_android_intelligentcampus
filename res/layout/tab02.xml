@@ -3,6 +3,7 @@
     xmlns:beyole="http://schemas.android.com/apk/res/com.beyole.intelligentcampus"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:scrollbars="none"
     android:fadingEdge="none" >
 
     <LinearLayout
@@ -13,7 +14,7 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="190dip"
-            android:background="@drawable/function_top_bg" >
+            android:background="@drawable/function_banner" >
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -22,7 +23,7 @@
                 android:gravity="center"
                 android:orientation="vertical" >
 
-                <com.beyole.view.ImageDetailsView
+               <!--  <com.beyole.view.ImageDetailsView
                     android:id="@+id/id_imageDetailsView"
                     android:layout_width="70dp"
                     android:layout_height="85dp"
@@ -31,8 +32,14 @@
                     beyole:titleImage="@drawable/user_information_img"
                     beyole:titleImageScope="fillXY"
                     beyole:titleSize="16sp"
-                    beyole:titleText="未登录" />
-
+                    beyole:titleText="未登录" /> -->
+				<ImageView 
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:padding="2dp"
+				    android:background="#00000000"
+				    android:src="@drawable/health_guide_men_selected"
+				    />
                 <com.beyole.view.MyTextView
                     android:id="@+id/id_function_weather_information"
                     android:layout_width="wrap_content"
@@ -42,10 +49,11 @@
                     android:ellipsize="end"
                     android:text="还未获取您的定位数据，请稍后..."
                     android:textColor="#ffffff"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentBottom="true"

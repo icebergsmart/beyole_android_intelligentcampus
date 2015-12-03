@@ -41,4 +41,10 @@ public class APIConstant {
 
 	// 获取关注的人列表
 	public static final String FINDFOCUSLISTINTERFACE = COMMONURL + "/user/fans/finduserfocusbyuserid.action";
+
+	// 查询所有活动接口
+	public static final String FINDALLEXERCISEINTERCE = COMMONURL + "/activity/findallactivitybypage.action";
+
+	// 参与活动接口
+	public static final String PARTICIPATREXERCISEINTERFACE = COMMONURL + "/activity/user/addrelationsbetweenuserandexercise.action";
 }

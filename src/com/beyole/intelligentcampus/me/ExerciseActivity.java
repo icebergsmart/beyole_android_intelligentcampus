@@ -9,20 +9,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.beyole.adapter.ExerciseAdapter;
-import com.beyole.adapter.FansAdapter;
-import com.beyole.bean.UserExercise;
-import com.beyole.bean.UserFans;
-import com.beyole.constant.APIConstant;
-import com.beyole.constant.UserExerciseConstant;
-import com.beyole.constant.UserFansConstant;
-import com.beyole.intelligentcampus.R;
-import com.beyole.util.NormalPostRequest;
-import com.beyole.util.VolleySingleton;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +19,17 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.beyole.adapter.ExerciseAdapter;
+import com.beyole.bean.UserExercise;
+import com.beyole.constant.APIConstant;
+import com.beyole.constant.UserExerciseConstant;
+import com.beyole.intelligentcampus.R;
+import com.beyole.util.NormalPostRequest;
+import com.beyole.util.VolleySingleton;
 
 public class ExerciseActivity extends Activity {
 	private LinearLayout mTabBackLinearLayout;

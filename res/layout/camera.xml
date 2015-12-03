@@ -55,25 +55,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/btn_manual"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="12dp"
-                android:text="将摄像头对准二维码，即可自动扫描"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/btn_manual"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/shape_round_button_solid_transparent_stroke_white"
-                android:gravity="center"
+                android:layout_marginBottom="12dp"
                 android:paddingBottom="6dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="6dp"
-                android:text="手动输入"
+                android:text="将摄像头对准二维码，即可自动扫描"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
         </RelativeLayout>

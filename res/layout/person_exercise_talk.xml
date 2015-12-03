@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -7,5 +8,51 @@
     <include
         android:id="@+id/id_person_exercise_talk_top"
         layout="@layout/top" />
+
+    <ListView
+        android:id="@+id/id_person_exercise_talk_listview_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="#00000000"
+        android:dividerHeight="10dp"
+        android:listSelector="#00000000"
+        android:scrollbars="none"
+        android:visibility="gone" >
+    </ListView>
+
+    <RelativeLayout
+        android:id="@+id/id_function_exercise_no_result_rl"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="6.0dip"
+            android:drawableTop="@drawable/no_fans"
+            android:text="没有任何活动哦~"
+            android:textColor="#b8b8b8"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/id_function_exercise_is_quering_rl"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:visibility="visible" >
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:layout_width="70.0dip"
+            android:layout_height="70.0dip"
+            android:visibility="visible"
+            app:indicator="Pacman"
+            app:indicator_color="#106184" />
+    </RelativeLayout>
 
 </LinearLayout>

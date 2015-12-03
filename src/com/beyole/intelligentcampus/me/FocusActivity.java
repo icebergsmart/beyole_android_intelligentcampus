@@ -23,7 +23,6 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.beyole.adapter.FansAdapter;
 import com.beyole.adapter.FocusAdapter;
 import com.beyole.bean.UserFans;
 import com.beyole.constant.APIConstant;

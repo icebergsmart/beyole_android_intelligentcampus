@@ -15,4 +15,10 @@ public class UserExerciseConstant {
 	public static final int EXIT_EXERCISE_ERROR = 5006;
 	// 退出参与活动失败|系统异常
 	public static final int EXIT_EXERCISE_ERROR_WITH_EXCEPTION = 5007;
+	// 关注活动成功
+	public static final int USER_PARTICIPATE_EXERCISE_SUCCESS = 5008;
+	// 关注活动失败
+	public static final int USER_PARTICIPATE_EXERCISE_ERROR = 5009;
+	// 关注活动失败|系统异常
+	public static final int USER_PARTICIPATE_EXERCISE_ERROR_WITH_EXCEPTION = 5010;
 }

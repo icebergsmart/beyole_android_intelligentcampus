@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 /**
- * 快递联盟
+ * 教室查询
  * 
  * @date 2015/11/26
  * @author Iceberg
@@ -29,6 +29,6 @@ public class ExpressActivity extends Activity {
 
 	private void initViews() {
 		TextView tv = (TextView) findViewById(R.id.id_convenient_express_top).findViewById(R.id.id_top_banner_title);
-		tv.setText("快递联盟");
+		tv.setText("教室查询");
 	}
 }

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:id="@+id/id_function_person_exercise_item_details_sv_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/id_function_person_exercise_item_details_top_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dip"
+                    android:layout_alignParentTop="true"
+                    android:background="#00000000"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/function_banner" />
+
+                <LinearLayout
+                    android:id="@+id/id_function_person_exercise_item_details_info_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/id_function_person_exercise_item_details_top_iv"
+                    android:background="#ffffff"
+                    android:orientation="vertical"
+                    android:padding="10.0dip" >
+
+                    <TextView
+                        android:id="@+id/function_person_exercise_item_title_details_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="她来听我的演唱会——2015年9月背景演唱会汇总"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10.0dip"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="活动类型:"
+                            android:textColor="#A1A1A1"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/function_person_exercise_item_type_details_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="公益晚会"
+                            android:textColor="#A1A1A1"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/function_person_exercise_item_status_details_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="未开始"
+                            android:textColor="#A1A1A1"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3.0dip"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="活动时间:"
+                            android:textColor="#A1A1A1"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/function_person_exercise_item_exercisedate_details_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2015-09-12 10:00-2015-09-12 22:00"
+                            android:textColor="#A1A1A1"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3.0dip"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="活动地点:"
+                            android:textColor="#A1A1A1"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/function_person_exercise_item_location_details_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="南苑"
+                            android:textColor="#A1A1A1"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/id_function_person_exercise_item_details_delivery_username_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/id_function_person_exercise_item_details_info_ll"
+                    android:layout_marginTop="15.0dip"
+                    android:background="@drawable/function_loss_items_selector"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:minHeight="55.0dip"
+                    android:orientation="horizontal" >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content" >
+
+                        <ImageView
+                            android:id="@+id/id_details_activity_iv1"
+                            android:layout_width="55.0dip"
+                            android:layout_height="55.0dip"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:background="#00000000"
+                            android:clickable="false"
+                            android:paddingBottom="5.0dip"
+                            android:paddingLeft="15.0dip"
+                            android:paddingTop="5.0dip"
+                            android:src="@drawable/ic_launcher" />
+
+                        <TextView
+                            android:id="@+id/id_details_activity_tv1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15.0dip"
+                             android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/id_details_activity_iv1"
+                            android:clickable="false"
+                            android:text="发起人:"
+                            android:textSize="14sp" />
+
+                        <TextView
+                             android:id="@+id/function_person_exercise_item_delivery_username_details_tv"
+                            android:layout_width="wrap_content"
+                             android:layout_centerVertical="true"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/id_details_activity_tv1"
+                            android:clickable="false"
+                            android:text="思源驿站"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="5.0dip"
+                            android:gravity="center_vertical"
+                             android:layout_centerVertical="true"
+                            android:paddingRight="20.0dip"
+                            android:src="@drawable/icn_settings_arrow" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/id_function_person_exercise_item_details_delivery_desc_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/id_function_person_exercise_item_details_delivery_username_ll"
+                    android:layout_marginTop="10.0dip"
+                    android:background="#ffffff"
+                    android:minHeight="55.0dip"
+                    android:orientation="vertical"
+                    android:padding="10.0dip" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="活动详情"
+                        android:textColor="#A1A1A1"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/function_person_exercise_item_otherinfo_details_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10.0dip"
+                        android:text="该活动是为了庆祝思源成立20周年，并且也是为了团结思源驿站新生之间的关系。一个大型组织的维持，是需要靠大家的努力的。该活动是为了庆祝思源成立20周年，并且也是为了团结思源驿站新生之间的关系。一个大型组织的维持，是需要靠大家的努力的。该活动是为了庆祝思源成立20周年，并且也是为了团结思源驿站新生之间的关系。一个大型组织的维持，是需要靠大家的努力的。"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/id_function_person_details_exercise_bottom_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/id_function_person_exercise_item_details_delivery_desc_ll"
+                    android:layout_marginBottom="5.0dip"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginRight="10dip"
+                    android:background="@drawable/function_person_exercise_focus_activity_btn_selector"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:minHeight="50.0dip"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/function_person_exercise_item_restday_details_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:gravity="center"
+                        android:text="关注活动(剩余20天)"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10.0dip"
+                    android:layout_below="@id/id_function_person_details_exercise_bottom_ll"
+                    android:background="#ffffff" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

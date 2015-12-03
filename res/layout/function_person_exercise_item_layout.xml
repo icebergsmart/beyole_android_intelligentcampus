@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/function_loss_items_selector"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/id_function_person_exercise_item_zip_iv"
+        android:layout_width="110.0dip"
+        android:layout_height="130.0dp"
+        android:padding="10.0dip"
+        android:scaleType="fitXY"
+        android:src="@drawable/function_person_exercise_left_img" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/id_function_person_exercise_item_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4.0dip"
+            android:text="2015年第二届全国高校社团会长论坛报名"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/id_function_person_exercise_item_organize_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4.0dip"
+            android:text="思源驿站"
+            android:textColor="#A1A1A1"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="4.0dip" >
+
+            <TextView
+                android:id="@+id/id_function_person_exercise_item_type_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="体育运动"
+                android:textColor="#A1A1A1"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="."
+                android:textColor="#A1A1A1"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/id_function_person_exercise_item_finished_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已结束"
+                android:textColor="#A1A1A1"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
