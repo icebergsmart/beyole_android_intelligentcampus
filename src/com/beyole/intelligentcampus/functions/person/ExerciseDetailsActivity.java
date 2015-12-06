@@ -1,11 +1,8 @@
 package com.beyole.intelligentcampus.functions.person;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,21 +18,24 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.beyole.bean.ActivityConstant;
 import com.beyole.bean.ExerciseInfo;
-import com.beyole.bean.ExerciseType;
 import com.beyole.bean.GlobalParameterApplication;
 import com.beyole.bean.User;
 import com.beyole.constant.APIConstant;
 import com.beyole.constant.UserExerciseConstant;
 import com.beyole.intelligentcampus.LoginActivity;
 import com.beyole.intelligentcampus.R;
-import com.beyole.intelligentcampus.functions.person.adapter.ExerciseListViewAdapter;
 import com.beyole.intelligentcampus.me.PersonZoneActivity;
-import com.beyole.util.JsonUtils;
 import com.beyole.util.NormalPostRequest;
 import com.beyole.util.VolleySingleton;
 
+/**
+ * 功能页活动详情页
+ * 
+ * @date 2015/12/05
+ * @author Iceberg
+ * 
+ */
 public class ExerciseDetailsActivity extends Activity {
 
 	private LinearLayout mScrollView;
@@ -63,6 +63,7 @@ public class ExerciseDetailsActivity extends Activity {
 			public void onClick(View v) {
 				if (currentUser != null && currentUser.getUserId() > 0) {
 					Intent intent = new Intent(ExerciseDetailsActivity.this, PersonZoneActivity.class);
+					intent.putExtra("userId", exerciseInfo.getChargeManUserId());
 					startActivity(intent);
 				} else {
 					Intent intent = new Intent(ExerciseDetailsActivity.this, LoginActivity.class);

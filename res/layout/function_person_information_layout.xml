@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/id_function_information_item_top"
+        layout="@layout/top" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150.0dip"
+        android:background="#00000000"
+        android:scaleType="fitXY"
+        android:src="@drawable/function_banner" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/activity_life_information_btn_delicate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="校内新闻"
+            android:textColor="#106184" />
+
+        <RadioButton
+            android:id="@+id/activity_life_information_btn_all"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="校外新闻" />
+    </RadioGroup>
+
+    <com.beyole.util.indicator.PageIndicator
+        android:id="@+id/activity_life_information_pager_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        app:fades="false" >
+    </com.beyole.util.indicator.PageIndicator>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/activity_life_information_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

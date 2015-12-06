@@ -23,7 +23,7 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.beyole.bean.UserExercise;
+import com.beyole.bean.ExerciseInfo;
 import com.beyole.constant.APIConstant;
 import com.beyole.constant.UserExerciseConstant;
 import com.beyole.intelligentcampus.R;
@@ -38,12 +38,12 @@ import com.beyole.util.VolleySingleton;
  */
 public class ExerciseAdapter extends BaseAdapter {
 
-	public List<UserExercise> userExercises = new ArrayList<UserExercise>();
+	public List<ExerciseInfo> userExercises = new ArrayList<ExerciseInfo>();
 	private LayoutInflater inflater;
 	private Context mContext;
 	private int currentUserId;
 
-	public ExerciseAdapter(Context context, List<UserExercise> data, ListView listView, int userId) {
+	public ExerciseAdapter(Context context, List<ExerciseInfo> data, ListView listView, int userId) {
 		mContext = context;
 		userExercises = data;
 		inflater = LayoutInflater.from(context);
@@ -80,17 +80,17 @@ public class ExerciseAdapter extends BaseAdapter {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		viewHolder.ivIcon.setImageResource(R.drawable.ic_launcher);
-		final String type = userExercises.get(position).getActivityType() + "";
-		final String exerciseId = userExercises.get(position).getActivityId() + "";
-		final String status = userExercises.get(position).getActivityStatus() + "";
-		viewHolder.tvTitle.setText(userExercises.get(position).getActivityName());
-		final int pos=position;
-		viewHolder.tvContent.setText(userExercises.get(position).getActivityDescription());
+		final String type = userExercises.get(position).getExerciseType() + "";
+		final String exerciseId = userExercises.get(position).getExerciseId() + "";
+		final String status = userExercises.get(position).getStatus() + "";
+		viewHolder.tvTitle.setText(userExercises.get(position).getExerciseName());
+		final int pos = position;
+		viewHolder.tvContent.setText(userExercises.get(position).getExerciseDetails());
 		viewHolder.ibRelation.setImageResource(R.drawable.exercise_exit);
 		viewHolder.ibRelation.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				changeRelationship(currentUserId + "", exerciseId,pos);
+				changeRelationship(currentUserId + "", exerciseId, pos);
 			}
 		});
 		return convertView;
@@ -103,7 +103,7 @@ public class ExerciseAdapter extends BaseAdapter {
 		public ImageButton ibRelation;
 	}
 
-	private void changeRelationship(String userId, String exerciseId,final int position) {
+	private void changeRelationship(String userId, String exerciseId, final int position) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("userId", userId);
 		map.put("exerciseId", exerciseId);
@@ -139,6 +139,5 @@ public class ExerciseAdapter extends BaseAdapter {
 		}, map);
 		VolleySingleton.getVolleySingleton(mContext.getApplicationContext()).addToRequestQueue(request);
 	}
-
 
 }

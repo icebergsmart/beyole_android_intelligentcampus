@@ -28,6 +28,6 @@ public class DiaryActivity extends Activity {
 
 	private void initViews() {
 		TextView tv = (TextView) findViewById(R.id.id_life_diary_top).findViewById(R.id.id_top_banner_title);
-		tv.setText("日记本");
+		tv.setText("新生攻略");
 	}
 }

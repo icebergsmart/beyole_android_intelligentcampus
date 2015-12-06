@@ -29,6 +29,7 @@ import com.beyole.intelligentcampus.functions.convenient.RecruitActivity;
 import com.beyole.intelligentcampus.functions.convenient.SecondHandActivity;
 import com.beyole.intelligentcampus.functions.life.CourseActivity;
 import com.beyole.intelligentcampus.functions.life.DiaryActivity;
+import com.beyole.intelligentcampus.functions.life.InformationActivity;
 import com.beyole.intelligentcampus.functions.life.WeatherActivity;
 import com.beyole.intelligentcampus.functions.person.ExerciseActivity;
 import com.beyole.intelligentcampus.functions.person.FindMeActivity;
@@ -52,13 +53,13 @@ public class FrdFragment extends Fragment {
 	private int mHeight2;
 	private View view;
 	private static final int lineNumber = 4;
-	private String[] titles = new String[] { "新鲜事", "周边", "活动", "Find Me" };
+	private String[] titles = new String[] { "新鲜事", "探索", "活动", "Find Me" };
 	private int[] img = new int[] { R.drawable.function_main01, R.drawable.function_main02, R.drawable.function_main03, R.drawable.function_main04 };
 
 	private String[] titles1 = new String[] { "教室查询", "兼职招聘", "失物招领", "二手市场" };
 	private int[] img1 = new int[] { R.drawable.function_main05, R.drawable.function_main06, R.drawable.function_main07, R.drawable.function_main08 };
 
-	private String[] titles2 = new String[] { "运动", "日记本", "公开课", "天气" };
+	private String[] titles2 = new String[] { "校园资讯", "新生攻略", "公开课", "记单词" };
 	private int[] img2 = new int[] { R.drawable.function_main09, R.drawable.function_main010, R.drawable.function_main011, R.drawable.function_main013 };
 
 	public LocationClient mLocationClient = null;
@@ -125,7 +126,7 @@ public class FrdFragment extends Fragment {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				switch (position) {
 				case 0:
-					Intent intent = new Intent(getActivity(), SportSwitchActivity.class);
+					Intent intent = new Intent(getActivity(), InformationActivity.class);
 					startActivity(intent);
 					break;
 				case 1:

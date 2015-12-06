@@ -17,14 +17,22 @@
 
         <EditText
             android:layout_width="fill_parent"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:layout_marginTop="10.0dip"
             android:layout_height="wrap_content"
+            android:background="@drawable/common_textfield_background"
             android:hint="请填写活动名称"
             android:minLines="1" />
 
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginTop="10.0dip"
+            android:layout_marginRight="10.0dip"
             android:gravity="top"
+            android:background="@drawable/common_textfield_background"
             android:hint="请填写活动内容"
             android:minLines="10" />
 
@@ -33,6 +41,7 @@
             android:layout_marginLeft="10.0dip"
             android:layout_marginRight="10.0dip"
             android:layout_height="40.0dip"
+            android:layout_marginTop="10.0dip"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/me_deliveryexercise_submit_btn_selector"
             android:text="发布活动"

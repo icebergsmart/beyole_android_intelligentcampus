@@ -10,13 +10,13 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.beyole.bean.GlobalParameterApplication;
 import com.beyole.intelligentcampus.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -24,6 +24,12 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
+/**
+ * 我的名片页面（二维码的生成）
+ * 
+ * @author Iceberg
+ * 
+ */
 public class QRActivity extends Activity {
 
 	// 存放二维码的ImageView
@@ -51,13 +57,16 @@ public class QRActivity extends Activity {
 	private int logoWidth;
 	private TextView id_top_banner_title;
 
+	private GlobalParameterApplication application;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.qrscan_layout);
+		application = (GlobalParameterApplication) getApplicationContext();
 		initViews();
 		id_top_banner_title.setText("我的二维码");
-		new MyQRAsyncTask().execute("http://www.baidu.com");
+		new MyQRAsyncTask().execute(application.getUser().getUserName());
 	}
 
 	private void initViews() {

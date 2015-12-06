@@ -10,10 +10,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -24,17 +27,19 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.beyole.adapter.ExerciseAdapter;
-import com.beyole.bean.UserExercise;
+import com.beyole.bean.ExerciseInfo;
+import com.beyole.bean.ExerciseType;
 import com.beyole.constant.APIConstant;
 import com.beyole.constant.UserExerciseConstant;
 import com.beyole.intelligentcampus.R;
+import com.beyole.intelligentcampus.functions.person.ExerciseDetailsActivity;
+import com.beyole.util.JsonUtils;
 import com.beyole.util.NormalPostRequest;
 import com.beyole.util.VolleySingleton;
 
 public class ExerciseActivity extends Activity {
 	private LinearLayout mTabBackLinearLayout;
 	private ListView mExerciseListView;
-	private List<UserExercise> mUserExercises = new ArrayList<UserExercise>();
 	private ExerciseAdapter mExerciseAdapter;
 	private int currentUserId;
 	private RelativeLayout mNoExerciseLayout;
@@ -44,10 +49,21 @@ public class ExerciseActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_me_exercise_layout);
 		initViews();
-		initEvents();
+
 	}
 
-	private void initEvents() {
+	private void initEvents(final List<ExerciseInfo> exercisesList) {
+		mExerciseListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Intent intent = new Intent(ExerciseActivity.this, ExerciseDetailsActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putSerializable("exerciseInfo", exercisesList.get(position));
+				intent.putExtras(bundle);
+				startActivity(intent);
+			}
+		});
 		mTabBackLinearLayout.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -74,24 +90,24 @@ public class ExerciseActivity extends Activity {
 		Request<JSONObject> request = new NormalPostRequest(APIConstant.USERPARTICIPATEDEXERCISEINTERFACE, new Response.Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
-				UserExercise exercise = null;
-				List<UserExercise> exercisesList = new ArrayList<UserExercise>();
+				ExerciseInfo exerciseInfo = null;
+				List<ExerciseInfo> exercisesList = new ArrayList<ExerciseInfo>();
 				try {
 					if (response.getInt("code") == UserExerciseConstant.FIND_EXERCISE_SUCCESS) {
 						JSONArray array = response.getJSONArray("activitylist");
 						for (int i = 0; i < array.length(); i++) {
 							JSONObject object = array.getJSONObject(i);
-							String activityName = object.getString("activityName");
-							int activityId = object.getInt("activityId");
-							int activityType = object.getInt("activityType");
-							int activityStatus = object.getInt("activityStatus");
-							String activityDescription = object.get("activityDescription") instanceof String ? object.getString("activityDescription") : "该活动没有任何描述";
-							exercise = new UserExercise(activityId, activityType, activityName, activityDescription, activityStatus);
-							exercisesList.add(exercise);
+							exerciseInfo = JsonUtils.readJsonToObject(ExerciseInfo.class, object.toString());
+							if (exerciseInfo.getExerciseType().equals("0")) {
+								exerciseInfo.setExerciseType(ExerciseType.TYPE1);
+							} else if (exerciseInfo.getExerciseType().equals("1")) {
+								exerciseInfo.setExerciseType(ExerciseType.TYPE2);
+							}
+							exercisesList.add(exerciseInfo);
 						}
-						mUserExercises = exercisesList;
-						mExerciseAdapter = new ExerciseAdapter(ExerciseActivity.this, mUserExercises, mExerciseListView, currentUserId);
+						mExerciseAdapter = new ExerciseAdapter(ExerciseActivity.this, exercisesList, mExerciseListView, currentUserId);
 						mExerciseListView.setAdapter(mExerciseAdapter);
+						initEvents(exercisesList);
 					} else {
 						mExerciseListView.setVisibility(View.GONE);
 						mNoExerciseLayout.setVisibility(View.VISIBLE);

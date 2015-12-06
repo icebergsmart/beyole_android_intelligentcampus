@@ -1,5 +1,11 @@
 package com.beyole.intelligentcampus.functions.person;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,14 +22,28 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.beyole.constant.APIConstant;
+import com.beyole.constant.UserConstant;
 import com.beyole.intelligentcampus.R;
 import com.beyole.intelligentcampus.me.CaptureActivity;
-import com.beyole.intelligentcampus.me.PersonZoneActivity;
+import com.beyole.intelligentcampus.me.FocusUserDetailsActivity;
+import com.beyole.util.NormalPostRequest;
+import com.beyole.util.VolleySingleton;
 import com.beyole.view.EditTextWithRightButton;
 
+/**
+ * 功能->findme界面
+ * 
+ * @author Iceberg
+ * 
+ */
 public class FindMeActivity extends Activity {
 
 	private PopupWindow popupWindow;
@@ -35,6 +55,7 @@ public class FindMeActivity extends Activity {
 	private TextView mInputResult;
 	private TextView scannedResult;
 	private EditTextWithRightButton mEditText;
+	private int sendUserId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +66,7 @@ public class FindMeActivity extends Activity {
 	}
 
 	private void initEvents() {
-		//搜索框监听器，动态显示查询
+		// 搜索框监听器，动态显示查询
 		TextWatcher mTextWatcher = new TextWatcher() {
 			private CharSequence temp;
 			private int editStart;
@@ -71,6 +92,15 @@ public class FindMeActivity extends Activity {
 			}
 		};
 		mEditText.addTextChangedListener(mTextWatcher);
+		mHasResultLinearLayout.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// Intent intent = new Intent(FindMeActivity.this,
+				// PersonZoneActivity.class);
+				getUserInformations(mEditText.getText().toString());
+			}
+		});
 	}
 
 	private void initViews() {
@@ -79,14 +109,7 @@ public class FindMeActivity extends Activity {
 		mPopWindowIv.setOnClickListener(new popAction(80));
 		mEditText = (EditTextWithRightButton) findViewById(R.id.id_activity_findme_et_search_username);
 		mHasResultLinearLayout = (LinearLayout) findViewById(R.id.id_person_findme_talk_search_hint_ll);
-		mHasResultLinearLayout.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(FindMeActivity.this, PersonZoneActivity.class);
-				startActivity(intent);
-			}
-		});
+
 		mInputResult = (TextView) findViewById(R.id.id_person_findme_talk_search_hint_ll_tv);
 		scannedResult = (TextView) findViewById(R.id.id_findme_search_tools_result_return_tv);
 	}
@@ -169,11 +192,39 @@ public class FindMeActivity extends Activity {
 		// 处理扫描结果（在界面上显示）
 		if (resultCode == RESULT_OK) {
 			Bundle bundle = data.getExtras();
-			//二维码扫描结果||用户名唯一|查询条件
+			// 二维码扫描结果||用户名唯一|查询条件
 			String scanResult = bundle.getString("result");
-			scannedResult.setText(scanResult);
-			Intent intent = new Intent(FindMeActivity.this, PersonZoneActivity.class);
-			startActivity(intent);
+			getUserInformations(scanResult);
 		}
+	}
+
+	public void getUserInformations(String resultUserName) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userName", resultUserName);
+		Request<JSONObject> request = new NormalPostRequest(APIConstant.FINDUSERIDBYUSERNAMEINTERFACE, new Response.Listener<JSONObject>() {
+			@Override
+			public void onResponse(JSONObject response) {
+				try {
+					if (response.getInt("code") == UserConstant.QUERY_USER_BY_USERNAME_SUCCESS) {
+						sendUserId = response.getInt("userId");
+						Intent intent = new Intent(FindMeActivity.this, FocusUserDetailsActivity.class);
+						intent.putExtra("userId", sendUserId);
+						startActivity(intent);
+					} else if (response.getInt("code") == UserConstant.QUERY_USER_BY_USERNAME_ERROR_WITH_NO_SUCH_USER) {
+						Toast.makeText(FindMeActivity.this, "不存在此用户!", Toast.LENGTH_LONG).show();
+					} else if (response.getInt("code") == UserConstant.QUERY_USER_BY_USERNAME_ERROR_WITH_SYSTEM_EXCEPTION) {
+						Toast.makeText(FindMeActivity.this, "服务器端异常!", Toast.LENGTH_LONG).show();
+					}
+				} catch (JSONException e) {
+					Toast.makeText(FindMeActivity.this, "获取数据异常", Toast.LENGTH_LONG).show();
+				}
+			}
+		}, new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				Toast.makeText(FindMeActivity.this, "服务器交互错误", Toast.LENGTH_LONG).show();
+			}
+		}, map);
+		VolleySingleton.getVolleySingleton(this.getApplicationContext()).addToRequestQueue(request);
 	}
 }

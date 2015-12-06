@@ -57,5 +57,9 @@
     <color name="color_border_white">#e5e5e5</color>
     <color name="color_gray">#999999</color>
     <color name="default_page_indicator_selected_color">#00b285</color>
+    <!-- 周边 卡片形式颜色 -->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
 
 </resources>

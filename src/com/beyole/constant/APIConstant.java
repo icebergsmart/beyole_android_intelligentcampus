@@ -39,7 +39,7 @@ public class APIConstant {
 	// 用户删除参与活动接口
 	public static final String DELETEUSERPARTICIPATEDEXERCISE = COMMONURL + "/activity/user/deleteparticipatedexercisesbyid.action";
 
-	// 获取关注的人列表
+	// 获取关注的人列表接口
 	public static final String FINDFOCUSLISTINTERFACE = COMMONURL + "/user/fans/finduserfocusbyuserid.action";
 
 	// 查询所有活动接口
@@ -47,4 +47,10 @@ public class APIConstant {
 
 	// 参与活动接口
 	public static final String PARTICIPATREXERCISEINTERFACE = COMMONURL + "/activity/user/addrelationsbetweenuserandexercise.action";
+
+	// 根据用户id查询用户接口
+	public static final String FINDSPECIFICUSERBYUSERIDINTERFACE = COMMONURL + "/user/user/finduserbyuserid.action";
+
+	// 根据用户名查询用户userId（不是模糊查询）
+	public static final String FINDUSERIDBYUSERNAMEINTERFACE = COMMONURL + "/user/user/finduserbyusername.action";
 }

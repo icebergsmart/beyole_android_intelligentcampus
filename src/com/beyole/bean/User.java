@@ -17,6 +17,7 @@ public class User {
 	private int userSex;
 	private int userAge;
 	private String userCity;
+	private String nickName;
 
 	public User() {
 
@@ -37,6 +38,24 @@ public class User {
 		this.userSex = userSex;
 		this.userAge = userAge;
 		this.userCity = userCity;
+	}
+
+	public User(int userId, String userName, String password, String userImagePhoto, String userDescription, String otherInfo, String userStatus, String createDate, String userType, String userPhoneNumber, String userQqNumber, int userSex, int userAge, String userCity, String nickName) {
+		this.userId = userId;
+		this.userName = userName;
+		this.password = password;
+		this.userImagePhoto = userImagePhoto;
+		this.userDescription = userDescription;
+		this.otherInfo = otherInfo;
+		this.userStatus = userStatus;
+		this.createDate = createDate;
+		this.userType = userType;
+		this.userPhoneNumber = userPhoneNumber;
+		this.userQqNumber = userQqNumber;
+		this.userSex = userSex;
+		this.userAge = userAge;
+		this.userCity = userCity;
+		this.nickName = nickName;
 	}
 
 	public int getUserId() {
@@ -155,6 +174,14 @@ public class User {
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", password=" + password + ", userImagePhoto=" + userImagePhoto + ", userDescription=" + userDescription + ", otherInfo=" + otherInfo + ", userStatus=" + userStatus + ", createDate=" + createDate + ", userType=" + userType
 				+ ", userPhoneNumber=" + userPhoneNumber + ", userQqNumber=" + userQqNumber + ", userSex=" + userSex + ", userAge=" + userAge + ", userCity=" + userCity + "]";
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 	
 }

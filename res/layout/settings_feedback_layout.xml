@@ -12,8 +12,12 @@
 
     <EditText
         android:id="@+id/settings_feedback_content"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="300.0dip"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:background="@drawable/common_textfield_background"
         android:gravity="top"
         android:hint="请写下您对本软件的意见^_^" />
 
@@ -21,6 +25,10 @@
         android:id="@+id/settings_feedback_contact"
         android:layout_width="fill_parent"
         android:layout_height="40.0dip"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:background="@drawable/common_textfield_background"
         android:gravity="top"
         android:hint="输入你的qq号或者手机号" />
 
@@ -29,6 +37,9 @@
         android:layout_width="fill_parent"
         android:layout_height="40.0dip"
         android:layout_gravity="center"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="10.0dip"
         android:background="@drawable/me_login_registe_button_selector"
         android:text="反馈" />
 

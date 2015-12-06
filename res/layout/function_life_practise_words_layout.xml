@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:gravity="center" >
+
+        <com.beyole.view.MyImageView
+            android:id="@+id/function_life_practise_words_item_cet4"
+            android:layout_width="match_parent"
+            android:layout_height="125.0dip"
+            android:scaleType="matrix"
+            android:src="@drawable/cet4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:gravity="center" >
+
+        <com.beyole.view.MyImageView
+            android:id="@+id/function_life_practise_words_item_cet6"
+            android:layout_width="match_parent"
+            android:layout_height="125.0dip"
+            android:scaleType="matrix"
+            android:src="@drawable/cet6" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:gravity="center" >
+
+        <com.beyole.view.MyImageView
+            android:id="@+id/function_life_practise_words_item_tem4"
+            android:layout_width="match_parent"
+            android:layout_height="125.0dip"
+            android:scaleType="matrix"
+            android:src="@drawable/tem4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:gravity="center" >
+
+        <com.beyole.view.MyImageView
+            android:id="@+id/function_life_practise_words_item_tem8"
+            android:layout_width="match_parent"
+            android:layout_height="125.0dip"
+            android:scaleType="matrix"
+            android:src="@drawable/tem8" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -56,4 +56,10 @@
         <attr name="android:background" />
     </declare-styleable>
 
+    <!-- 周边卡片形式 -->
+    <declare-styleable name="card">
+        <attr name="bottomMarginTop" format="dimension" />
+        <attr name="yOffsetStep" format="dimension" />
+    </declare-styleable>
+
 </resources>
