@@ -8,4 +8,107 @@
         android:id="@+id/id_convenient_express_top"
         layout="@layout/top" />
 
+    <com.beyole.ninegridviewexpand.NineGridlayout
+        android:id="@+id/iv_ngrid_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="gone" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.beyole.intelligentcampus.functions.convenient.ui.SyncHorizonScrollView
+            android:id="@+id/horizonScollviewOfCourse"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdge="none"
+            android:scrollbars="none" >
+
+            <com.beyole.intelligentcampus.functions.convenient.ui.SyncScrollView
+                android:id="@+id/scollviewOfCourse"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fadingEdge="none"
+                android:scrollbars="none" >
+
+                <RelativeLayout
+                    android:id="@+id/relativeCourseContent"
+                    android:layout_width="@dimen/course_week_width"
+                    android:layout_height="@dimen/course_num_height" >
+                </RelativeLayout>
+            </com.beyole.intelligentcampus.functions.convenient.ui.SyncScrollView>
+        </com.beyole.intelligentcampus.functions.convenient.ui.SyncHorizonScrollView>
+
+        <com.beyole.intelligentcampus.functions.convenient.ui.SyncHorizonScrollView
+            android:id="@+id/week"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fadingEdge="none"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:id="@+id/linearLayout_gridtableLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <GridView
+                    android:id="@+id/gridWeek"
+                    android:layout_width="@dimen/course_week_width"
+                    android:layout_height="wrap_content"
+                     android:background="#B5B2B5"
+                    android:columnWidth="@dimen/course_week_width"
+                    android:gravity="center"
+                    android:listSelector="@null"
+                     android:paddingLeft="@dimen/course_num_width"
+                    android:horizontalSpacing="@dimen/spacing"
+                    android:numColumns="16"
+                     >
+                </GridView>
+            </LinearLayout>
+        </com.beyole.intelligentcampus.functions.convenient.ui.SyncHorizonScrollView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="@dimen/course_num_width"
+                android:layout_height="@dimen/course_week_height"
+                android:gravity="center"
+                android:text="教室"
+                android:background="#D6D7D6"
+                android:textSize="16sp" />
+
+            <com.beyole.intelligentcampus.functions.convenient.ui.SyncScrollView
+                android:id="@+id/courseNum"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fadingEdge="none"
+                android:scrollbars="none" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <GridView
+                        android:id="@+id/gridCourseNum"
+                        android:layout_width="@dimen/course_num_width"
+                        android:layout_height="@dimen/course_num_height"
+                        android:background="#ffffff"
+                        android:columnWidth="@dimen/course_num_width"
+                        android:gravity="center"
+                        android:numColumns="1"
+                        android:listSelector="@null"
+                        android:verticalSpacing="@dimen/spacing" >
+                    </GridView>
+                </LinearLayout>
+            </com.beyole.intelligentcampus.functions.convenient.ui.SyncScrollView>
+        </LinearLayout>
+    </FrameLayout>
+
 </LinearLayout>

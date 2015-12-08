@@ -53,4 +53,7 @@ public class APIConstant {
 
 	// 根据用户名查询用户userId（不是模糊查询）
 	public static final String FINDUSERIDBYUSERNAMEINTERFACE = COMMONURL + "/user/user/finduserbyusername.action";
+
+	// 查询失物接口（可不加分页参数 start，end）
+	public static final String FINDUSERLOSSINFORMATIONINTERFACE = COMMONURL + "/user/loss/findlosswithpagerank.action";
 }

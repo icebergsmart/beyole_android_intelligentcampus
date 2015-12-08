@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
 
 import com.beyole.intelligentcampus.R;
 import com.github.mikephil.charting.charts.LineChart;

@@ -1,5 +1,6 @@
 package com.beyole.adapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -7,13 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.beyole.bean.UserLoss;
-import com.beyole.bean.UserTalk;
 import com.beyole.intelligentcampus.R;
+import com.beyole.intelligentcampus.functions.convenient.ExpressActivity;
+import com.beyole.ninegridviewexpand.Image;
+import com.beyole.ninegridviewexpand.NineGridlayout;
+import com.beyole.ninegridviewexpand.NineGridlayout.OnItemClickListerner;
 
 /**
  * @date 2015/10/19
@@ -25,9 +29,11 @@ public class FunctionLossAdapter extends BaseAdapter {
 
 	private List<UserLoss> userLosses;
 	private LayoutInflater inflater;
+	private Context mContext;
 
 	public FunctionLossAdapter(Context context, List<UserLoss> data) {
 		userLosses = data;
+		mContext = context;
 		inflater = LayoutInflater.from(context);
 	}
 

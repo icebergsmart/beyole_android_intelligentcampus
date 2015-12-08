@@ -16,6 +16,13 @@ import com.beyole.adapter.FunctionRecruitAdapter;
 import com.beyole.bean.UserRecruit;
 import com.beyole.intelligentcampus.R;
 
+/**
+ * 失物招领界面
+ * 
+ * @date 2015/12/08
+ * @author Iceberg
+ * 
+ */
 public class RecruitActivity extends Activity {
 
 	private ListView mListView;

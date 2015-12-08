@@ -62,4 +62,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    
+       <color name="courseColor">#39D3AD</color>
 </resources>

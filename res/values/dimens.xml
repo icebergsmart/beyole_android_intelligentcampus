@@ -14,4 +14,14 @@
     <dimen name="dip8">8dp</dimen>
     <dimen name="sp16">16sp</dimen>
 
+    
+    
+       <dimen name="course_week_width">1650dp</dimen>
+    <dimen name="course_week_height">40dp</dimen>
+    <dimen name="course_week_item_width">100dp</dimen>
+    <dimen name="course_num_width">60dp</dimen>
+    <dimen name="course_num_height">700dp</dimen>
+    <dimen name="course_num_item_height">40dp</dimen>
+      <!-- 行间距 最好用像素表示 -->
+    <dimen name="spacing">1px</dimen>
 </resources>

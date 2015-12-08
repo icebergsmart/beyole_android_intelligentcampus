@@ -277,6 +277,13 @@
             android:label="FocusUserDetailsActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:theme="@style/IMTheme.Transparent"
+            android:name="com.beyole.intelligentcampus.functions.convenient.ui.SpaceImageDetailActivity"
+            android:label="SpaceImageDetailActivity" 
+            android:process=":picture">
+            
+        </activity>
     </application>
 
 </manifest>
