@@ -56,4 +56,10 @@ public class APIConstant {
 
 	// 查询失物接口（可不加分页参数 start，end）
 	public static final String FINDUSERLOSSINFORMATIONINTERFACE = COMMONURL + "/user/loss/findlosswithpagerank.action";
+
+	// 查询二手商品接口（可不加分页参数 start,end）
+	public static final String FINDSECONDHANDINFORMATIONINTERFACE = COMMONURL + "/user/secondhand/findallsecondhandinformation.action";
+
+	// 查询兼职招聘接口（可不加分页参数 start，end）
+	public static final String FINDRECRUITINFORMATIONINTERFACE = COMMONURL + "/user/recruit/findallrecruitinformation.action";
 }

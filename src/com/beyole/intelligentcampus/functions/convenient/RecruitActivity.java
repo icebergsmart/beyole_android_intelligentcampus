@@ -1,7 +1,13 @@
 package com.beyole.intelligentcampus.functions.convenient;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,10 +17,19 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.beyole.adapter.FunctionRecruitAdapter;
 import com.beyole.bean.UserRecruit;
+import com.beyole.constant.APIConstant;
+import com.beyole.constant.UserRecruitConstant;
 import com.beyole.intelligentcampus.R;
+import com.beyole.util.JsonUtils;
+import com.beyole.util.NormalPostRequest;
+import com.beyole.util.VolleySingleton;
 
 /**
  * 失物招领界面
@@ -27,26 +42,22 @@ public class RecruitActivity extends Activity {
 
 	private ListView mListView;
 	private FunctionRecruitAdapter mAdapter;
-	private List<UserRecruit> mList = new ArrayList<UserRecruit>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.convenient_recruit);
 		initViews();
-		initEvents();
 	}
 
-	private void initEvents() {
-		mAdapter = new FunctionRecruitAdapter(this, mList);
-		mListView.setAdapter(mAdapter);
+	private void initEvents(final List<UserRecruit> list) {
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Intent intent = new Intent(RecruitActivity.this, RecruitDetailsActivity.class);
 				Bundle bundle = new Bundle();
-				bundle.putSerializable("recruitList", mList.get(position));
+				bundle.putSerializable("recruitList", list.get(position));
 				intent.putExtras(bundle);
 				startActivity(intent);
 			}
@@ -57,10 +68,38 @@ public class RecruitActivity extends Activity {
 		TextView tv = (TextView) findViewById(R.id.id_convenient_recruit_top).findViewById(R.id.id_top_banner_title);
 		tv.setText("兼职招聘");
 		mListView = (ListView) findViewById(R.id.function_recruit_listview);
-		UserRecruit recruit = null;
-		for (int i = 0; i < 9; i++) {
-			recruit = new UserRecruit(i, "薛佳伟" + i, null, null, "2015/11/27", Math.random() >= 0.5 ? 0 : 1, "这是一家国企发布的招聘信息，具体工作地址在盐城海华广场B座405室。工作性质为火锅店服务员兼职，一天薪资80，待遇优厚，需要人员若干名。" + i, "薛佳伟" + i, "1570511635" + i, 0);
-			mList.add(recruit);
-		}
+		getRecruits();
+	}
+
+	public void getRecruits() {
+		Map<String, String> map = new HashMap<String, String>();
+		Request<JSONObject> request = new NormalPostRequest(APIConstant.FINDRECRUITINFORMATIONINTERFACE, new Response.Listener<JSONObject>() {
+			@Override
+			public void onResponse(JSONObject response) {
+				UserRecruit userRecruit = null;
+				List<UserRecruit> userRecruits = new ArrayList<UserRecruit>();
+				try {
+					if (response.getInt("code") == UserRecruitConstant.QUERY_FOR_RECRUIT_SUCCESS) {
+						JSONArray array = response.getJSONArray("userRecruitsList");
+						for (int i = 0; i < array.length(); i++) {
+							JSONObject object = array.getJSONObject(i);
+							userRecruit = JsonUtils.readJsonToObject(UserRecruit.class, object.toString());
+							userRecruits.add(userRecruit);
+						}
+						mAdapter = new FunctionRecruitAdapter(RecruitActivity.this, userRecruits);
+						mListView.setAdapter(mAdapter);
+						initEvents(userRecruits);
+					}
+				} catch (JSONException e) {
+					Toast.makeText(RecruitActivity.this, "获取数据异常", Toast.LENGTH_LONG).show();
+				}
+			}
+		}, new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				Toast.makeText(RecruitActivity.this, "服务器交互错误", Toast.LENGTH_LONG).show();
+			}
+		}, map);
+		VolleySingleton.getVolleySingleton(this.getApplicationContext()).addToRequestQueue(request);
 	}
 }

@@ -1,6 +1,5 @@
 package com.beyole.adapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -10,16 +9,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.beyole.bean.UserLoss;
 import com.beyole.intelligentcampus.R;
-import com.beyole.intelligentcampus.functions.convenient.ExpressActivity;
-import com.beyole.ninegridviewexpand.Image;
-import com.beyole.ninegridviewexpand.NineGridlayout;
-import com.beyole.ninegridviewexpand.NineGridlayout.OnItemClickListerner;
 
 /**
+ * 失物招领list adapter
+ * 
  * @date 2015/10/19
  * @version 1.0
  * @author Iceberg
@@ -70,6 +66,7 @@ public class FunctionLossAdapter extends BaseAdapter {
 		}
 		viewHolder.userName.setText(userLosses.get(position).getUserName());
 		viewHolder.publishDate.setText(userLosses.get(position).getDeliveryDate());
+
 		if (userLosses.get(position).getFinished() == 0) {
 			viewHolder.statusYes.setVisibility(View.VISIBLE);
 			viewHolder.statusNo.setVisibility(View.GONE);
@@ -89,4 +86,5 @@ public class FunctionLossAdapter extends BaseAdapter {
 		public TextView statusNo;
 		public TextView content;
 	}
+
 }

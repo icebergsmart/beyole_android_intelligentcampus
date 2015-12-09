@@ -2,6 +2,13 @@ package com.beyole.bean;
 
 import java.io.Serializable;
 
+/**
+ * 二手市场实体类
+ * 
+ * @date 2015/12/09
+ * @author Iceberg
+ * 
+ */
 public class UserSecondHand implements Serializable {
 
 	/**

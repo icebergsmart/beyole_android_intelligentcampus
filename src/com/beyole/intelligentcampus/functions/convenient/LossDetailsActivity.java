@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.beyole.bean.UserLoss;
 import com.beyole.intelligentcampus.R;
@@ -18,6 +17,13 @@ import com.beyole.ninegridviewexpand.Image;
 import com.beyole.ninegridviewexpand.NineGridlayout;
 import com.beyole.ninegridviewexpand.NineGridlayout.OnItemClickListerner;
 
+/**
+ * 失物招领详情页
+ * 
+ * @date 2015/12/09
+ * @author Iceberg
+ * 
+ */
 public class LossDetailsActivity extends Activity {
 
 	private TextView mUserName;
@@ -38,6 +44,7 @@ public class LossDetailsActivity extends Activity {
 		UserLoss loss = (UserLoss) getIntent().getSerializableExtra("lossdetails");
 		initViews();
 		setValues(loss);
+		//根据图片显示是否要显示九宫格图片
 		if ("".equals(loss.getGoodsImageUrl()) || loss.getGoodsImageUrl() == null) {
 			mNineGridLayout.setVisibility(View.GONE);
 		} else {
@@ -84,7 +91,7 @@ public class LossDetailsActivity extends Activity {
 				Intent intent = new Intent(LossDetailsActivity.this, SpaceImageDetailActivity.class);
 				intent.putExtra("images", imagesUrl.get(position));
 				intent.putExtra("position", position);
-				CustomImageView view2=(CustomImageView) view;
+				CustomImageView view2 = (CustomImageView) view;
 				int[] location = new int[2];
 				view.getLocationOnScreen(location);
 				view2.setDrawingCacheEnabled(true);
