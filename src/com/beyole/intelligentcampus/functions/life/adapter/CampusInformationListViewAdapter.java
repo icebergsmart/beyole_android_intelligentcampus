@@ -10,8 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.beyole.bean.Course;
-import com.beyole.bean.Information;
+import com.beyole.bean.Article;
 import com.beyole.intelligentcampus.R;
 
 /**
@@ -22,24 +21,24 @@ import com.beyole.intelligentcampus.R;
  */
 public class CampusInformationListViewAdapter extends BaseAdapter {
 
-	private List<Information> informations;
+	private List<Article> articles;
 	private LayoutInflater inflater;
 	private Context mContext;
 
-	public CampusInformationListViewAdapter(Context context, List<Information> data) {
-		informations = data;
+	public CampusInformationListViewAdapter(Context context, List<Article> data) {
+		articles = data;
 		inflater = LayoutInflater.from(context);
 		mContext = context;
 	}
 
 	@Override
 	public int getCount() {
-		return informations.size();
+		return articles.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return informations.get(position);
+		return articles.get(position);
 	}
 
 	@Override
@@ -60,8 +59,8 @@ public class CampusInformationListViewAdapter extends BaseAdapter {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		viewHolder.newsTitle.setText(informations.get(position).getNewsTitle());
-		viewHolder.newsDescription.setText(informations.get(position).getNewsContent());
+		viewHolder.newsTitle.setText(articles.get(position).getArticleName());
+		viewHolder.newsDescription.setText(articles.get(position).getArticleDescription());
 		return convertView;
 	}
 

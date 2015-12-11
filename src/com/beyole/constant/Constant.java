@@ -19,7 +19,7 @@ public class Constant {
 
 	public static final String REMOTE_UPDATE_APK_URL = REMOTESERVER + ":" + REMOTESERVERPORT + "/" + REMOTESERVERPROJECTNAME + "/update/version.xml";
 	// 图片存放地址
-	public static final String REMOTE_SMALL_IMAGE_URL = REMOTESERVER + ":" + REMOTESERVERPORT + "/" + REMOTESERVERPROJECTNAME + "/images/";
+	public static final String REMOTE_SMALL_IMAGE_URL = REMOTESERVER + ":" + REMOTESERVERPORT + "/" + REMOTESERVERPROJECTNAME + "/upload/article/articleimg/";
 	// 百度定位AK
 	public static final String BAIDU_LOCATION_AK_KEY = "4bW3GNTvqLLkcwL8qcBSmKck";
 	// 百度天气AK

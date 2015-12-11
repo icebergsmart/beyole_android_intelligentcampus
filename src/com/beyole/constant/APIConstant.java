@@ -62,4 +62,10 @@ public class APIConstant {
 
 	// 查询兼职招聘接口（可不加分页参数 start，end）
 	public static final String FINDRECRUITINFORMATIONINTERFACE = COMMONURL + "/user/recruit/findallrecruitinformation.action";
+
+	// 查询分类文章接口（可不加分页参数 start,end,articleType）
+	public static final String FINDARTICLESBYTYPEWITHPAGERANK = COMMONURL + "/article/findarticlesbyinformationtypewithpagerank.action";
+
+	// 根据文章id查询文章接口（articleId，此参数不加默认id为0）
+	public static final String FINDARTICLEBYARTICLEIDINTERFACE = COMMONURL + "/article/findarticlesbyarticleid.action";
 }

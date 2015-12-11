@@ -278,11 +278,15 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:theme="@style/IMTheme.Transparent"
             android:name="com.beyole.intelligentcampus.functions.convenient.ui.SpaceImageDetailActivity"
-            android:label="SpaceImageDetailActivity" 
-            android:process=":picture">
-            
+            android:label="SpaceImageDetailActivity"
+            android:process=":picture"
+            android:theme="@style/IMTheme.Transparent" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.ArticleDetailsActivity"
+            android:label="ArticleDetailsActivity"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

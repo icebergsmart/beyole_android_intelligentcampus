@@ -1,14 +1,9 @@
 package com.beyole.intelligentcampus;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,7 +11,6 @@ import org.json.JSONObject;
 
 import android.content.ComponentName;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -27,17 +21,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.beyole.adapter.NewsAdapter;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.beyole.adapter.ViewpaperAdapter;
-import com.beyole.bean.NewsBean;
+import com.beyole.bean.Article;
 import com.beyole.constant.APIConstant;
-import com.beyole.constant.Constant;
+import com.beyole.constant.ArticleConstant;
+import com.beyole.intelligentcampus.functions.life.adapter.CampusInformationListViewAdapter;
+import com.beyole.util.JsonUtils;
+import com.beyole.util.NormalPostRequest;
+import com.beyole.util.VolleySingleton;
 import com.wang.avi.AVLoadingIndicatorView;
 
 /**
@@ -64,7 +67,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 	private View mView;
 	// 存储新闻列表
 	private ListView mListView;
-
+	private CampusInformationListViewAdapter mAdapter;
 	private TextView mRefreshNewsBtn;
 	// 判断viewpager有没有触碰事件
 	private boolean isTouching = false;
@@ -91,7 +94,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 		initViews();
 		// 初始化小白点组件
 		initDots();
-		new NewsAsyncTask().execute(APIConstant.HOMEARTICLEINTERFACE);
+		getHomeInformations();
 		return mView;
 	}
 
@@ -119,7 +122,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 
 			@Override
 			public void onClick(View v) {
-				new NewsAsyncTask().execute(APIConstant.HOMEARTICLEINTERFACE);
+				getHomeInformations();
 			}
 		});
 		// 初始化view列表对象
@@ -191,92 +194,57 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 		viewPagerSelected = arg0;
 	}
 
-	// 实现网络的异步访问
-	class NewsAsyncTask extends AsyncTask<String, Void, List<NewsBean>> {
-
-		@Override
-		protected void onPreExecute() {
-			mListView.setVisibility(View.GONE);
-			mWaittingForListview.setVisibility(View.VISIBLE);
-			lv_waitting_annimation.setVisibility(View.VISIBLE);
-			lv_setting_network.setVisibility(View.GONE);
-		}
-
-		@Override
-		protected List<NewsBean> doInBackground(String... params) {
-			return getJsonData(params[0]);
-		}
-
-		@Override
-		protected void onPostExecute(List<NewsBean> result) {
-			super.onPostExecute(result);
-			NewsAdapter adapter = new NewsAdapter(getActivity(), result, mListView);
-			mListView.setAdapter(adapter);
-			if (result.size() > 0) {
-				mListView.setVisibility(View.VISIBLE);
-				mWaittingForListview.setVisibility(View.GONE);
-			} else {
-				mWaittingForListview.setVisibility(View.VISIBLE);
-				lv_waitting_annimation.setVisibility(View.GONE);
-				lv_setting_network.setVisibility(View.VISIBLE);
-			}
-		}
-
-	}
-
-	/**
-	 * 获取json类型的数据，返回给list
-	 * 
-	 * @param string
-	 *           请求的url地址
-	 * @return
-	 */
-	private List<NewsBean> getJsonData(String url) {
-		List<NewsBean> newsBeans = new ArrayList<NewsBean>();
-		try {
-			String json = readStream(new URL(url).openStream());
-			JSONObject jsonObject;
-			NewsBean newsBean;
-			try {
-				jsonObject = new JSONObject(json);
-				JSONArray jsonArray = jsonObject.getJSONArray("data");
-				for (int i = 0; i < jsonArray.length(); i++) {
-					jsonObject = jsonArray.getJSONObject(i);
-					newsBean = new NewsBean();
-					newsBean.newsIconUrl = Constant.REMOTE_SMALL_IMAGE_URL + jsonObject.getString("articlePicSmall");
-					newsBean.newsTitle = jsonObject.getString("articleName");
-					newsBean.newsContent = jsonObject.getString("articleDescription");
-					newsBeans.add(newsBean);
+	public void getHomeInformations() {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("articleType", "0");
+		mListView.setVisibility(View.GONE);
+		mWaittingForListview.setVisibility(View.VISIBLE);
+		lv_waitting_annimation.setVisibility(View.VISIBLE);
+		lv_setting_network.setVisibility(View.GONE);
+		Request<JSONObject> request = new NormalPostRequest(APIConstant.FINDARTICLESBYTYPEWITHPAGERANK, new Response.Listener<JSONObject>() {
+			@Override
+			public void onResponse(JSONObject response) {
+				Article article = null;
+				List<Article> articles = new ArrayList<Article>();
+				try {
+					if (response.getInt("code") == ArticleConstant.QUERY_FOR_ARTICLE_BY_TYPE_SUCCESS) {
+						JSONArray array = response.getJSONArray("articleList");
+						for (int i = 0; i < array.length(); i++) {
+							JSONObject object = array.getJSONObject(i);
+							article = JsonUtils.readJsonToObject(Article.class, object.toString());
+							articles.add(article);
+						}
+						mAdapter = new CampusInformationListViewAdapter(getActivity(), articles);
+						mListView.setAdapter(mAdapter);
+						mListView.setVisibility(View.VISIBLE);
+						mWaittingForListview.setVisibility(View.GONE);
+						initEvents(articles);
+					} else {
+						mWaittingForListview.setVisibility(View.VISIBLE);
+						lv_waitting_annimation.setVisibility(View.GONE);
+						lv_setting_network.setVisibility(View.VISIBLE);
+					}
+				} catch (JSONException e) {
+					Toast.makeText(getActivity(), "获取数据异常", Toast.LENGTH_LONG).show();
 				}
-			} catch (JSONException e) {
-				e.printStackTrace();
 			}
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return newsBeans;
+		}, new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				Toast.makeText(getActivity(), "服务器交互错误", Toast.LENGTH_LONG).show();
+			}
+		}, map);
+		VolleySingleton.getVolleySingleton(getActivity().getApplicationContext()).addToRequestQueue(request);
 	}
 
-	// 将输入流读出为json
-	private String readStream(InputStream is) {
-		InputStreamReader isr;
-		String result = "";
-		try {
-			// 将字节流转换为字符流
-			String line = "";
-			isr = new InputStreamReader(is, "UTF-8");
-			// 存入buffer中
-			BufferedReader br = new BufferedReader(isr);
-			while ((line = br.readLine()) != null) {
-				result += line;
+	private void initEvents(final List<Article> articlesList) {
+		mListView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Intent intent = new Intent(getActivity(), ArticleDetailsActivity.class);
+				intent.putExtra("articleId", articlesList.get(position).getArticleId());
+				startActivity(intent);
 			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return result;
+		});
 	}
 }
