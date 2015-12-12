@@ -2,6 +2,7 @@ package com.beyole.intelligentcampus.functions.life.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.GridView;
 
 public class NoScrollGridView extends GridView {

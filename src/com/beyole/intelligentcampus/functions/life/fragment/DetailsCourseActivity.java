@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 
 import com.beyole.bean.Course;
+import com.beyole.bean.CourseAlbum;
 import com.beyole.intelligentcampus.R;
 import com.beyole.intelligentcampus.functions.life.ui.SimpleViewPagerIndicator;
 
@@ -26,7 +27,7 @@ public class DetailsCourseActivity extends FragmentActivity {
 	private ViewPager mViewPager;
 	private FragmentPagerAdapter mAdapter;
 	private Fragment[] mAllFragments = new Fragment[mTitles.length];
-	private Course mCourse;
+	private CourseAlbum mCourse;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,9 +66,7 @@ public class DetailsCourseActivity extends FragmentActivity {
 		mAllFragments[0].setArguments(bundle1);
 		mAllFragments[1] = new DetailsCourseSheetFragment();
 		Bundle bundle2 = new Bundle();
-		ArrayList list = new ArrayList();
-		list.add(mCourse.getVideoList());
-		bundle2.putParcelableArrayList("videoList", list);
+		bundle2.putInt("courseAlbumId", mCourse.getCourseId());
 		mAllFragments[1].setArguments(bundle2);
 		mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
 			@Override
@@ -90,6 +89,6 @@ public class DetailsCourseActivity extends FragmentActivity {
 		mIndicator = (SimpleViewPagerIndicator) findViewById(R.id.id_stickynavlayout_indicator);
 		mIndicator.setIndicatorColor(0XFF00B285);
 		mViewPager = (ViewPager) findViewById(R.id.id_stickynavlayout_viewpager);
-		mCourse = (Course) getIntent().getSerializableExtra("courseInfo");
+		mCourse = (CourseAlbum) getIntent().getSerializableExtra("courseInfo");
 	}
 }

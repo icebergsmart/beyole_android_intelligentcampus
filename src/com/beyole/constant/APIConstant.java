@@ -68,4 +68,19 @@ public class APIConstant {
 
 	// 根据文章id查询文章接口（articleId，此参数不加默认id为0）
 	public static final String FINDARTICLEBYARTICLEIDINTERFACE = COMMONURL + "/article/findarticlesbyarticleid.action";
+
+	// 查询公开课首页推荐栏目
+	public static final String FINDRECOMMENDCOURSECATEGORYINTERFACE = COMMONURL + "/course/category/findallrecommendcategories.action";
+
+	// 查询公开课所有课程栏目
+	public static final String FINDALLCOURSECATEGORIESINTERFACE = COMMONURL + "/course/category/findallcoursecategories.action";
+
+	// 查询公开课推荐课程
+	public static final String FINDALLRECOMMENDCOURSEALBUMINTERFACE = COMMONURL + "/course/findallcoursealbums.action";
+
+	// 根据courseId查询课程视频列表(参数:courseId)
+	public static final String FINDCOURSEVIDEOBYCOURSEIDINTERFACE = COMMONURL + "/course/findcoursevideobycourseid.action";
+
+	// 根据栏目id查询栏目下的课程（可分页，分页参数：start,end,categoryId）
+	public static final String FINDCOURSEALBUMBYCATEGORYIDINTERFACE = COMMONURL + "/course/category/findcoursalbumsbycategoryid.action";
 }

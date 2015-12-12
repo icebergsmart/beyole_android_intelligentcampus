@@ -9,8 +9,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.TextView;
 
-import com.beyole.bean.AllCourseCategory;
+import com.beyole.bean.CourseCategoryItem;
 import com.beyole.intelligentcampus.R;
 
 /**
@@ -21,24 +22,24 @@ import com.beyole.intelligentcampus.R;
  */
 public class SubCourseCategoryGridViewAdapter extends BaseAdapter {
 
-	private List<AllCourseCategory> allCourseCategories;
+	private List<CourseCategoryItem> courseCategoryItems;
 	private LayoutInflater inflater;
 	// 默认被点击的item为第一个
 	private int clickedItem = 0;
 
-	public SubCourseCategoryGridViewAdapter(Context context, List<AllCourseCategory> data) {
-		allCourseCategories = data;
+	public SubCourseCategoryGridViewAdapter(Context context, List<CourseCategoryItem> data) {
+		courseCategoryItems = data;
 		inflater = LayoutInflater.from(context);
 	}
 
 	@Override
 	public int getCount() {
-		return allCourseCategories.size();
+		return courseCategoryItems.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return allCourseCategories.get(position);
+		return courseCategoryItems.get(position);
 	}
 
 	@Override
@@ -52,7 +53,7 @@ public class SubCourseCategoryGridViewAdapter extends BaseAdapter {
 		if (convertView == null) {
 			viewHolder = new ViewHolder();
 			convertView = inflater.inflate(R.layout.function_course_details_item_category_layout, null);
-			viewHolder.categoryName = (Button) convertView.findViewById(R.id.function_course_details_item_category_btn);
+			viewHolder.categoryName = (TextView) convertView.findViewById(R.id.function_course_details_item_category_btn);
 			if (position == clickedItem) {
 				viewHolder.categoryName.setTextColor(0XFF00B285);
 				viewHolder.categoryName.setBackgroundResource(R.drawable.function_course_list_item_btn_selected);
@@ -71,20 +72,20 @@ public class SubCourseCategoryGridViewAdapter extends BaseAdapter {
 				viewHolder.categoryName.setTextColor(0XFF000000);
 			}
 		}
-		viewHolder.categoryName.setText(allCourseCategories.get(position).getCategoryName());
-		viewHolder.categoryName.setOnClickListener(new OnClickListener() {
+		viewHolder.categoryName.setText(courseCategoryItems.get(position).getCourseCategoryName());
+		/*viewHolder.categoryName.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				clickedItem = position;
 				notifyDataSetChanged();
 			}
-		});
+		});*/
 		return convertView;
 	}
 
 	class ViewHolder {
-		public Button categoryName;
+		public TextView categoryName;
 	}
 
 	public void setClickItem(int clickItem) {

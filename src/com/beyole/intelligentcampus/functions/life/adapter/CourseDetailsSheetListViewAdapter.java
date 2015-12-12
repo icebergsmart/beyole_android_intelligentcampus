@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.beyole.bean.CourseVideo;
 import com.beyole.bean.VideoInfo;
 import com.beyole.intelligentcampus.R;
 
@@ -20,24 +21,24 @@ import com.beyole.intelligentcampus.R;
  */
 public class CourseDetailsSheetListViewAdapter extends BaseAdapter {
 
-	private List<VideoInfo> sheetItems;
+	private List<CourseVideo> courseVideos;
 	private LayoutInflater inflater;
 	private Context mContext;
 
-	public CourseDetailsSheetListViewAdapter(Context context, List<VideoInfo> data) {
-		sheetItems = data;
+	public CourseDetailsSheetListViewAdapter(Context context, List<CourseVideo> data) {
+		courseVideos = data;
 		inflater = LayoutInflater.from(context);
 		mContext = context;
 	}
 
 	@Override
 	public int getCount() {
-		return sheetItems.size();
+		return courseVideos.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return sheetItems.get(position);
+		return courseVideos.get(position);
 	}
 
 	@Override
@@ -56,7 +57,7 @@ public class CourseDetailsSheetListViewAdapter extends BaseAdapter {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		viewHolder.videoName.setText(sheetItems.get(position).getVideoName());
+		viewHolder.videoName.setText(courseVideos.get(position).getVideoName());
 		return convertView;
 	}
 

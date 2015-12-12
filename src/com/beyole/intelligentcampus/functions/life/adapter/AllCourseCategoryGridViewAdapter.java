@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.beyole.bean.AllCourseCategory;
+import com.beyole.bean.CourseCategoryItem;
 import com.beyole.intelligentcampus.R;
 
 /**
@@ -20,22 +21,22 @@ import com.beyole.intelligentcampus.R;
  */
 public class AllCourseCategoryGridViewAdapter extends BaseAdapter {
 
-	private List<AllCourseCategory> allCourseCategories;
+	private List<CourseCategoryItem> categoryItems;
 	private LayoutInflater inflater;
 
-	public AllCourseCategoryGridViewAdapter(Context context, List<AllCourseCategory> data) {
-		allCourseCategories = data;
+	public AllCourseCategoryGridViewAdapter(Context context, List<CourseCategoryItem> data) {
+		categoryItems = data;
 		inflater = LayoutInflater.from(context);
 	}
 
 	@Override
 	public int getCount() {
-		return allCourseCategories.size();
+		return categoryItems.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return allCourseCategories.get(position);
+		return categoryItems.get(position);
 	}
 
 	@Override
@@ -54,7 +55,7 @@ public class AllCourseCategoryGridViewAdapter extends BaseAdapter {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		viewHolder.categoryName.setText(allCourseCategories.get(position).getCategoryName());
+		viewHolder.categoryName.setText(categoryItems.get(position).getCourseCategoryName());
 		return convertView;
 	}
 

@@ -10,9 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.beyole.bean.Course;
-import com.beyole.bean.CourseCategory;
-import com.beyole.bean.VideoDetails;
+import com.beyole.bean.CourseAlbum;
 import com.beyole.intelligentcampus.R;
 
 /**
@@ -23,24 +21,24 @@ import com.beyole.intelligentcampus.R;
  */
 public class CourseVideoListViewAdapter extends BaseAdapter {
 
-	private List<Course> videoDetails;
+	private List<CourseAlbum> courseAlbums;
 	private LayoutInflater inflater;
 	private Context mContext;
 
-	public CourseVideoListViewAdapter(Context context, List<Course> data) {
-		videoDetails = data;
+	public CourseVideoListViewAdapter(Context context, List<CourseAlbum> data) {
+		courseAlbums = data;
 		inflater = LayoutInflater.from(context);
 		mContext = context;
 	}
 
 	@Override
 	public int getCount() {
-		return videoDetails.size();
+		return courseAlbums.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return videoDetails.get(position);
+		return courseAlbums.get(position);
 	}
 
 	@Override
@@ -61,8 +59,8 @@ public class CourseVideoListViewAdapter extends BaseAdapter {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		viewHolder.teacherName.setText(videoDetails.get(position).getTeacherName());
-		viewHolder.videoName.setText(videoDetails.get(position).getCourseName());
+		viewHolder.teacherName.setText(courseAlbums.get(position).getTeacherName());
+		viewHolder.videoName.setText(courseAlbums.get(position).getCourseName());
 		return convertView;
 	}
 

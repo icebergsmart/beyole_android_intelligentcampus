@@ -10,21 +10,22 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.beyole.bean.Course;
+import com.beyole.bean.CourseAlbum;
 import com.beyole.intelligentcampus.R;
 
 /**
+ * 公开课下精选课程推荐课程adapter
+ * 
  * @date 2015/10/19
- * @version 1.0
  * @author Iceberg
  * 
  */
 public class CourseDetailsGridViewAdapter extends BaseAdapter {
 
-	private List<Course> courses;
+	private List<CourseAlbum> courses;
 	private LayoutInflater inflater;
 
-	public CourseDetailsGridViewAdapter(Context context, List<Course> data) {
+	public CourseDetailsGridViewAdapter(Context context, List<CourseAlbum> data) {
 		courses = data;
 		inflater = LayoutInflater.from(context);
 	}

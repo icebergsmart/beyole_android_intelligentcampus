@@ -69,6 +69,23 @@
                 android:background="#ffffff"
                 android:listSelector="@drawable/function_loss_items_selector" >
             </com.beyole.intelligentcampus.functions.life.ui.NoScrollListView>
+            <LinearLayout 
+                android:id="@+id/id_course_details_list_hidden_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                >
+                
+                <TextView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="没有视频哦~"
+                    android:textSize="18sp"
+                    />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

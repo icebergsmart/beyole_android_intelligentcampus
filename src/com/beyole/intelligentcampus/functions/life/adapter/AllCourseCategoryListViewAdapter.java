@@ -15,38 +15,39 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.beyole.bean.AllCourseCategory;
-import com.beyole.bean.CourseCategory;
+import com.beyole.bean.AllCourseCategoryItem;
+import com.beyole.bean.CourseCategoryItem;
 import com.beyole.intelligentcampus.R;
 import com.beyole.intelligentcampus.functions.life.fragment.CourseListActivity;
 import com.beyole.intelligentcampus.functions.life.ui.NoScrollGridView;
 
 /**
+ * 公开课下全部课程列表适配器
+ * 
  * @date 2015/10/19
- * @version 1.0
  * @author Iceberg
  * 
  */
 public class AllCourseCategoryListViewAdapter extends BaseAdapter {
 
-	private List<CourseCategory> courseCategories;
+	private List<AllCourseCategoryItem> allCourseCategoryItems;
 	private LayoutInflater inflater;
 	private Context mContext;
 
-	public AllCourseCategoryListViewAdapter(Context context, List<CourseCategory> data) {
-		courseCategories = data;
+	public AllCourseCategoryListViewAdapter(Context context, List<AllCourseCategoryItem> data) {
+		allCourseCategoryItems = data;
 		inflater = LayoutInflater.from(context);
 		mContext = context;
 	}
 
 	@Override
 	public int getCount() {
-		return courseCategories.size();
+		return allCourseCategoryItems.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return courseCategories.get(position);
+		return allCourseCategoryItems.get(position);
 	}
 
 	@Override
@@ -66,9 +67,9 @@ public class AllCourseCategoryListViewAdapter extends BaseAdapter {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		final String categoryName=courseCategories.get(position).getCategoryName();
+		final String categoryName = allCourseCategoryItems.get(position).getCategoryName();
 		viewHolder.categoryName.setText(categoryName);
-		final List<AllCourseCategory> categoryInfo = courseCategories.get(position).getSubCategoryInfo();
+		final List<CourseCategoryItem> categoryInfo = allCourseCategoryItems.get(position).getCourseItems();
 		viewHolder.gridView.setAdapter(new AllCourseCategoryGridViewAdapter(mContext, categoryInfo));
 		viewHolder.gridView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -80,6 +81,7 @@ public class AllCourseCategoryListViewAdapter extends BaseAdapter {
 				Bundle bundle = new Bundle();
 				bundle.putParcelableArrayList("categoryList", list);
 				bundle.putInt("clickPosition", position);
+				bundle.putInt("categoryId", categoryInfo.get(position).getCategoryId());
 				bundle.putString("categoryName", categoryName);
 				intent.putExtras(bundle);
 				mContext.startActivity(intent);
