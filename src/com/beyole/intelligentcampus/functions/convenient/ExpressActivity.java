@@ -1,29 +1,41 @@
 package com.beyole.intelligentcampus.functions.convenient;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.beyole.adapter.FunctionLossAdapter;
+import com.beyole.bean.Classroom;
 import com.beyole.bean.ClassroomStatus;
-import com.beyole.bean.Course1;
+import com.beyole.bean.UserLoss;
+import com.beyole.constant.APIConstant;
+import com.beyole.constant.ClassroomConstant;
+import com.beyole.constant.UserLossConstant;
 import com.beyole.intelligentcampus.R;
-import com.beyole.intelligentcampus.functions.convenient.ui.SpaceImageDetailActivity;
 import com.beyole.intelligentcampus.functions.convenient.ui.SyncHorizonScrollView;
 import com.beyole.intelligentcampus.functions.convenient.ui.SyncScrollView;
-import com.beyole.ninegridviewexpand.Image;
-import com.beyole.ninegridviewexpand.NineGridlayout;
-import com.beyole.ninegridviewexpand.NineGridlayout.OnItemClickListerner;
+import com.beyole.util.JsonUtils;
+import com.beyole.util.NormalPostRequest;
+import com.beyole.util.VolleySingleton;
 
 /**
  * 教室查询
@@ -33,16 +45,8 @@ import com.beyole.ninegridviewexpand.NineGridlayout.OnItemClickListerner;
  * 
  */
 public class ExpressActivity extends Activity {
-	private List<Image> imagesList;
-	private List<String> imagesUrl;
-	private NineGridlayout mNineGridLayout;
 
 	private RelativeLayout courseContent;
-	private List<Course1> courses = new ArrayList<Course1>();
-	private String[][] images = new String[][] { { "http://img1.3lian.com/img013/v5/22/d/21.jpg", "250", "250" }, { "http://cdn.duitang.com/uploads/item/201307/22/20130722113725_E8Akc.jpeg", "250", "250" },
-			{ "http://u.thsi.cn/fileupload/data/Input/2012/12/26/bd18a700e9b6b64db757605daf9784f8.jpg", "250", "250" }, { "http://b.zol-img.com.cn/desk/bizhi/image/7/1366x768/1447663398589.jpg", "250", "250" },
-			{ "http://u.thsi.cn/fileupload/data/Input/2012/12/26/bd18a700e9b6b64db757605daf9784f8.jpg", "250", "250" }, { "http://b.zol-img.com.cn/desk/bizhi/image/7/1366x768/1447663398589.jpg", "250", "250" }, { "http://b.zol-img.com.cn/desk/bizhi/image/7/1366x768/1447663398589.jpg", "250", "250" },
-			{ "http://img5.duitang.com/uploads/item/201408/15/20140815164331_XHart.jpeg", "1280", "800" }, { "http://u.thsi.cn/fileupload/data/Input/2012/12/26/bd18a700e9b6b64db757605daf9784f8.jpg", "1280", "800" } };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,68 +61,15 @@ public class ExpressActivity extends Activity {
 		String[] weeks = { "06:00-07:00", "07:00-08:00", "08:00-09:00", "09:00-10:00", "10:00-11:00", "11:00-12:00", "12:00-13:00", "13:00-14:00", "14:00-15:00", "15:00-16:00", "16:00-17:00", "17:00-18:00", "18:00-19:00", "19:00-20:00", "20:00-21:00", "21:00-22:00" };
 		ArrayAdapter<String> headAdap = new ArrayAdapter<String>(this, R.layout.weekstyle, weeks);
 		head.setAdapter(headAdap);
-
-		GridView courseNum = (GridView) findViewById(R.id.gridCourseNum);
-		String[] courseNums = { "A101", "A102", "A103", "A104", "A105", "A106", "A107", "A108", "A109", "A110", "A111", "A112" };
-		ArrayAdapter<String> leftAdap = new ArrayAdapter<String>(this, R.layout.coursenumstyle, courseNums);
-		courseNum.setAdapter(leftAdap);
-
-		courseContent = (RelativeLayout) findViewById(R.id.relativeCourseContent);
-		for (int i = 1; i <=16; i++) {
-			for (int j = 1; j <=12; j++) {
-				Button course = createCourse(i, j, j, new ClassroomStatus(1, Math.random()>=0.5?0:2, 1, 1));
-				courseContent.addView(course);
-			}
-		}
-		SyncHorizonScrollView hCourseScoll = (SyncHorizonScrollView) findViewById(R.id.horizonScollviewOfCourse);
-		SyncHorizonScrollView hWeekSColl = (SyncHorizonScrollView) findViewById(R.id.week);
-		hCourseScoll.setAnotherView(hWeekSColl);
-		hWeekSColl.setAnotherView(hCourseScoll);
-		// sync vertical move
-		SyncScrollView vCoursecoll = (SyncScrollView) findViewById(R.id.scollviewOfCourse);
-		SyncScrollView vnumScoll = (SyncScrollView) findViewById(R.id.courseNum);
-		vCoursecoll.setAnotherView(vnumScoll);
-		vnumScoll.setAnotherView(vCoursecoll);
+		getClassroomStatus();
 	}
 
 	private void initViews() {
-		initData();
 		TextView tv = (TextView) findViewById(R.id.id_convenient_express_top).findViewById(R.id.id_top_banner_title);
 		tv.setText("教室查询");
-		mNineGridLayout = (NineGridlayout) findViewById(R.id.iv_ngrid_layout);
-		mNineGridLayout.setImagesData(imagesList);
-		mNineGridLayout.setOnItemClickListerner(new OnItemClickListerner() {
-
-			@Override
-			public void onItemClick(View view, int position) {
-				Intent intent = new Intent(ExpressActivity.this, SpaceImageDetailActivity.class);
-				intent.putExtra("images", (ArrayList<String>) imagesUrl);
-				intent.putExtra("position", position);
-				int[] location = new int[2];
-				view.getLocationOnScreen(location);
-				intent.putExtra("locationX", location[0]);
-				intent.putExtra("locationY", location[1]);
-
-				intent.putExtra("width", view.getWidth());
-				intent.putExtra("height", view.getHeight());
-				startActivity(intent);
-				// Toast.makeText(ExpressActivity.this, "您点击了第" + (position + 1) +
-				// "张图片！", Toast.LENGTH_SHORT).show();
-			}
-		});
 	}
 
-	private void initData() {
-		imagesList = new ArrayList<Image>();
-		imagesUrl = new ArrayList<String>();
-		// 从一到9生成9条朋友圈内容，分别是1~9张图片
-		for (int j = 0; j < 9; j++) {
-			imagesList.add(new Image(images[j][0], Integer.parseInt(images[j][1]), Integer.parseInt(images[j][2])));
-			imagesUrl.add(images[j][0]);
-		}
-	}
-
-	private Button createCourse(int week, int firstCourseNum, int lastCourseNum, final ClassroomStatus c) {
+	private Button createCourse(int week, int firstCourseNum, int lastCourseNum, final Classroom c) {
 		int leftMargin = 0;
 		int topMargin = 0;
 		int courseLength = 0;
@@ -139,7 +90,7 @@ public class ExpressActivity extends Activity {
 		course.setGravity(Gravity.CENTER);
 		course.setWidth(courseWidth);
 		course.setHeight(courseLength);
-		if (c.getStatus() == 0) {
+		if (c.getUsingStatus() == 0) {
 			course.setBackgroundColor(getResources().getColor(R.color.courseColor));
 			course.setText("空闲中");
 		} else {
@@ -151,9 +102,67 @@ public class ExpressActivity extends Activity {
 		return course;
 	}
 
-	public void setCourseContent(int week, int firstCourseNum, int lastCourseNum, ClassroomStatus c) {
+	public void setCourseContent(int week, int firstCourseNum, int lastCourseNum, Classroom c) {
 		Button course = createCourse(week, firstCourseNum, lastCourseNum, c);
 		courseContent.addView(course);
 
+	}
+
+	public void getClassroomStatus() {
+		Map<String, String> map = new HashMap<String, String>();
+		Request<JSONObject> request = new NormalPostRequest(APIConstant.FINDCLASSROOMUSESTATUSINTERFACE, new Response.Listener<JSONObject>() {
+			@Override
+			public void onResponse(JSONObject response) {
+				Classroom classroom = null;
+				List<Classroom> classrooms = new ArrayList<Classroom>();
+				try {
+					if (response.getInt("code") == ClassroomConstant.QUERY_FOR_CLASSROOM_SUCCESS) {
+						JSONArray array = response.getJSONArray("classroomStatusList");
+						for (int i = 0; i < array.length(); i++) {
+							JSONObject object = array.getJSONObject(i);
+							classroom = JsonUtils.readJsonToObject(Classroom.class, object.toString());
+							classrooms.add(classroom);
+						}
+						setData(classrooms);
+					}
+				} catch (JSONException e) {
+					Toast.makeText(ExpressActivity.this, "获取数据异常", Toast.LENGTH_LONG).show();
+				}
+			}
+		}, new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				Toast.makeText(ExpressActivity.this, "服务器交互错误", Toast.LENGTH_LONG).show();
+			}
+		}, map);
+		VolleySingleton.getVolleySingleton(this.getApplicationContext()).addToRequestQueue(request);
+	}
+
+	public void setData(final List<Classroom> classrooms) {
+		GridView courseNum = (GridView) findViewById(R.id.gridCourseNum);
+		int classroomNum = classrooms.size() / 16;
+		String[] courseNums = new String[classroomNum];
+		for (int i = 0; i < classroomNum; i++) {
+			courseNums[i] = classrooms.get(i * 16).getClassroomName();
+		}
+		ArrayAdapter<String> leftAdap = new ArrayAdapter<String>(this, R.layout.coursenumstyle, courseNums);
+		courseNum.setAdapter(leftAdap);
+
+		courseContent = (RelativeLayout) findViewById(R.id.relativeCourseContent);
+		for (int i = 1; i <= classroomNum; i++) {
+			for (int j = 1; j <= 16; j++) {
+				Button course = createCourse(j, i, i, classrooms.get((i - 1) * 16 + (j - 1)));
+				courseContent.addView(course);
+			}
+		}
+		SyncHorizonScrollView hCourseScoll = (SyncHorizonScrollView) findViewById(R.id.horizonScollviewOfCourse);
+		SyncHorizonScrollView hWeekSColl = (SyncHorizonScrollView) findViewById(R.id.week);
+		hCourseScoll.setAnotherView(hWeekSColl);
+		hWeekSColl.setAnotherView(hCourseScoll);
+		// sync vertical move
+		SyncScrollView vCoursecoll = (SyncScrollView) findViewById(R.id.scollviewOfCourse);
+		SyncScrollView vnumScoll = (SyncScrollView) findViewById(R.id.courseNum);
+		vCoursecoll.setAnotherView(vnumScoll);
+		vnumScoll.setAnotherView(vCoursecoll);
 	}
 }

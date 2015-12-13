@@ -83,4 +83,7 @@ public class APIConstant {
 
 	// 根据栏目id查询栏目下的课程（可分页，分页参数：start,end,categoryId）
 	public static final String FINDCOURSEALBUMBYCATEGORYIDINTERFACE = COMMONURL + "/course/category/findcoursalbumsbycategoryid.action";
+
+	// 查询教室使用情况接口
+	public static final String FINDCLASSROOMUSESTATUSINTERFACE = COMMONURL + "/classroom/findallclassroomstatus.action";
 }
