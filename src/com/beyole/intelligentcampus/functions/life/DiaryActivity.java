@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.beyole.intelligentcampus.R;
 
 /**
- * 日记本
+ * 新生攻略
  * 
  * @author Iceberg
  * 
@@ -30,4 +30,5 @@ public class DiaryActivity extends Activity {
 		TextView tv = (TextView) findViewById(R.id.id_life_diary_top).findViewById(R.id.id_top_banner_title);
 		tv.setText("新生攻略");
 	}
+	
 }

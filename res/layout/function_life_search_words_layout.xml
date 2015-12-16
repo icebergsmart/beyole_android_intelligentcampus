@@ -14,7 +14,7 @@
         android:orientation="horizontal" >
 
         <com.beyole.view.EditTextWithRightButton
-            android:id="@+id/id_activity_findme_et_search_username"
+            android:id="@+id/id_function_search_words_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/square_search_bg"
@@ -26,6 +26,28 @@
             android:paddingRight="5.0dip"
             android:singleLine="true"
             android:textCursorDrawable="@null" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/id_function_search_result_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <ListView
+            android:id="@+id/id_function_search_words_lv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+        </ListView>
+
+        <TextView
+            android:id="@+id/id_function_search_words_no_result_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="没有搜索结果"
+            android:visibility="gone" />
     </LinearLayout>
 
 </LinearLayout>

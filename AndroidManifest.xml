@@ -288,6 +288,16 @@
             android:label="ArticleDetailsActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.life.WordsTaskActivity"
+            android:label="WordsTaskActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.functions.life.WordsDetailsActivity"
+            android:label="WordsDetailsActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
