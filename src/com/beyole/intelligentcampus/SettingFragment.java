@@ -59,12 +59,12 @@ public class SettingFragment extends Fragment {
 		TableRow row7 = (TableRow) view.findViewById(R.id.more_page_row7);
 		TableRow row6 = (TableRow) view.findViewById(R.id.more_page_row6);
 		TableRow row5 = (TableRow) view.findViewById(R.id.more_page_row5);
-		TableRow row4 = (TableRow) view.findViewById(R.id.more_page_row4);
+		//TableRow row4 = (TableRow) view.findViewById(R.id.more_page_row4);
 		row8.setOnClickListener(listener);
 		row7.setOnClickListener(listener);
 		row6.setOnClickListener(listener);
 		row5.setOnClickListener(listener);
-		row4.setOnClickListener(listener);
+		//row4.setOnClickListener(listener);
 		return view;
 	}
 
@@ -92,11 +92,11 @@ public class SettingFragment extends Fragment {
 				startActivity(intent);
 				activitySwitchAnimation();
 				break;
-			case R.id.more_page_row4:
+			/*case R.id.more_page_row4:
 				intent = new Intent(getActivity(), HelpActivity.class);
 				startActivity(intent);
 				activitySwitchAnimation();
-				break;
+				break;*/
 			}
 		}
 

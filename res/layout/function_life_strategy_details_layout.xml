@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/function_life_strategy_details_top"
+        layout="@layout/top" />
+
+    <TextView
+        android:id="@+id/id_function_life_strategy_details_content_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:background="@drawable/messages_right_bubble_orange"
+        android:padding="10.0dip"
+        android:textColor="#ffffff"
+        android:text="这只是一个测试内容呀"
+        android:textSize="16sp" />
+
+</LinearLayout>

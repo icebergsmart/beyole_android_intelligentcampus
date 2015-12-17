@@ -8,10 +8,100 @@
         android:id="@+id/settings_functionintroduction_top"
         layout="@layout/top" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="功能介绍" />
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginRight="5.0dip"
+                android:layout_marginTop="5.0dip"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1.可以在功能页观看公开课视频"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="200dip"
+                    android:layout_height="250.0dip"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/settings_course" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginRight="5.0dip"
+                android:layout_marginTop="5.0dip"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2.可以在功能页进行四六级单词练习哦"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="200dip"
+                    android:layout_height="250.0dip"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/settings_words" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginRight="5.0dip"
+                android:layout_marginTop="5.0dip"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3.可以在功能页查看最新校内新闻"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="200dip"
+                    android:layout_height="250.0dip"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/settings_information" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginRight="5.0dip"
+                android:layout_marginTop="5.0dip"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.可以在功能页进行新生指导哦"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="200dip"
+                    android:layout_height="250.0dip"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/settings_strategy" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

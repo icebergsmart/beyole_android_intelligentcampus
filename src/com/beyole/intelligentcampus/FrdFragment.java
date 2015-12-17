@@ -22,7 +22,6 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
 import com.beyole.adapter.ItemAdapter;
-import com.beyole.intelligentcampus.functions.SportSwitchActivity;
 import com.beyole.intelligentcampus.functions.convenient.ExpressActivity;
 import com.beyole.intelligentcampus.functions.convenient.LossActivity;
 import com.beyole.intelligentcampus.functions.convenient.RecruitActivity;
@@ -31,10 +30,6 @@ import com.beyole.intelligentcampus.functions.life.CourseActivity;
 import com.beyole.intelligentcampus.functions.life.DiaryActivity;
 import com.beyole.intelligentcampus.functions.life.InformationActivity;
 import com.beyole.intelligentcampus.functions.life.WeatherActivity;
-import com.beyole.intelligentcampus.functions.person.ExerciseActivity;
-import com.beyole.intelligentcampus.functions.person.FindMeActivity;
-import com.beyole.intelligentcampus.functions.person.FreshTalk;
-import com.beyole.intelligentcampus.functions.person.NearByActivity;
 import com.beyole.util.SyncHttp;
 import com.beyole.view.LineGridview;
 import com.beyole.view.MyTextView;
@@ -53,8 +48,10 @@ public class FrdFragment extends Fragment {
 	private int mHeight2;
 	private View view;
 	private static final int lineNumber = 4;
-	private String[] titles = new String[] { "新鲜事", "探索", "活动", "Find Me" };
-	private int[] img = new int[] { R.drawable.function_main01, R.drawable.function_main02, R.drawable.function_main03, R.drawable.function_main04 };
+	// , "探索" R.drawable.function_main02, 以后扩展使用，已加入接口
+	// ,  , 扩展使用
+	//private String[] titles = new String[] {"新鲜事","活动", "Find Me" };
+	//private int[] img = new int[] { R.drawable.function_main01,R.drawable.function_main03, R.drawable.function_main04 };
 
 	private String[] titles1 = new String[] { "教室查询", "兼职招聘", "失物招领", "二手市场" };
 	private int[] img1 = new int[] { R.drawable.function_main05, R.drawable.function_main06, R.drawable.function_main07, R.drawable.function_main08 };
@@ -77,9 +74,9 @@ public class FrdFragment extends Fragment {
 		WindowManager wm = getActivity().getWindowManager();
 		int width = wm.getDefaultDisplay().getWidth();
 		initViews();
-		int lines = titles.length % 2 == 0 ? titles.length / lineNumber : titles.length / lineNumber + 1;
+		/*int lines = titles.length % 2 == 0 ? titles.length / lineNumber : titles.length / lineNumber + 1;
 		mHeight = Math.round((width / lineNumber) * 1.2f);
-		ItemAdapter itemAdapter = new ItemAdapter(titles, img, getActivity(), mHeight * titles.length);
+		ItemAdapter itemAdapter = new ItemAdapter(titles, img, getActivity(), mHeight * titles.length);*/
 		int lines1 = titles1.length % 2 == 0 ? titles1.length / lineNumber : titles1.length / lineNumber + 1;
 		mHeight1 = Math.round((width / lineNumber) * 1.2f);
 		ItemAdapter itemAdapter1 = new ItemAdapter(titles1, img1, getActivity(), mHeight1 * titles1.length);
@@ -87,7 +84,7 @@ public class FrdFragment extends Fragment {
 		mHeight2 = Math.round((width / lineNumber) * 1.2f);
 		ItemAdapter itemAdapter2 = new ItemAdapter(titles2, img2, getActivity(), mHeight2 * titles2.length);
 		// 设置gridview的单元格宽度
-		gridviews.setColumnWidth(width / lineNumber - 10);
+		/*gridviews.setColumnWidth(width / lineNumber - 10);
 		gridviews.setSelector(R.drawable.hidden_yellow);
 		gridviews.setAdapter(itemAdapter);
 		gridviews.setOnItemClickListener(new OnItemClickListener() {
@@ -103,11 +100,11 @@ public class FrdFragment extends Fragment {
 					Intent intent1 = new Intent(getActivity(), NearByActivity.class);
 					startActivity(intent1);
 					break;
-				case 2:
+				case 1:
 					Intent intent2 = new Intent(getActivity(), ExerciseActivity.class);
 					startActivity(intent2);
 					break;
-				case 3:
+				case 2:
 					Intent intent3 = new Intent(getActivity(), FindMeActivity.class);
 					startActivity(intent3);
 					break;
@@ -116,7 +113,7 @@ public class FrdFragment extends Fragment {
 		});
 		LayoutParams lp = gridviews.getLayoutParams();
 		lp.height = mHeight * lines;
-		Log.i("test", "gridviews的高度为:" + lp.height);
+		Log.i("test", "gridviews的高度为:" + lp.height);*/
 		gridviews2.setColumnWidth(width / lineNumber - 10);
 		gridviews2.setSelector(R.drawable.hidden_yellow);
 		gridviews2.setAdapter(itemAdapter2);
@@ -190,7 +187,7 @@ public class FrdFragment extends Fragment {
 
 	private void initViews() {
 		// 获取布局文件视图
-		gridviews = (LineGridview) view.findViewById(R.id.gridviews);
+		//gridviews = (LineGridview) view.findViewById(R.id.gridviews);
 		gridviews2 = (LineGridview) view.findViewById(R.id.gridviews2);
 		gridviews1 = (LineGridview) view.findViewById(R.id.gridviews1);
 		mWeatherTextView = (MyTextView) view.findViewById(R.id.id_function_weather_information);

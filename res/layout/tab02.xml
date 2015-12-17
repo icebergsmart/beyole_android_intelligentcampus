@@ -221,7 +221,7 @@
                 </LinearLayout>
                 
 
-                <TextView
+                <!-- <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
@@ -241,7 +241,7 @@
                         android:layout_height="wrap_content"
                         android:numColumns="4" >
                     </com.beyole.view.LineGridview>
-                </LinearLayout>
+                </LinearLayout> -->
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

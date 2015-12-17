@@ -8,120 +8,13 @@
         android:id="@+id/id_me_items_notice_top"
         layout="@layout/top" />
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
+    <ListView
+        android:id="@+id/id_function_main_notice_lv"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8.0dip" >
+        android:background="#00000000"
+        android:divider="#00000000"
+        android:listSelector="#00000000" >
+    </ListView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@drawable/bubble_notice_time_shape"
-            android:gravity="center"
-            android:text="15-11-26 14:07"
-            android:textColor="#ffffffff"
-            android:textSize="12sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2.0dip" >
-
-        <ImageView
-            android:id="@+id/me_items_notice_photo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:background="#00000000"
-            android:src="@drawable/ic_launcher" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/me_items_notice_photo"
-            android:background="@drawable/bubble_left"
-            android:text="为了测试气泡，特地要写长一点。兔子，你知道吗，我是很爱你的，你是我这辈子唯一所爱，感谢上天让我遇见你，我的baby。我会努力挣钱，哪一天能够娶你了，我才敢真正的表达自己的想法，"
-            android:textSize="14sp" />
-    </RelativeLayout>
-    
-    
-     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8.0dip" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@drawable/bubble_notice_time_shape"
-            android:gravity="center"
-            android:text="15-11-26 14:07"
-            android:textColor="#ffffffff"
-            android:textSize="12sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2.0dip" >
-
-        <ImageView
-            android:id="@+id/me_items_notice_photo1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:background="#00000000"
-            android:src="@drawable/ic_launcher" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/me_items_notice_photo1"
-            android:background="@drawable/bubble_left"
-            android:text="为了测试气泡，特地要写长一点。兔子，你知道吗，我是很爱你的，你是我这辈子唯一所爱，感谢上天让我遇见你，我的baby。我会努力挣钱，哪一天能够娶你了，我才敢真正的表达自己的想法，"
-            android:textSize="14sp" />
-    </RelativeLayout>
-    
-    
-    
-     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8.0dip" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@drawable/bubble_notice_time_shape"
-            android:gravity="center"
-            android:text="15-11-26 14:07"
-            android:textColor="#ffffffff"
-            android:textSize="12sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2.0dip" >
-
-        <ImageView
-            android:id="@+id/me_items_notice_photo2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:background="#00000000"
-            android:src="@drawable/ic_launcher" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/me_items_notice_photo2"
-            android:background="@drawable/bubble_left"
-            android:text="为了测试气泡，特地要写长一点。兔子，你知道吗，我是很爱你的，你是我这辈子唯一所爱，感谢上天让我遇见你，我的baby。我会努力挣钱，哪一天能够娶你了，我才敢真正的表达自己的想法，"
-            android:textSize="14sp" />
-    </RelativeLayout>
 </LinearLayout>

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/strategy_bg"
     android:orientation="vertical" >
 
     <include
@@ -9,128 +10,153 @@
         layout="@layout/top" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/id_function_strategy_item_preparation_ll"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
+        android:layout_gravity="right"
         android:layout_marginTop="10.0dip"
-        android:background="@drawable/find_me_talk_hot_search_tag_style01_normal"
-        android:orientation="vertical" >
+        android:background="@drawable/function_strategy_item_preparation_selector"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:minHeight="90.0dip"
+        android:orientation="horizontal" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5.0dip"
-            android:text="来报到的新生一定要好好注意安全，现在出现了很多不法分子冒充学校来诈骗，一定要加强防范意识啊。啦啦啦啦"
+            android:padding="10.0dip"
+            android:text="Item Preparation"
+            android:textColor="#ffffff"
             android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:padding="5.0dip"
-            android:text="——学生处"
-            android:textSize="16sp" />
+            android:layout_gravity="center_vertical"
+            android:padding="10.0dip"
+            android:text="物品\r\n准备"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/id_function_strategy_procedure_ll"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
+        android:layout_gravity="right"
         android:layout_marginTop="10.0dip"
-        android:background="@drawable/find_me_talk_hot_search_tag_style02_normal"
-        android:orientation="vertical" >
+        android:background="@drawable/function_strategy_procedure_selector"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:minHeight="90.0dip"
+        android:orientation="horizontal" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5.0dip"
-            android:text="来报到的新生一定要好好注意安全，现在出现了很多不法分子冒充学校来诈骗，一定要加强防范意识啊。啦啦啦啦"
+            android:padding="10.0dip"
+            android:text="Procedure"
+            android:textColor="#ffffff"
             android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:padding="5.0dip"
-            android:text="——学生处"
-            android:textSize="16sp" />
+            android:layout_gravity="center_vertical"
+            android:padding="10.0dip"
+            android:text="手续\r\n办理"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/id_function_strategy_registration_process_ll"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
+        android:layout_gravity="right"
         android:layout_marginTop="10.0dip"
-        android:background="@drawable/find_me_talk_hot_search_tag_style03_normal"
-        android:orientation="vertical" >
+        android:background="@drawable/function_strategy_registration_process_selector"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:minHeight="90.0dip"
+        android:orientation="horizontal" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5.0dip"
-            android:text="来报到的新生一定要好好注意安全，现在出现了很多不法分子冒充学校来诈骗，一定要加强防范意识啊。啦啦啦啦"
+            android:padding="10.0dip"
+            android:text="Registration Process"
+            android:textColor="#ffffff"
             android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:padding="5.0dip"
-            android:text="——学生处"
-            android:textSize="16sp" />
+            android:layout_gravity="center_vertical"
+            android:padding="10.0dip"
+            android:text="报到\r\n流程"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/id_function_strategy_freshmen_military_training_ll"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
+        android:layout_gravity="right"
         android:layout_marginTop="10.0dip"
-        android:background="@drawable/find_me_talk_hot_search_tag_style04_normal"
-        android:orientation="vertical" >
+        android:background="@drawable/function_strategy_freshmen_military_training_selector"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:minHeight="90.0dip"
+        android:orientation="horizontal" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5.0dip"
-            android:text="来报到的新生一定要好好注意安全，现在出现了很多不法分子冒充学校来诈骗，一定要加强防范意识啊。啦啦啦啦"
+            android:padding="10.0dip"
+            android:text="Freshmen Military Training"
+            android:textColor="#ffffff"
             android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:padding="5.0dip"
-            android:text="——学生处"
-            android:textSize="16sp" />
+            android:layout_gravity="center_vertical"
+            android:padding="10.0dip"
+            android:text="新生\r\n军训"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/id_function_strategy_matters_needing_attention_ll"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
+        android:layout_gravity="right"
         android:layout_marginTop="10.0dip"
-        android:background="@drawable/find_me_talk_hot_search_tag_style05_normal"
-        android:orientation="vertical" >
+        android:background="@drawable/function_strategy_matters_needing_attention_selector"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:minHeight="90.0dip"
+        android:orientation="horizontal" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5.0dip"
-            android:text="来报到的新生一定要好好注意安全，现在出现了很多不法分子冒充学校来诈骗，一定要加强防范意识啊。啦啦啦啦"
+            android:padding="10.0dip"
+            android:text="Matters Needing Attention"
+            android:textColor="#ffffff"
             android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:padding="5.0dip"
-            android:text="——学生处"
-            android:textSize="16sp" />
+            android:layout_gravity="center_vertical"
+            android:padding="10.0dip"
+            android:text="注意\r\n事项"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
     </LinearLayout>
 
 </LinearLayout>

@@ -86,4 +86,10 @@ public class APIConstant {
 
 	// 查询教室使用情况接口
 	public static final String FINDCLASSROOMUSESTATUSINTERFACE = COMMONURL + "/classroom/findallclassroomstatus.action";
+
+	// 探索（一行诗查询接口）
+	public static final String FINDALLPOETINTERFACE = COMMONURL + "/poet/findallpoetbypagerank.action";
+
+	// 根据用户id查询用户的通知(userId为用户id参数,可分页，分页参数:start,end 可选择)
+	public static final String FINDALLNOTIFICATIONBYUSERID = COMMONURL + "/notification/findallnotificationbyuserid.action";
 }

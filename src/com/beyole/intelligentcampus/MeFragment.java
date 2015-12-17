@@ -32,13 +32,13 @@ import com.beyole.adapter.ItemAdapter;
 import com.beyole.bean.GlobalParameterApplication;
 import com.beyole.bean.User;
 import com.beyole.constant.APIConstant;
+import com.beyole.intelligentcampus.functions.person.FindMeActivity;
+import com.beyole.intelligentcampus.functions.person.FreshTalk;
 import com.beyole.intelligentcampus.me.ExerciseActivity;
 import com.beyole.intelligentcampus.me.FansActivity;
-import com.beyole.intelligentcampus.me.FindMeActivity;
 import com.beyole.intelligentcampus.me.FocusActivity;
 import com.beyole.intelligentcampus.me.PersonZoneActivity;
 import com.beyole.intelligentcampus.me.items.DeliveryExerciseActivity;
-import com.beyole.intelligentcampus.me.items.DeliveryVoteActivity;
 import com.beyole.intelligentcampus.me.items.InformationActivity;
 import com.beyole.intelligentcampus.me.items.NoticeActivity;
 import com.beyole.intelligentcampus.settings.QRActivity;
@@ -74,9 +74,12 @@ public class MeFragment extends Fragment {
 	private int mHeight;
 	private View view;
 	// , "数据中心", "勋章墙", "积分商城", "发起投票"
-	// , R.drawable.me_main06, R.drawable.me_main07, R.drawable.me_main08, R.drawable.me_main05
-	private String[] titles = new String[] { "我的资料", "我的名片", "通知", "发布活动" };
-	private int[] img = new int[] { R.drawable.me_main01, R.drawable.me_main02, R.drawable.me_main03, R.drawable.me_main04 };
+	// , R.drawable.me_main06, R.drawable.me_main07, R.drawable.me_main08,
+	// R.drawable.me_main05
+	
+	//, "发布活动", "新鲜事" 拓展功能     R.drawable.me_main04, R.drawable.function_main01,
+	private String[] titles = new String[] { "我的资料", "我的名片", "通知", "活动", "Find Me" };
+	private int[] img = new int[] { R.drawable.me_main01, R.drawable.me_main02, R.drawable.me_main03, R.drawable.function_main03, R.drawable.function_main04 };
 
 	private Button mRegisterBtn;
 	private Button mLoginBtn;
@@ -135,18 +138,31 @@ public class MeFragment extends Fragment {
 						startActivity(intent1);
 						break;
 					case TITLE3:
-						Intent intent2=new Intent(getActivity(),NoticeActivity.class);
+						Intent intent2 = new Intent(getActivity(), NoticeActivity.class);
 						startActivity(intent2);
 						break;
-					case TITLE4:
-						Intent intent3=new Intent(getActivity(),DeliveryExerciseActivity.class);
+					/*case TITLE4:
+						Intent intent3 = new Intent(getActivity(), DeliveryExerciseActivity.class);
 						startActivity(intent3);
 						break;
-					/*case TITLE5:
-						Intent intent4=new Intent(getActivity(),DeliveryVoteActivity.class);
-						//Intent intent = new Intent(getActivity(), FindMeActivity.class);
-						startActivity(intent4);
+					case TITLE5:
+						Intent intent5 = new Intent(getActivity(), FreshTalk.class);
+						startActivity(intent5);
 						break;*/
+					case TITLE4:
+						Intent intent6 = new Intent(getActivity(), com.beyole.intelligentcampus.functions.person.ExerciseActivity.class);
+						startActivity(intent6);
+						break;
+					case TITLE5:
+						Intent intent7 = new Intent(getActivity(), FindMeActivity.class);
+						startActivity(intent7);
+						break;
+					/*
+					 * case TITLE5: Intent intent4=new
+					 * Intent(getActivity(),DeliveryVoteActivity.class); //Intent
+					 * intent = new Intent(getActivity(), FindMeActivity.class);
+					 * startActivity(intent4); break;
+					 */
 					}
 				}
 			});

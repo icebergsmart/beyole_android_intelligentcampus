@@ -83,6 +83,7 @@
                     android:textSize="16.0sp" />
 
                 <TextView
+                    android:id="@+id/id_me_item_information_nickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|center_vertical"
@@ -124,6 +125,7 @@
                     android:textSize="16.0sp" />
 
                 <TextView
+                    android:id="@+id/id_me_item_information_account"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|center_vertical"
@@ -166,6 +168,7 @@
                     android:textSize="16.0sp" />
 
                 <TextView
+                    android:id="@+id/id_me_item_information_sex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|center_vertical"
@@ -185,8 +188,6 @@
             </TableRow>
         </TableLayout>
     </LinearLayout>
-
-    
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -264,6 +265,7 @@
                     android:textSize="16.0sp" />
 
                 <TextView
+                    android:id="@+id/id_me_item_information_userdescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|center_vertical"
@@ -283,7 +285,10 @@
             </TableRow>
         </TableLayout>
     </LinearLayout>
-<TextView
+
+    <!-- 隐私信息设置接口，暂时未公开 -->
+    <!--
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="2.0dip"
@@ -293,6 +298,7 @@
         android:text="隐私信息"
         android:textColor="#ff888888"
         android:textSize="16.0sp" />
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -430,5 +436,6 @@
             </TableRow>
         </TableLayout>
     </LinearLayout>
+    -->
 
 </LinearLayout>
