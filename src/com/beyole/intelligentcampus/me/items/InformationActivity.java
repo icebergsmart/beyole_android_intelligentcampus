@@ -1,20 +1,28 @@
 package com.beyole.intelligentcampus.me.items;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TableRow;
+import android.widget.TextView;
+
 import com.beyole.bean.GlobalParameterApplication;
 import com.beyole.bean.User;
 import com.beyole.intelligentcampus.R;
+import com.beyole.intelligentcampus.functions.convenient.LossDetailsActivity;
+import com.beyole.intelligentcampus.functions.convenient.ui.SpaceImageDetailActivity;
 import com.beyole.intelligentcampus.me.items.change.EditUserDescriptionActivity;
 import com.beyole.intelligentcampus.me.items.change.EditUserNickNameActivity;
 import com.beyole.intelligentcampus.me.items.change.EditUserPasswordActivity;
 import com.beyole.intelligentcampus.me.items.change.EditUserSexActivity;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TableRow;
-import android.widget.TextView;
+import com.beyole.ninegridviewexpand.CustomImageView;
+import com.beyole.util.DensityUtil;
+import com.squareup.picasso.Picasso;
 
 /**
  * 我的资料
@@ -25,10 +33,12 @@ import android.widget.TextView;
  */
 public class InformationActivity extends Activity {
 
+	private static final int UPDATE_ME_PHOTO = 0X001;
 	private TextView mNickName, mAccount, mSex, mDescription;
 	private GlobalParameterApplication application;
 	private User currentUser;
 	private TableRow mUserDescriptionTableRow, mUserSexTableRow, mUserNickNameTableRow, mUserPasswordTableRow;
+	private ImageView mPhoto;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +56,7 @@ public class InformationActivity extends Activity {
 		mUserSexTableRow.setOnClickListener(listener);
 		mUserNickNameTableRow.setOnClickListener(listener);
 		mUserPasswordTableRow.setOnClickListener(listener);
+		mPhoto.setOnClickListener(listener);
 	}
 
 	private void initViews() {
@@ -59,6 +70,7 @@ public class InformationActivity extends Activity {
 		mUserSexTableRow = (TableRow) findViewById(R.id.me_items_information_usersex_row);
 		mUserNickNameTableRow = (TableRow) findViewById(R.id.me_items_information_nickname_row);
 		mUserPasswordTableRow = (TableRow) findViewById(R.id.me_items_information_password_row);
+		mPhoto = (ImageView) findViewById(R.id.id_me_items_information_imgphoto_im);
 	}
 
 	class MyOnClickListener implements OnClickListener {
@@ -83,12 +95,26 @@ public class InformationActivity extends Activity {
 				Intent intent3 = new Intent(InformationActivity.this, EditUserPasswordActivity.class);
 				startActivity(intent3);
 				break;
+			case R.id.id_me_items_information_imgphoto_im:
+				Intent intent4 = new Intent(InformationActivity.this, SpaceImageDetailActivity.class);
+				intent4.putExtra("images", currentUser.getUserImagePhoto());
+				int[] location = new int[2];
+				v.getLocationOnScreen(location);
+				v.setDrawingCacheEnabled(true);
+				intent4.putExtra("bitmap", v.getDrawingCache());
+				intent4.putExtra("locationX", location[0]);
+				intent4.putExtra("locationY", location[1]);
+				intent4.putExtra("width", v.getWidth());
+				intent4.putExtra("height", v.getHeight());
+				startActivity(intent4);
+				break;
 			}
 		}
 
 	}
 
 	private void initData() {
+		myHandler.sendEmptyMessage(UPDATE_ME_PHOTO);
 		mNickName.setText(currentUser.getNickName());
 		mAccount.setText(currentUser.getUserName());
 		mSex.setText(currentUser.getUserSex() == 0 ? "男" : "女");
@@ -101,4 +127,14 @@ public class InformationActivity extends Activity {
 		initData();
 		initEvents();
 	}
+
+	private Handler myHandler = new Handler() {
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case UPDATE_ME_PHOTO:
+				Picasso.with(InformationActivity.this).load(currentUser.getUserImagePhoto()).resize(DensityUtil.dip2px(InformationActivity.this, 30),DensityUtil.dip2px(InformationActivity.this, 30)).centerCrop().into(mPhoto);
+				break;
+			}
+		};
+	};
 }

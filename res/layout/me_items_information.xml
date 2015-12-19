@@ -44,9 +44,11 @@
                     android:textSize="16.0sp" />
 
                 <ImageView
+                    android:id="@+id/id_me_items_information_imgphoto_im"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_gravity="right"
+                    android:clickable="false"
                     android:gravity="center_vertical"
                     android:paddingRight="20.0dip"
                     android:src="@drawable/ic_launcher" />

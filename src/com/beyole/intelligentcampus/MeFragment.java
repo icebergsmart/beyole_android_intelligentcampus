@@ -11,6 +11,8 @@ import org.json.JSONObject;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +25,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -36,15 +39,15 @@ import com.beyole.intelligentcampus.functions.person.FindMeActivity;
 import com.beyole.intelligentcampus.me.ExerciseActivity;
 import com.beyole.intelligentcampus.me.FansActivity;
 import com.beyole.intelligentcampus.me.FocusActivity;
-import com.beyole.intelligentcampus.me.PersonZoneActivity;
 import com.beyole.intelligentcampus.me.items.InformationActivity;
 import com.beyole.intelligentcampus.me.items.NoticeActivity;
 import com.beyole.intelligentcampus.settings.QRActivity;
+import com.beyole.util.DensityUtil;
 import com.beyole.util.JsonUtils;
 import com.beyole.util.SyncHttp;
-import com.beyole.view.ImageDetailsView;
 import com.beyole.view.LineGridview;
 import com.beyole.view.PublicNoticeView;
+import com.squareup.picasso.Picasso;
 
 /**
  * 我 fragment
@@ -67,7 +70,7 @@ public class MeFragment extends Fragment {
 	private PublicNoticeView id_me_publicnotice;
 	private ScrollView id_me_gridview_scrollview;
 	private static final int lineNumber = 4;
-	private ImageDetailsView userImageDetailsView;
+	private ImageView userImageDetailsView;
 	private TextView mUserDesc;
 	private int mHeight;
 	private View view;
@@ -94,6 +97,7 @@ public class MeFragment extends Fragment {
 	private LinearLayout mTabFansLbtn;
 	private LinearLayout mTabFocusLbtn;
 	private LinearLayout mTabExerciseBtn;
+	private static final int UPDATE_USER_IMG = 0X110;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -114,7 +118,7 @@ public class MeFragment extends Fragment {
 		id_me_publicnotice = (PublicNoticeView) view.findViewById(R.id.id_me_publicnotice);
 		id_me_gridview_scrollview = (ScrollView) view.findViewById(R.id.id_me_gridview_scrollview);
 		mRegisterBtn = (Button) view.findViewById(R.id.id_me_login_register_form_btn_register);
-		userImageDetailsView = (ImageDetailsView) view.findViewById(R.id.id_imageDetailsView);
+		userImageDetailsView = (ImageView) view.findViewById(R.id.id_imageDetailsView);
 		mUserDesc = (TextView) view.findViewById(R.id.id_me_user_desc);
 		mLoginBtn = (Button) view.findViewById(R.id.id_me_login_register_form_btn_login);
 		mTabFansLbtn = (LinearLayout) view.findViewById(R.id.id_me_tab_fans);
@@ -134,14 +138,17 @@ public class MeFragment extends Fragment {
 		@Override
 		public void onClick(View v) {
 			switch (v.getId()) {
+			// 点击注册按钮进入注册页面
 			case R.id.id_me_login_register_form_btn_register:
 				Intent intent = new Intent(getActivity(), RegisterActivity.class);
 				startActivity(intent);
 				break;
+			// 点击登录按钮进入登录页面
 			case R.id.id_me_login_register_form_btn_login:
 				Intent intent1 = new Intent(getActivity(), LoginActivity.class);
 				startActivity(intent1);
 				break;
+			// 点击 我->粉丝按钮查看粉丝情况
 			case R.id.id_me_tab_fans:
 				Intent intent2 = null;
 				if (currentUser != null && currentUser.getUserId() > 0) {
@@ -150,7 +157,7 @@ public class MeFragment extends Fragment {
 				} else {
 					intent2 = new Intent(getActivity(), LoginActivity.class);
 				}
-				startActivity(intent2);
+				getActivity().startActivity(intent2);
 				break;
 			case R.id.id_me_tab_focus:
 				Intent intent3 = null;
@@ -172,14 +179,12 @@ public class MeFragment extends Fragment {
 				}
 				startActivity(intent4);
 				break;
+			// 暂时关闭点击用户头像进入用户中心功能
 			case R.id.id_imageDetailsView:
-				Intent intent5 = null;
-				if (currentUser != null && currentUser.getUserId() > 0) {
-					intent5 = new Intent(getActivity(), PersonZoneActivity.class);
-				} else {
-					intent5 = new Intent(getActivity(), LoginActivity.class);
+				if (currentUser == null || currentUser.getUserId() < 1) {
+					Intent intent5 = new Intent(getActivity(), LoginActivity.class);
+					getActivity().startActivity(intent5);
 				}
-				startActivity(intent5);
 				break;
 			}
 		}
@@ -266,6 +271,16 @@ public class MeFragment extends Fragment {
 		}
 	}
 
+	private Handler handler = new Handler() {
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case UPDATE_USER_IMG:
+				Picasso.with(getActivity()).load(currentUser.getUserImagePhoto()).resize(DensityUtil.dip2px(getActivity(), 90),DensityUtil.dip2px(getActivity(), 90)).centerCrop().into(userImageDetailsView);
+				break;
+			}
+		};
+	};
+
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -282,8 +297,8 @@ public class MeFragment extends Fragment {
 			mFansNumberIb.setVisibility(View.GONE);
 			mActivityNumberIb.setVisibility(View.GONE);
 			mFocusNumberIb.setVisibility(View.GONE);
-			userImageDetailsView.setTitleText(currentUser.getUserName());
 			mUserDesc.setText(currentUser.getUserDescription());
+			handler.sendEmptyMessage(UPDATE_USER_IMG);
 			// 获取屏幕宽度和高度
 			WindowManager wm = getActivity().getWindowManager();
 			int width = wm.getDefaultDisplay().getWidth();
@@ -344,6 +359,5 @@ public class MeFragment extends Fragment {
 			id_me_gridview_scrollview.setVisibility(View.GONE);
 			id_me_publicnotice.setVisibility(View.GONE);
 		}
-
 	}
 }

@@ -90,7 +90,6 @@ public class LoginActivity extends Activity {
 			case R.id.id_activity_login__tv_login_registernow:
 				Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
 				startActivity(intent);
-				finish();
 				break;
 			case R.id.id_activity_login_tv_forget_password:
 
