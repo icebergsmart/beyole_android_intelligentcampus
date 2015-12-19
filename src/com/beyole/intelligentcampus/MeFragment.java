@@ -33,12 +33,10 @@ import com.beyole.bean.GlobalParameterApplication;
 import com.beyole.bean.User;
 import com.beyole.constant.APIConstant;
 import com.beyole.intelligentcampus.functions.person.FindMeActivity;
-import com.beyole.intelligentcampus.functions.person.FreshTalk;
 import com.beyole.intelligentcampus.me.ExerciseActivity;
 import com.beyole.intelligentcampus.me.FansActivity;
 import com.beyole.intelligentcampus.me.FocusActivity;
 import com.beyole.intelligentcampus.me.PersonZoneActivity;
-import com.beyole.intelligentcampus.me.items.DeliveryExerciseActivity;
 import com.beyole.intelligentcampus.me.items.InformationActivity;
 import com.beyole.intelligentcampus.me.items.NoticeActivity;
 import com.beyole.intelligentcampus.settings.QRActivity;
@@ -76,8 +74,8 @@ public class MeFragment extends Fragment {
 	// , "数据中心", "勋章墙", "积分商城", "发起投票"
 	// , R.drawable.me_main06, R.drawable.me_main07, R.drawable.me_main08,
 	// R.drawable.me_main05
-	
-	//, "发布活动", "新鲜事" 拓展功能     R.drawable.me_main04, R.drawable.function_main01,
+
+	// , "发布活动", "新鲜事" 拓展功能 R.drawable.me_main04, R.drawable.function_main01,
 	private String[] titles = new String[] { "我的资料", "我的名片", "通知", "活动", "Find Me" };
 	private int[] img = new int[] { R.drawable.me_main01, R.drawable.me_main02, R.drawable.me_main03, R.drawable.function_main03, R.drawable.function_main04 };
 
@@ -101,81 +99,6 @@ public class MeFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.tab03, container, false);
 		initViews();
-		application = (GlobalParameterApplication) getActivity().getApplicationContext();
-		currentUser = application.getUser();
-		if (currentUser != null && currentUser.getUserId() > 0) {
-			mFansNumberTv.setVisibility(View.VISIBLE);
-			mActivityNumberTv.setVisibility(View.VISIBLE);
-			mFocusNumberTv.setVisibility(View.VISIBLE);
-			mFansNumberIb.setVisibility(View.GONE);
-			mActivityNumberIb.setVisibility(View.GONE);
-			mFocusNumberIb.setVisibility(View.GONE);
-			userImageDetailsView.setTitleText(currentUser.getUserName());
-			mUserDesc.setText(currentUser.getUserDescription());
-			Log.i("test", "用户描述:" + currentUser.getUserDescription());
-			// 获取屏幕宽度和高度
-			WindowManager wm = getActivity().getWindowManager();
-			int width = wm.getDefaultDisplay().getWidth();
-			int lines = titles.length % 2 == 0 ? titles.length / lineNumber : titles.length / lineNumber + 1;
-			mHeight = Math.round((width / lineNumber) * 1.2f);
-			ItemAdapter itemAdapter = new ItemAdapter(titles, img, getActivity(), mHeight * titles.length);
-			// 设置gridview的单元格宽度
-			id_me_gridviews.setColumnWidth(width / lineNumber - 10);
-			id_me_gridviews.setSelector(R.drawable.hidden_yellow);
-			id_me_gridviews.setAdapter(itemAdapter);
-			LayoutParams lp = id_me_gridviews.getLayoutParams();
-			lp.height = mHeight * lines;
-			id_me_gridviews.setOnItemClickListener(new OnItemClickListener() {
-				@Override
-				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-					switch (position) {
-					case TITLE1:
-						Intent intent0 = new Intent(getActivity(), InformationActivity.class);
-						startActivity(intent0);
-						break;
-					case TITLE2:
-						Intent intent1 = new Intent(getActivity(), QRActivity.class);
-						startActivity(intent1);
-						break;
-					case TITLE3:
-						Intent intent2 = new Intent(getActivity(), NoticeActivity.class);
-						startActivity(intent2);
-						break;
-					/*case TITLE4:
-						Intent intent3 = new Intent(getActivity(), DeliveryExerciseActivity.class);
-						startActivity(intent3);
-						break;
-					case TITLE5:
-						Intent intent5 = new Intent(getActivity(), FreshTalk.class);
-						startActivity(intent5);
-						break;*/
-					case TITLE4:
-						Intent intent6 = new Intent(getActivity(), com.beyole.intelligentcampus.functions.person.ExerciseActivity.class);
-						startActivity(intent6);
-						break;
-					case TITLE5:
-						Intent intent7 = new Intent(getActivity(), FindMeActivity.class);
-						startActivity(intent7);
-						break;
-					/*
-					 * case TITLE5: Intent intent4=new
-					 * Intent(getActivity(),DeliveryVoteActivity.class); //Intent
-					 * intent = new Intent(getActivity(), FindMeActivity.class);
-					 * startActivity(intent4); break;
-					 */
-					}
-				}
-			});
-			new MyAsyncTask().execute();
-			new MyAsyncNotificationTask().execute();
-			new MyActivityUserAsyncTask().execute();
-		} else {
-			id_me_hidden_loginform.setVisibility(View.VISIBLE);
-			id_me_gridviews.setVisibility(View.GONE);
-			id_me_gridview_scrollview.setVisibility(View.GONE);
-			id_me_publicnotice.setVisibility(View.GONE);
-		}
-
 		return view;
 	}
 
@@ -218,7 +141,6 @@ public class MeFragment extends Fragment {
 			case R.id.id_me_login_register_form_btn_login:
 				Intent intent1 = new Intent(getActivity(), LoginActivity.class);
 				startActivity(intent1);
-				getActivity().finish();
 				break;
 			case R.id.id_me_tab_fans:
 				Intent intent2 = null;
@@ -342,5 +264,86 @@ public class MeFragment extends Fragment {
 			mActivityNumberTv.setText(activityUserCount);
 
 		}
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		application = (GlobalParameterApplication) getActivity().getApplicationContext();
+		currentUser = application.getUser();
+		if (currentUser != null && currentUser.getUserId() > 0) {
+			id_me_gridviews.setVisibility(View.VISIBLE);
+			id_me_gridview_scrollview.setVisibility(View.VISIBLE);
+			id_me_publicnotice.setVisibility(View.VISIBLE);
+			mFansNumberTv.setVisibility(View.VISIBLE);
+			id_me_hidden_loginform.setVisibility(View.GONE);
+			mActivityNumberTv.setVisibility(View.VISIBLE);
+			mFocusNumberTv.setVisibility(View.VISIBLE);
+			mFansNumberIb.setVisibility(View.GONE);
+			mActivityNumberIb.setVisibility(View.GONE);
+			mFocusNumberIb.setVisibility(View.GONE);
+			userImageDetailsView.setTitleText(currentUser.getUserName());
+			mUserDesc.setText(currentUser.getUserDescription());
+			// 获取屏幕宽度和高度
+			WindowManager wm = getActivity().getWindowManager();
+			int width = wm.getDefaultDisplay().getWidth();
+			int lines = titles.length % 2 == 0 ? titles.length / lineNumber : titles.length / lineNumber + 1;
+			mHeight = Math.round((width / lineNumber) * 1.2f);
+			ItemAdapter itemAdapter = new ItemAdapter(titles, img, getActivity(), mHeight * titles.length);
+			// 设置gridview的单元格宽度
+			id_me_gridviews.setColumnWidth(width / lineNumber - 10);
+			id_me_gridviews.setSelector(R.drawable.hidden_yellow);
+			id_me_gridviews.setAdapter(itemAdapter);
+			LayoutParams lp = id_me_gridviews.getLayoutParams();
+			lp.height = mHeight * lines;
+			id_me_gridviews.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+					switch (position) {
+					case TITLE1:
+						Intent intent0 = new Intent(getActivity(), InformationActivity.class);
+						startActivity(intent0);
+						break;
+					case TITLE2:
+						Intent intent1 = new Intent(getActivity(), QRActivity.class);
+						startActivity(intent1);
+						break;
+					case TITLE3:
+						Intent intent2 = new Intent(getActivity(), NoticeActivity.class);
+						startActivity(intent2);
+						break;
+					/*
+					 * case TITLE4: Intent intent3 = new Intent(getActivity(),
+					 * DeliveryExerciseActivity.class); startActivity(intent3);
+					 * break; case TITLE5: Intent intent5 = new Intent(getActivity(),
+					 * FreshTalk.class); startActivity(intent5); break;
+					 */
+					case TITLE4:
+						Intent intent6 = new Intent(getActivity(), com.beyole.intelligentcampus.functions.person.ExerciseActivity.class);
+						startActivity(intent6);
+						break;
+					case TITLE5:
+						Intent intent7 = new Intent(getActivity(), FindMeActivity.class);
+						startActivity(intent7);
+						break;
+					/*
+					 * case TITLE5: Intent intent4=new
+					 * Intent(getActivity(),DeliveryVoteActivity.class); //Intent
+					 * intent = new Intent(getActivity(), FindMeActivity.class);
+					 * startActivity(intent4); break;
+					 */
+					}
+				}
+			});
+			new MyAsyncTask().execute();
+			new MyAsyncNotificationTask().execute();
+			new MyActivityUserAsyncTask().execute();
+		} else {
+			id_me_hidden_loginform.setVisibility(View.VISIBLE);
+			id_me_gridviews.setVisibility(View.GONE);
+			id_me_gridview_scrollview.setVisibility(View.GONE);
+			id_me_publicnotice.setVisibility(View.GONE);
+		}
+
 	}
 }

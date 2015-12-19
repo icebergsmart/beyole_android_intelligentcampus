@@ -57,7 +57,8 @@ public class ExerciseDetailsActivity extends Activity {
 
 	private void initEvents() {
 		// 设置通过活动页面查看发布者详情的点击事件
-		mUserLinearLayout.setOnClickListener(new OnClickListener() {
+		//暂时关闭此功能，因为个人发说说功能未完成，将在下一个版本中完成此功能
+		/*mUserLinearLayout.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -70,7 +71,7 @@ public class ExerciseDetailsActivity extends Activity {
 					startActivity(intent);
 				}
 			}
-		});
+		});*/
 		// 设置点击关注按钮事件
 		if (exerciseInfo.getStatus() == 0) {
 			mBottomLinearLayout.setOnClickListener(new OnClickListener() {

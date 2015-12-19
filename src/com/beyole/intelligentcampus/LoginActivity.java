@@ -191,10 +191,9 @@ public class LoginActivity extends Activity {
 				case LoginConstant.LOGIN_SUCCESS:
 					User user = JsonUtils.readJsonToObject(User.class, result.get("userinfo") + "");
 					application.setUser(user);
-					Log.e("test", "application:" + application.getUser().toString());
 					Toast.makeText(LoginActivity.this, "登录成功" + resultCode, Toast.LENGTH_SHORT).show();
-					Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-					startActivity(intent);
+				/*	Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+					startActivity(intent);*/
 					finish();
 					break;
 				case LoginConstant.LOGIN_ERROR_WITH_NETWORK_EXCEPTION:

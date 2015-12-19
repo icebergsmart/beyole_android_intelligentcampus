@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/id_me_items_change_edit_user_description_top"
+        layout="@layout/top" />
+
+    <EditText
+        android:id="@+id/id_me_items_change_edit_user_description_content"
+        android:layout_width="match_parent"
+        android:layout_height="150.0dip"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:background="@drawable/common_textfield_background"
+        android:gravity="top"
+        android:hint="您还没有设置个性签名" />
+
+    <Button
+        android:id="@+id/id_me_items_change_edit_user_description_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="40.0dip"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:background="@drawable/me_login_registe_button_selector"
+        android:text="发布" />
+
+</LinearLayout>

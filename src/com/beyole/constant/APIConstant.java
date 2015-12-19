@@ -92,4 +92,16 @@ public class APIConstant {
 
 	// 根据用户id查询用户的通知(userId为用户id参数,可分页，分页参数:start,end 可选择)
 	public static final String FINDALLNOTIFICATIONBYUSERID = COMMONURL + "/notification/findallnotificationbyuserid.action";
+
+	// 根据用户id更改昵称接口(参数:userId<用户id>,nickName<新的昵称>)
+	public static final String UPDATENICKNAMEBYUSERIDINTERFACE = COMMONURL + "/user/user/editusernicknamebyuserid.action";
+
+	// 根据用户id更改性别接口(参数:userId<用户id>,userSex<用户性别:0-男 1-女>)
+	public static final String UPDATEUSERSEXBYUSERIDINTERFACE = COMMONURL + "/user/user/editusersexbyuserid.action";
+
+	// 根据用户id更改用户个性签名(参数:userId<用户id>,userDescription<用户个性签名>)
+	public static final String UPDATEUSERDESCRIPTIONINTERFACE = COMMONURL + "/user/user/edituserdescriptionbyuserid.action";
+
+	// 根据用户id更改用户密码(参数:userId<用户id>，originalPassword<用户原先密码>,userPassword<用户更改后密码>)
+	public static final String UPDATEUSERPASSWORDINTERFACE = COMMONURL + "/user/user/edituserpasswordbyuserid.action";
 }

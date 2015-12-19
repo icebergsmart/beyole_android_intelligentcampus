@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:orientation="vertical" >
 
     <include
@@ -61,7 +62,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/more_page_row2"
+                android:id="@+id/me_items_information_nickname_row"
                 android:layout_width="fill_parent"
                 android:layout_marginLeft="2.0dip"
                 android:layout_marginRight="2.0dip"
@@ -146,7 +147,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/more_page_row3"
+                android:id="@+id/me_items_information_usersex_row"
                 android:layout_width="fill_parent"
                 android:layout_marginLeft="2.0dip"
                 android:layout_marginRight="2.0dip"
@@ -203,7 +204,7 @@
             android:stretchColumns="0" >
 
             <TableRow
-                android:id="@+id/me_items_information_01_row1"
+                android:id="@+id/me_items_information_password_row"
                 android:layout_width="fill_parent"
                 android:layout_marginLeft="2.0dip"
                 android:layout_marginRight="2.0dip"
@@ -243,7 +244,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/me_items_information_01_row2"
+                android:id="@+id/me_items_information_userdescription_row"
                 android:layout_width="fill_parent"
                 android:layout_marginLeft="2.0dip"
                 android:layout_marginRight="2.0dip"

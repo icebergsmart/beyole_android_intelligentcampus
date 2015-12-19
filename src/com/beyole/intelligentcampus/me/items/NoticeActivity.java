@@ -11,7 +11,9 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +43,7 @@ public class NoticeActivity extends Activity {
 	private GlobalParameterApplication application;
 	private ListView mListView;
 	private NoticeAdapter mAdapter;
+	private RelativeLayout mNoResult;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,7 @@ public class NoticeActivity extends Activity {
 		TextView tv = (TextView) findViewById(R.id.id_me_items_notice_top).findViewById(R.id.id_top_banner_title);
 		tv.setText("通知");
 		mListView = (ListView) findViewById(R.id.id_function_main_notice_lv);
+		mNoResult = (RelativeLayout) findViewById(R.id.me_items_notice_no_result);
 		getNotifications();
 	}
 
@@ -74,8 +78,13 @@ public class NoticeActivity extends Activity {
 							notification = JsonUtils.readJsonToObject(UserNotification.class, object.toString());
 							notifications.add(notification);
 						}
+						mNoResult.setVisibility(View.GONE);
 						mAdapter = new NoticeAdapter(NoticeActivity.this, notifications);
 						mListView.setAdapter(mAdapter);
+						mListView.setVisibility(View.VISIBLE);
+					} else if (response.getInt("code") == UserNotificationConstant.QUERY_FOR_INFORMATION_BY_USERID_SUCCESS_WITHOUT_RESULT) {
+						mNoResult.setVisibility(View.VISIBLE);
+						mListView.setVisibility(View.GONE);
 					}
 				} catch (JSONException e) {
 					Toast.makeText(NoticeActivity.this, "获取数据异常", Toast.LENGTH_LONG).show();

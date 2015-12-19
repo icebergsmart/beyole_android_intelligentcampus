@@ -303,6 +303,26 @@
             android:label="StrategyDetailsActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.me.items.change.EditUserDescriptionActivity"
+            android:label="EditUserDescriptionActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.me.items.change.EditUserSexActivity"
+            android:label="EditUserSexActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.me.items.change.EditUserNickNameActivity"
+            android:label="EditUserNickNameActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.me.items.change.EditUserPasswordActivity"
+            android:label="EditUserPasswordActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
