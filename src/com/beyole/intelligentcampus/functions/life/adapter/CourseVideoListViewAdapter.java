@@ -12,10 +12,12 @@ import android.widget.TextView;
 
 import com.beyole.bean.CourseAlbum;
 import com.beyole.intelligentcampus.R;
+import com.squareup.picasso.Picasso;
 
 /**
+ * 栏目下视频列表适配器
+ * 
  * @date 2015/10/19
- * @version 1.0
  * @author Iceberg
  * 
  */
@@ -61,6 +63,7 @@ public class CourseVideoListViewAdapter extends BaseAdapter {
 		}
 		viewHolder.teacherName.setText(courseAlbums.get(position).getTeacherName());
 		viewHolder.videoName.setText(courseAlbums.get(position).getCourseName());
+		showImage(viewHolder.videoImageUrl, courseAlbums.get(position).getCourseImage());
 		return convertView;
 	}
 
@@ -68,5 +71,9 @@ public class CourseVideoListViewAdapter extends BaseAdapter {
 		public TextView videoName;
 		public ImageView videoImageUrl;
 		public TextView teacherName;
+	}
+
+	public void showImage(ImageView mImageView, String url) {
+		Picasso.with(mContext).load(url).into(mImageView);
 	}
 }

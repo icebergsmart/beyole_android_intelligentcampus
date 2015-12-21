@@ -31,6 +31,7 @@
             android:layout_centerInParent="true"
             android:drawablePadding="6.0dip"
             android:drawableTop="@drawable/no_fans"
+            android:visibility="gone"
             android:text="还没有任何通知哦~"
             android:textColor="#b8b8b8"
             android:textSize="18sp" />

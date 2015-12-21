@@ -116,6 +116,16 @@
             android:text="设置网络"
             android:textColor="#106184"
             android:visibility="gone" />
+         <TextView
+             android:id="@+id/lv_settings_server_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawablePadding="6.0dip"
+            android:drawableTop="@drawable/no_fans"
+            android:text="服务器异常，请刷新试试~"
+            android:textColor="#b8b8b8"
+            android:textSize="18sp" />
     </LinearLayout>
 
 </LinearLayout>

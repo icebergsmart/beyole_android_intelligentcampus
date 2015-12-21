@@ -73,6 +73,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 	private boolean isTouching = false;
 	private int viewPagerSelected = 1;
 	private static final int MYVIEWPAGERTIME = 0x11122;
+	private TextView mServerError;
 
 	Handler myViewPagerHandler = new Handler() {
 		public void handleMessage(Message msg) {
@@ -110,6 +111,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 		lv_waitting_annimation = (AVLoadingIndicatorView) mView.findViewById(R.id.lv_waitting_annimation);
 		lv_setting_network = (Button) mView.findViewById(R.id.lv_setting_network);
 		mRefreshNewsBtn = (TextView) mView.findViewById(R.id.home_activity_refresh_ib_news);
+		mServerError=(TextView) mView.findViewById(R.id.lv_settings_server_error);
 		lv_setting_network.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -201,6 +203,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 		mWaittingForListview.setVisibility(View.VISIBLE);
 		lv_waitting_annimation.setVisibility(View.VISIBLE);
 		lv_setting_network.setVisibility(View.GONE);
+		mServerError.setVisibility(View.GONE);
 		Request<JSONObject> request = new NormalPostRequest(APIConstant.FINDARTICLESBYTYPEWITHPAGERANK, new Response.Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
@@ -218,20 +221,30 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 						mListView.setAdapter(mAdapter);
 						mListView.setVisibility(View.VISIBLE);
 						mWaittingForListview.setVisibility(View.GONE);
+						lv_setting_network.setVisibility(View.GONE);
+						lv_waitting_annimation.setVisibility(View.GONE);
+						mServerError.setVisibility(View.GONE);
 						initEvents(articles);
 					} else {
 						mWaittingForListview.setVisibility(View.VISIBLE);
 						lv_waitting_annimation.setVisibility(View.GONE);
-						lv_setting_network.setVisibility(View.VISIBLE);
+						lv_setting_network.setVisibility(View.GONE);
+						mServerError.setVisibility(View.VISIBLE);
 					}
 				} catch (JSONException e) {
-					Toast.makeText(getActivity(), "获取数据异常", Toast.LENGTH_LONG).show();
+					mWaittingForListview.setVisibility(View.VISIBLE);
+					lv_waitting_annimation.setVisibility(View.GONE);
+					lv_setting_network.setVisibility(View.GONE);
+					mServerError.setVisibility(View.VISIBLE);
 				}
 			}
 		}, new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
-				Toast.makeText(getActivity(), "服务器交互错误", Toast.LENGTH_LONG).show();
+				mWaittingForListview.setVisibility(View.VISIBLE);
+				lv_waitting_annimation.setVisibility(View.GONE);
+				lv_setting_network.setVisibility(View.GONE);
+				mServerError.setVisibility(View.VISIBLE);
 			}
 		}, map);
 		VolleySingleton.getVolleySingleton(getActivity().getApplicationContext()).addToRequestQueue(request);

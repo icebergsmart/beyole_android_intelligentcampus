@@ -1,7 +1,5 @@
 package com.beyole.intelligentcampus.functions.life.fragment;
 
-import java.util.ArrayList;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -9,7 +7,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 
-import com.beyole.bean.Course;
 import com.beyole.bean.CourseAlbum;
 import com.beyole.intelligentcampus.R;
 import com.beyole.intelligentcampus.functions.life.ui.SimpleViewPagerIndicator;

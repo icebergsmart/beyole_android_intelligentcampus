@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     >
+
+    <include
+        android:id="@+id/settings_account_manage_top"
+        layout="@layout/top" />
+
+    <LinearLayout
+        android:layout_below="@id/settings_account_manage_top"
+        android:id="@+id/settings_account_manage_exit_account_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:visibility="visible"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="10.0dip"
+        android:orientation="horizontal" >
+
+        <Button
+             android:id="@+id/settings_account_manage_exit_account_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/settings_account_manage_exit_account_btn_selector"
+            android:gravity="center"
+            android:minHeight="50.0dip"
+            android:text="退出帐号"
+            android:textColor="#ffffff"
+            android:visibility="visible"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/settings_account_manage_exit_account_no_result"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:drawablePadding="6.0dip"
+        android:layout_centerInParent="true"
+        android:drawableTop="@drawable/no_fans"
+        android:text="您当前还没有登录任何帐号啦~"
+        android:textColor="#b8b8b8"
+        android:textSize="18sp" />
+
+</RelativeLayout>

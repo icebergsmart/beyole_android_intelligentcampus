@@ -323,6 +323,16 @@
             android:label="EditUserPasswordActivity"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.settings.AccountManageActivity"
+            android:label="AccountManageActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.beyole.intelligentcampus.AppLockActivity"
+            android:label="AppLockActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

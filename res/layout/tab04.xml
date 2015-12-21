@@ -82,7 +82,7 @@
                         android:layout_width="fill_parent"
                         android:layout_marginLeft="2.0dip"
                         android:layout_marginRight="2.0dip"
-                        android:background="@drawable/list_item_mid_selector"
+                         android:background="@drawable/list_item_bot_selector"
                         android:clickable="true"
                         android:minHeight="55.0dip"
                         android:paddingBottom="8.0dip"
@@ -101,6 +101,7 @@
                             android:textSize="16.0sp" />
 
                         <com.zcw.togglebutton.ToggleButton
+                            android:id="@+id/settings_set_app_lock"
                             android:layout_width="54dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center_vertical"
@@ -117,7 +118,7 @@
                             android:visibility="gone" />
                     </TableRow>
 
-                    <TableRow
+                   <!--  <TableRow
                         android:id="@+id/more_page_row12"
                         android:layout_width="fill_parent"
                         android:layout_marginLeft="2.0dip"
@@ -147,7 +148,7 @@
                             android:gravity="center_vertical"
                             android:paddingRight="20.0dip"
                             android:src="@drawable/icn_settings_arrow" />
-                    </TableRow>
+                    </TableRow> -->
 
                    <!--  <TableRow
                         android:id="@+id/more_page_row3"

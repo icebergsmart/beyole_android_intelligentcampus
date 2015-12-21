@@ -275,7 +275,7 @@ public class MeFragment extends Fragment {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case UPDATE_USER_IMG:
-				Picasso.with(getActivity()).load(currentUser.getUserImagePhoto()).resize(DensityUtil.dip2px(getActivity(), 90),DensityUtil.dip2px(getActivity(), 90)).centerCrop().into(userImageDetailsView);
+				Picasso.with(getActivity()).load(currentUser.getUserImagePhoto()).resize(DensityUtil.dip2px(getActivity(), 90), DensityUtil.dip2px(getActivity(), 90)).centerCrop().into(userImageDetailsView);
 				break;
 			}
 		};
@@ -358,6 +358,14 @@ public class MeFragment extends Fragment {
 			id_me_gridviews.setVisibility(View.GONE);
 			id_me_gridview_scrollview.setVisibility(View.GONE);
 			id_me_publicnotice.setVisibility(View.GONE);
+			userImageDetailsView.setImageResource(R.drawable.health_guide_men_selected);
+			mUserDesc.setText("未登录");
+			mFansNumberIb.setVisibility(View.VISIBLE);
+			mFansNumberTv.setVisibility(View.GONE);
+			mActivityNumberIb.setVisibility(View.VISIBLE);
+			mActivityNumberTv.setVisibility(View.GONE);
+			mFocusNumberIb.setVisibility(View.VISIBLE);
+			mFocusNumberTv.setVisibility(View.GONE);
 		}
 	}
 }

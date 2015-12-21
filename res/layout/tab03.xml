@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20.0dip"
                     android:ellipsize="end"
-                    android:text="不把时间浪费在毫无意义的事情上"
+                    android:text="未登录"
                     android:textColor="#ffffff"
                     android:textSize="14sp" />
             </LinearLayout>

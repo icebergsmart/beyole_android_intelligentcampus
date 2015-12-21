@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.beyole.bean.Article;
 import com.beyole.intelligentcampus.R;
+import com.squareup.picasso.Picasso;
 
 /**
  * @date 2015/10/19
@@ -61,6 +62,7 @@ public class CampusInformationListViewAdapter extends BaseAdapter {
 		}
 		viewHolder.newsTitle.setText(articles.get(position).getArticleName());
 		viewHolder.newsDescription.setText(articles.get(position).getArticleDescription());
+		showImage(viewHolder.newsImageUrl, articles.get(position).getArticlePicBig());
 		return convertView;
 	}
 
@@ -68,5 +70,9 @@ public class CampusInformationListViewAdapter extends BaseAdapter {
 		public ImageView newsImageUrl;
 		public TextView newsTitle;
 		public TextView newsDescription;
+	}
+
+	public void showImage(ImageView mImageView, String url) {
+		Picasso.with(mContext).load(url).into(mImageView);
 	}
 }

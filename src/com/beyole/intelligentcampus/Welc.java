@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.Toast;
 
 /**
  * app欢迎界面
@@ -43,10 +44,15 @@ public class Welc extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// 调用初始化方法
-		init();
+		
 	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+	// 调用初始化方法
+			init();
+	}
 	private void init() {
 		// 设定存储的权限
 		SharedPreferences preferences = getSharedPreferences("intellligentCampus", MODE_PRIVATE);
@@ -68,7 +74,16 @@ public class Welc extends Activity {
 
 	// 跳转到主页面的的方法
 	private void goHome() {
-		Intent intent = new Intent(Welc.this, MainActivity.class);
+		// 设定存储的权限
+		SharedPreferences preferences = getSharedPreferences("intellligentCampus", MODE_PRIVATE);
+		// 第一次取值是没有的，所以我们第一次赋值为true
+		boolean isLockOn = preferences.getBoolean("isLockOn", false);
+		Intent intent = null;
+		if (isLockOn == false) {
+			intent = new Intent(Welc.this, MainActivity.class);
+		} else {
+			intent = new Intent(Welc.this, AppLockActivity.class);
+		}
 		startActivity(intent);
 		// 结束当前activity
 		finish();

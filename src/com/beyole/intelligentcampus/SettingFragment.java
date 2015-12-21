@@ -5,8 +5,9 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -26,18 +27,20 @@ import android.widget.Toast;
 import com.beyole.constant.Constant;
 import com.beyole.constant.UpdateConstant;
 import com.beyole.intelligentcampus.settings.AboutUsActivity;
+import com.beyole.intelligentcampus.settings.AccountManageActivity;
 import com.beyole.intelligentcampus.settings.FeedBackActivity;
 import com.beyole.intelligentcampus.settings.FunctionIntroduceActivity;
-import com.beyole.intelligentcampus.settings.HelpActivity;
-import com.beyole.intelligentcampus.settings.QRActivity;
 import com.beyole.intelligentcampus.settings.update.DownloadManager;
 import com.beyole.intelligentcampus.settings.update.UpdateInfo;
 import com.beyole.intelligentcampus.settings.update.UpdateInfoParser;
 import com.beyole.notifydialog.widget.effectdialog.Effectstype;
 import com.beyole.notifydialog.widget.effectdialog.NiftyDialogBuilder;
+import com.beyole.util.SPUtils;
 import com.beyole.view.commondialog.CommonDialog;
 import com.beyole.view.commondialog.CommonDialog.DialogPositiveListener;
 import com.beyole.view.commondialog.CommonProgressDialogWithoutDetails;
+import com.zcw.togglebutton.ToggleButton;
+import com.zcw.togglebutton.ToggleButton.OnToggleChanged;
 
 /**
  * 设置 fragment
@@ -46,25 +49,58 @@ import com.beyole.view.commondialog.CommonProgressDialogWithoutDetails;
  * 
  */
 public class SettingFragment extends Fragment {
+	protected static final int MODE_PRIVATE = 0x0000;
 	private Effectstype effect;
 	// 获取本地版本信息
 	private String localVersion;
 	private UpdateInfo info;
+	private ToggleButton mIsLockOn;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.tab04, container, false);
+		mIsLockOn = (ToggleButton) view.findViewById(R.id.settings_set_app_lock);
+		SharedPreferences preferences = getActivity().getSharedPreferences("intellligentCampus", MODE_PRIVATE);
+		// 第一次取值是没有的，所以我们第一次赋值为true
+		boolean isLockOn = preferences.getBoolean("isLockOn", false);
+		if (isLockOn) {
+			mIsLockOn.setToggleOn();
+		} else {
+			mIsLockOn.setToggleOff();
+		}
 		MyRowOnclickListener listener = new MyRowOnclickListener();
 		TableRow row8 = (TableRow) view.findViewById(R.id.more_page_row8);
 		TableRow row7 = (TableRow) view.findViewById(R.id.more_page_row7);
 		TableRow row6 = (TableRow) view.findViewById(R.id.more_page_row6);
 		TableRow row5 = (TableRow) view.findViewById(R.id.more_page_row5);
-		//TableRow row4 = (TableRow) view.findViewById(R.id.more_page_row4);
+		TableRow row1 = (TableRow) view.findViewById(R.id.more_page_row1);
+		// TableRow row4 = (TableRow) view.findViewById(R.id.more_page_row4);
 		row8.setOnClickListener(listener);
 		row7.setOnClickListener(listener);
 		row6.setOnClickListener(listener);
 		row5.setOnClickListener(listener);
-		//row4.setOnClickListener(listener);
+		// row4.setOnClickListener(listener);
+		row1.setOnClickListener(listener);
+		mIsLockOn.setOnToggleChanged(new OnToggleChanged() {
+
+			@Override
+			public void onToggle(boolean on) {
+				// 设定存储的权限
+				SharedPreferences preferences = getActivity().getSharedPreferences("intellligentCampus", MODE_PRIVATE);
+				Editor editor = preferences.edit();
+				if (on) {
+					editor.putBoolean("isLockOn", on);
+					Intent intent=new Intent(getActivity(),AppLockActivity.class);
+					intent.putExtra("isSet", true);
+					getActivity().startActivity(intent);
+				} else {
+					editor.putBoolean("isLockOn", on);
+					editor.remove("locksecret");
+				}
+				// 提交修改
+				editor.commit();
+			}
+		});
 		return view;
 	}
 
@@ -92,11 +128,16 @@ public class SettingFragment extends Fragment {
 				startActivity(intent);
 				activitySwitchAnimation();
 				break;
-			/*case R.id.more_page_row4:
-				intent = new Intent(getActivity(), HelpActivity.class);
+			/*
+			 * case R.id.more_page_row4: intent = new Intent(getActivity(),
+			 * HelpActivity.class); startActivity(intent);
+			 * activitySwitchAnimation(); break;
+			 */
+			case R.id.more_page_row1:
+				intent = new Intent(getActivity(), AccountManageActivity.class);
 				startActivity(intent);
 				activitySwitchAnimation();
-				break;*/
+				break;
 			}
 		}
 
