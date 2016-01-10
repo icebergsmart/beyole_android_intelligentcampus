@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.beyole.bean.UserLoss;
 import com.beyole.intelligentcampus.R;
+import com.squareup.picasso.Picasso;
 
 /**
  * 失物招领list adapter
@@ -66,7 +67,6 @@ public class FunctionLossAdapter extends BaseAdapter {
 		}
 		viewHolder.userName.setText(userLosses.get(position).getUserName());
 		viewHolder.publishDate.setText(userLosses.get(position).getDeliveryDate());
-
 		if (userLosses.get(position).getFinished() == 0) {
 			viewHolder.statusYes.setVisibility(View.VISIBLE);
 			viewHolder.statusNo.setVisibility(View.GONE);

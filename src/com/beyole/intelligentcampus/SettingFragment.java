@@ -216,7 +216,8 @@ public class SettingFragment extends Fragment {
 					is = connection.getInputStream();
 				}
 				info = UpdateInfoParser.getUpdataInfo(is);
-
+				Log.e("update","当前版本:"+localVersion);
+				Log.e("update","远程版本"+info.getVersion());
 				if (info.getVersion().equals(localVersion)) {
 					Log.e("test", "您当前为最新版本！");
 					message.what = UpdateConstant.NO_NEED_UPDATE;

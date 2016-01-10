@@ -67,7 +67,7 @@ public class CampusInformationFragment extends Fragment {
 
 	private void initViews() {
 		mListView = (ListView) mView.findViewById(R.id.id_function_life_campus_information_listview_main);
-		getCampusInformations();
+		
 	}
 
 	public void getCampusInformations() {
@@ -101,5 +101,10 @@ public class CampusInformationFragment extends Fragment {
 			}
 		}, map);
 		VolleySingleton.getVolleySingleton(getActivity().getApplicationContext()).addToRequestQueue(request);
+	}
+	@Override
+	public void onResume() {
+		super.onResume();
+		getCampusInformations();
 	}
 }

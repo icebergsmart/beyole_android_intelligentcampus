@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.beyole.bean.UserLoss;
+import com.beyole.constant.ImageUrlConstant;
 import com.beyole.intelligentcampus.R;
 import com.beyole.intelligentcampus.functions.convenient.ui.SpaceImageDetailActivity;
 import com.beyole.ninegridviewexpand.CustomImageView;
@@ -83,6 +84,7 @@ public class LossDetailsActivity extends Activity {
 	}
 
 	private void initEvents() {
+		if(imagesUrl.size()>0){
 		mNineGridLayout.setImagesData(imagesList);
 		mNineGridLayout.setOnItemClickListerner(new OnItemClickListerner() {
 
@@ -103,6 +105,9 @@ public class LossDetailsActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		}else{
+			mNineGridLayout.setVisibility(View.GONE);
+		}
 	}
 
 	private void initImages(String[] images) {
@@ -110,8 +115,8 @@ public class LossDetailsActivity extends Activity {
 		imagesUrl = new ArrayList<String>();
 		// 从一到9生成9条朋友圈内容，分别是1~9张图片
 		for (int j = 0; j < images.length; j++) {
-			imagesList.add(new Image(images[j], 250, 250));
-			imagesUrl.add(images[j]);
+			imagesList.add(new Image(ImageUrlConstant.REMOTE_USERLOSS_DESCRIPTION_SNAIL_IMAGE_URL+images[j], 250, 250));
+			imagesUrl.add(ImageUrlConstant.REMOTE_USERLOSS_DESCRIPTION_SNAIL_IMAGE_URL+images[j]);
 		}
 		initEvents();
 	}

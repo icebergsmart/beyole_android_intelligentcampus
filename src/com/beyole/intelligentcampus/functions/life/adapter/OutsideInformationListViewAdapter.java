@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.beyole.bean.Article;
+import com.beyole.constant.ImageUrlConstant;
 import com.beyole.intelligentcampus.R;
 import com.squareup.picasso.Picasso;
 
@@ -62,7 +63,11 @@ public class OutsideInformationListViewAdapter extends BaseAdapter {
 		}
 		viewHolder.newsTitle.setText(articles.get(position).getArticleName());
 		viewHolder.newsDescription.setText(articles.get(position).getArticleDescription());
-		showImage(viewHolder.newsImageUrl, articles.get(position).getArticlePicBig());
+		if(articles.get(position).getArticlePicBig()!=null){
+			showImage(viewHolder.newsImageUrl, articles.get(position).getArticlePicBig());
+		}else{
+			viewHolder.newsImageUrl.setImageResource(R.drawable.no_image_square);
+		}
 		return convertView;
 	}
 
@@ -72,6 +77,6 @@ public class OutsideInformationListViewAdapter extends BaseAdapter {
 		public TextView newsDescription;
 	}
 	public void showImage(ImageView mImageView, String url) {
-		Picasso.with(mContext).load(url).into(mImageView);
+		Picasso.with(mContext).load(ImageUrlConstant.HOME_ARTICLE_DETAILS_SNAIL_IMAGE_URL+url).placeholder(R.drawable.loading).error(R.drawable.no_image_square).into(mImageView);
 	}
 }

@@ -99,6 +99,7 @@ public class DetailsCourseSheetFragment extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Intent intent = new Intent(getActivity(), CoursePlayActivity.class);
+				intent.putExtra("videoUrl", courseVideos.get(position).getVideoUrl());
 				startActivity(intent);
 			}
 		});

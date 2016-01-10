@@ -104,4 +104,7 @@ public class APIConstant {
 
 	// 根据用户id更改用户密码(参数:userId<用户id>，originalPassword<用户原先密码>,userPassword<用户更改后密码>)
 	public static final String UPDATEUSERPASSWORDINTERFACE = COMMONURL + "/user/user/edituserpasswordbyuserid.action";
+
+	// 公开课视频地址
+	public static final String COURSEVIDEOURL = COMMONURL + "/upload/video/course/";
 }

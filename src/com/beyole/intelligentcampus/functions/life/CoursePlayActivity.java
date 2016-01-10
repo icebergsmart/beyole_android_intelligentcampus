@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.beyole.constant.APIConstant;
 import com.beyole.intelligentcampus.R;
 
 public class CoursePlayActivity extends Activity {
@@ -15,7 +16,7 @@ public class CoursePlayActivity extends Activity {
 	 * TODO: Set the path variable to a streaming video URL or a local media file
 	 * path.
 	 */
-	private String path = "http://192.168.1.105:8080/Test/video/1.mp4";
+	private String path;
 	private VideoView mVideoView;
 
 	@Override
@@ -25,7 +26,7 @@ public class CoursePlayActivity extends Activity {
 			return;
 		setContentView(R.layout.function_life_course_details_video_play_layout);
 		mVideoView = (VideoView) findViewById(R.id.surface_view);
-
+		path=getIntent().getStringExtra("videoUrl");
 		if (path == "") {
 			// Tell the user to provide a media file URL/path.
 			Toast.makeText(CoursePlayActivity.this, "Please edit VideoViewDemo Activity, and set path" + " variable to your media file URL/path", Toast.LENGTH_LONG).show();

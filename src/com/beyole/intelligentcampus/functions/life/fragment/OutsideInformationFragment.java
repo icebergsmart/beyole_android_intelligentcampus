@@ -60,7 +60,7 @@ public class OutsideInformationFragment extends Fragment {
 
 	private void initViews() {
 		mListView = (ListView) mView.findViewById(R.id.id_function_life_outside_information_listview_main);
-		getCampusInformations();
+		
 	}
 
 	public void getCampusInformations() {
@@ -94,5 +94,10 @@ public class OutsideInformationFragment extends Fragment {
 			}
 		}, map);
 		VolleySingleton.getVolleySingleton(getActivity().getApplicationContext()).addToRequestQueue(request);
+	}
+	@Override
+	public void onResume() {
+		super.onResume();
+		getCampusInformations();
 	}
 }

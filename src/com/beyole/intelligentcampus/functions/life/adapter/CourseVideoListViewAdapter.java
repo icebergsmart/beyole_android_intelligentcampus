@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.beyole.bean.CourseAlbum;
+import com.beyole.constant.ImageUrlConstant;
 import com.beyole.intelligentcampus.R;
 import com.squareup.picasso.Picasso;
 
@@ -63,7 +64,11 @@ public class CourseVideoListViewAdapter extends BaseAdapter {
 		}
 		viewHolder.teacherName.setText(courseAlbums.get(position).getTeacherName());
 		viewHolder.videoName.setText(courseAlbums.get(position).getCourseName());
-		showImage(viewHolder.videoImageUrl, courseAlbums.get(position).getCourseImage());
+		if (courseAlbums.get(position).getCourseImage() != null) {
+			showImage(viewHolder.videoImageUrl, courseAlbums.get(position).getCourseImage());
+		} else {
+			viewHolder.videoImageUrl.setImageResource(R.drawable.default_course_poster_banner);
+		}
 		return convertView;
 	}
 
@@ -74,6 +79,6 @@ public class CourseVideoListViewAdapter extends BaseAdapter {
 	}
 
 	public void showImage(ImageView mImageView, String url) {
-		Picasso.with(mContext).load(url).into(mImageView);
+		Picasso.with(mContext).load(ImageUrlConstant.REMOTE_COURSE_ALBUM_SNAIL_IMAGE_URL+url).placeholder(R.drawable.loading).error(R.drawable.default_course_poster_banner).into(mImageView);
 	}
 }

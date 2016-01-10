@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.beyole.bean.CourseAlbum;
+import com.beyole.constant.ImageUrlConstant;
 import com.beyole.intelligentcampus.R;
 import com.squareup.picasso.Picasso;
 
@@ -74,6 +75,6 @@ public class CourseDetailsGridViewAdapter extends BaseAdapter {
 		public ImageView courseImage;
 	}
 	public void showImage(ImageView mImageView, String url) {
-		Picasso.with(mContext).load(url).into(mImageView);
+		Picasso.with(mContext).load(ImageUrlConstant.REMOTE_COURSE_ALBUM_SNAIL_IMAGE_URL+url).placeholder(R.drawable.loading).error(R.drawable.default_course_poster_banner).into(mImageView);
 	}
 }
