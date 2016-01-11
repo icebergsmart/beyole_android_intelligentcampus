@@ -5,8 +5,10 @@
     android:orientation="vertical" >
     
 	<ImageView 
+	     android:id="@+id/id_guide_two_iv"
 	    android:layout_width="fill_parent"
-	    android:layout_height="150.0dip"
-	    android:background="@drawable/home2"
+	    android:layout_height="200.0dip"
+	    android:src="@drawable/no_image_rect"
+	    android:scaleType="fitXY"
 	    />
 </LinearLayout>

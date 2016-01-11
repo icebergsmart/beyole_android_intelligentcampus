@@ -107,4 +107,8 @@ public class APIConstant {
 
 	// 公开课视频地址
 	public static final String COURSEVIDEOURL = COMMONURL + "/upload/video/course/";
+
+	// app首页轮播图片地址查询接口
+	public static final String APPIMAGEINTERFACE = COMMONURL + "/web/appimage/findallappimages.action";
+
 }

@@ -34,13 +34,17 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.beyole.adapter.ViewpaperAdapter;
+import com.beyole.bean.AppImage;
 import com.beyole.bean.Article;
 import com.beyole.constant.APIConstant;
+import com.beyole.constant.AppImageConstant;
 import com.beyole.constant.ArticleConstant;
+import com.beyole.constant.ImageUrlConstant;
 import com.beyole.intelligentcampus.functions.life.adapter.CampusInformationListViewAdapter;
 import com.beyole.util.JsonUtils;
 import com.beyole.util.NormalPostRequest;
 import com.beyole.util.VolleySingleton;
+import com.squareup.picasso.Picasso;
 import com.wang.avi.AVLoadingIndicatorView;
 
 /**
@@ -111,7 +115,7 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 		lv_waitting_annimation = (AVLoadingIndicatorView) mView.findViewById(R.id.lv_waitting_annimation);
 		lv_setting_network = (Button) mView.findViewById(R.id.lv_setting_network);
 		mRefreshNewsBtn = (TextView) mView.findViewById(R.id.home_activity_refresh_ib_news);
-		mServerError=(TextView) mView.findViewById(R.id.lv_settings_server_error);
+		mServerError = (TextView) mView.findViewById(R.id.lv_settings_server_error);
 		lv_setting_network.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -259,5 +263,50 @@ public class HomeFragment extends Fragment implements OnPageChangeListener {
 				startActivity(intent);
 			}
 		});
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		getHomeAppImages();
+	}
+
+	public void getHomeAppImages() {
+		Map<String, String> map = new HashMap<String, String>();
+		Request<JSONObject> request = new NormalPostRequest(APIConstant.APPIMAGEINTERFACE, new Response.Listener<JSONObject>() {
+			@Override
+			public void onResponse(JSONObject response) {
+				AppImage appImage = null;
+				List<AppImage> appImages = new ArrayList<AppImage>();
+				try {
+					if (response.getInt("code") == AppImageConstant.QUERY_FOR_APP_IMAGE_SUCCESS) {
+						JSONArray array = response.getJSONArray("appimages");
+						for (int i = 0; i < array.length(); i++) {
+							JSONObject object = array.getJSONObject(i);
+							appImage = JsonUtils.readJsonToObject(AppImage.class, object.toString());
+							appImages.add(appImage);
+						}
+						initImages(appImages);
+					}
+				} catch (JSONException e) {
+				}
+			}
+		}, new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+			}
+		}, map);
+		VolleySingleton.getVolleySingleton(getActivity().getApplicationContext()).addToRequestQueue(request);
+	}
+
+	protected void initImages(List<AppImage> appImages) {
+		ImageView iv1 = (ImageView) views.get(0).findViewById(R.id.id_guide_one_iv);
+		ImageView iv2 = (ImageView) views.get(1).findViewById(R.id.id_guide_two_iv);
+		ImageView iv3 = (ImageView) views.get(2).findViewById(R.id.id_guide_three_iv);
+		ImageView iv4 = (ImageView) views.get(3).findViewById(R.id.id_guide_four_iv);
+		Picasso.with(getActivity()).load(ImageUrlConstant.REMOTE_APP_IMAGE_SNAIL_IMAGE_URL + appImages.get(0).getImageUrl()).placeholder(R.drawable.no_image_rect).error(R.drawable.no_image_rect).into(iv1);
+		Picasso.with(getActivity()).load(ImageUrlConstant.REMOTE_APP_IMAGE_SNAIL_IMAGE_URL + appImages.get(1).getImageUrl()).placeholder(R.drawable.no_image_rect).error(R.drawable.no_image_rect).into(iv2);
+		Picasso.with(getActivity()).load(ImageUrlConstant.REMOTE_APP_IMAGE_SNAIL_IMAGE_URL + appImages.get(2).getImageUrl()).placeholder(R.drawable.no_image_rect).error(R.drawable.no_image_rect).into(iv3);
+		Picasso.with(getActivity()).load(ImageUrlConstant.REMOTE_APP_IMAGE_SNAIL_IMAGE_URL + appImages.get(3).getImageUrl()).placeholder(R.drawable.no_image_rect).error(R.drawable.no_image_rect).into(iv4);
 	}
 }
